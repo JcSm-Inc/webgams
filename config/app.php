@@ -164,6 +164,7 @@ return [
 
         /*
          * Package Service Providers...
+         * 
          */
 
         /*
@@ -176,6 +177,8 @@ return [
         App\Providers\RouteServiceProvider::class,
         // agregado por jose
         Collective\Html\HtmlServiceProvider::class,
+        // caffeinated/shinobi seccion de service provider
+        Caffeinated\Shinobi\ShinobiServiceProvider::class,
 
     ],
 
