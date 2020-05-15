@@ -77,9 +77,7 @@ class RegisterController extends Controller
             $ubicacion='./extras/img/users/'.$ci.'.'.$ext;
             copy($foto,$ubicacion);
             unlink($foto);
-            $foto=$ubicacion;
-
-            
+            $foto=$ubicacion;  
         }
         else  $foto='none';
         /**/
