@@ -8,6 +8,7 @@ use App\User;
 use Illuminate\Foundation\Auth\RegistersUsers;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
+use PhpParser\Node\Stmt\Else_;
 
 class RegisterController extends Controller
 {
@@ -50,24 +51,50 @@ class RegisterController extends Controller
     protected function validator(array $data)
     {
         return Validator::make($data, [
-            'name' => ['required', 'string', 'max:255'],
+            'nick' => ['required','unique:users', 'string', 'max:255'],
             'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
             'password' => ['required', 'string', 'min:8', 'confirmed'],
+            'CI'        =>'unique:users|min:6|numeric',
+            'NOMBRES'   =>'required|max:50|string',
+            'APELLIDOS' =>'required|string|max:50',
+            'FECHANACIMIENTO'=>'required|date',
+            //'FOTO'      =>'nullable|mimes:jpeg,bmp,png',
+            //'GENERO'    =>'boolean|required',
         ]);
     }
 
-    /**
-     * Create a new user instance after a valid registration.
-     *
-     * @param  array  $data
-     * @return \App\User
-     */
     protected function create(array $data)
     {
+        if($data['customRadio']=='si'){ $genero=true;}
+        else  {$genero=false;}
+        $ci=$data['CI'];
+        $originalDate = $data['FECHANACIMIENTO'];
+        $fecha = date("Y-m-d", strtotime($originalDate));
+        $foto='';
+        if(isset( $data['FOTO']))  {
+            $foto= $data['FOTO'];
+            $ext = pathinfo($foto, PATHINFO_EXTENSION);
+            $ubicacion='./extras/img/users/'.$ci.'.'.$ext;
+            copy($foto,$ubicacion);
+            unlink($foto);
+            $foto=$ubicacion;
+
+            
+        }
+        else  $foto='none';
+        /**/
+
         return User::create([
-            'name' => $data['name'],
-            'email' => $data['email'],
+            'nick' => $data['nick'],
+            'email' => strtolower ( $data['email']),
             'password' => Hash::make($data['password']),
+            'CI'        =>$ci,
+            'NOMBRES'   =>strtoupper($data['NOMBRES']),
+            'APELLIDOS' =>strtoupper($data['APELLIDOS']),
+            'FECHANACIMIENTO'=>$fecha,
+            'FOTO'      =>$foto,
+            'GENERO'    =>  $genero,
+            'TIPO'      =>'USUARIO EXTERNO'//$data['TIPO']
         ]);
     }
 }
