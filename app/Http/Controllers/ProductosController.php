@@ -3,83 +3,134 @@
 namespace App\Http\Controllers;
 
 use App\Models\Productos;
+use Illuminate\Broadcasting\Channel;
+//use Dotenv\Validator;
 use Illuminate\Http\Request;
+use Illuminate\Mail\Message;
+use Illuminate\Support\Facades\Validator;
 
 class ProductosController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
+    //-----------------MUESTRA TODOS LOS PRODUCTOS-----------------------------------------
     public function index()
     {
-        //
+        $producto=Productos::select("productos.*")->get()->toArray();
+        return $producto;
     }
-
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
+    //----------------CREA LA PLANTILLA PARA UN NUEVO REGISTRO------------------------------
     public function create()
     {
-        //
+        
     }
+    //---------------CREA LA PLANTILLA PARA ACTUALIZAR UN REGISTRO--------------------------
+    public function edit()
+    {
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
+    }
+    //-------------------------GUARDAR UN NUEVO REGISTRO------------------------------------
     public function store(Request $request)
     {
-        //
+        $entrada=$request->all();
+        $validator=Validator::make($entrada,[
+            'CODPROD'    => 'required|unique:productos|min:3|max:6',
+            'NOMBRE'    => 'required|max:100',
+            'DESCRIPCION'=>'nullable|max:200',
+            'TIPO'      => 'max:45',
+            'FOTO'      => 'max:100',
+            'STOCK'     => 'numeric'
+        ]);
+        if($validator->fails())
+        {
+            return response()->json([
+                'ok'    =>  false,
+                'error' =>  $validator->messages()
+            ]);
+        }
+        try{
+            Productos::create($entrada);
+            return response()->json([
+                'ok'    =>  true,
+                'mensaje' =>  'Productos agregado correctamente'
+            ]);
+        }
+        catch(\Exception $ex){
+            return response()->json([
+                'ok'    =>  false,
+                'error' =>  $ex->getMessage()
+            ]); 
+        }
     }
-
-    /**
-     * Display the specified resource.
-     *
-     * @param  \App\Productos  $productos
-     * @return \Illuminate\Http\Response
-     */
-    public function show(Productos $productos)
+    //---------------------------MUESTRA UN PRODUCTO--------------------------------------
+    public function show($id)
     {
-        //
+        $producto=Productos::select("productos.*")->where("productos.id",$id)->first();
+        return response()->json([
+            "ok"    => true,
+            "data"  =>  $producto,
+            "id"    => $id
+        ]);
     }
-
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  \App\Productos  $productos
-     * @return \Illuminate\Http\Response
-     */
-    public function edit(Productos $productos)
+    //-------------------------ACTUALIZA DATOS DE UN PRODUCTO------------------------------
+    public function update(Request $request, $id)
     {
-        //
+        $entrada=$request->all();
+        $validator=Validator::make($entrada,[
+            'CODPROD'    => 'required|min:3|max:6',
+            'NOMBRE'    => 'required|max:100',
+            'DESCRIPCION'=>'nullable|max:200',
+            'TIPO'      => 'max:45',
+            'FOTO'      => 'max:100',
+            'STOCK'     => 'numeric'
+        ]);
+        if($validator->fails())
+        {
+            return response()->json([
+                'ok'    =>  false,
+                'error' =>  $validator->messages()
+            ]);
+        }
+        try{
+            $producto=Productos::find($id);
+            if($producto==false){
+                return response()->json([
+                    'ok' => false,
+                    'error' => "No se encontro el producto"
+                ]);
+            }
+            $producto->update($entrada);
+            return response()->json([
+                'ok'=>true,
+                'mensaje'=>'Datos actualizados correctamente'
+            ]);
+        }
+        catch(\Exception $ex){
+            return response()->json([
+                'ok'=>false,
+                'error'=>$ex->getMessage()
+            ]);
+        }
     }
-
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Productos  $productos
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, Productos $productos)
+    //------------------------ELIMINA UN PRODUCTO DEL REGISTRO-----------------------------
+    public function destroy($id)
     {
-        //
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  \App\Productos  $productos
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy(Productos $productos)
-    {
-        //
+        try{
+            $producto=Productos::find($id);
+            if($producto==false){
+                return response()->json([
+                    'ok'=>false,
+                    'error'=>'No se encontro el Productos'
+                ]);
+            }
+            $producto->delete();
+            return response()->json([
+                'ok'=>true,
+                'mensaje'=>"Eliminado correctamente"
+            ]);
+        }catch(\Exception $ex){
+            return response()->json([
+                'ok'    =>  false,
+                'error' =>  $ex->getMessage()
+            ]);
+        }
     }
 }

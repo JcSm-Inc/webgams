@@ -15,8 +15,8 @@ class AddForeignKeyComunicadoTable extends Migration
     {
         Schema::table('comunicado', function (Blueprint $table) {
             $table->foreign('idPERSONAL_DE_PLANTA','comunicado_idPERSONAL_DE_PLANTA_foerign')
-            ->references('id')
-            ->on('personal_de_planta')->onUpdate('cascade')->onDelete('cascade');
+            ->references('id')->on('personal_de_planta')
+            ->onUpdate('cascade')->onDelete('cascade');
 		
         });
     }
