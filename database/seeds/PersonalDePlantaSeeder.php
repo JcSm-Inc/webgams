@@ -1,5 +1,6 @@
 <?php
 
+use App\Models\Personal_de_Planta;
 use Illuminate\Database\Seeder;
 
 class PersonalDePlantaSeeder extends Seeder
@@ -11,6 +12,6 @@ class PersonalDePlantaSeeder extends Seeder
      */
     public function run()
     {
-        //
+        factory(Personal_de_Planta::class,100)->create();
     }
 }

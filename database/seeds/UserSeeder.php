@@ -1,9 +1,9 @@
 <?php
 
-use App\Models\Comunicado;
+use App\Models\User;
 use Illuminate\Database\Seeder;
 
-class ComunicadoSeeder extends Seeder
+class UserSeeder extends Seeder
 {
     /**
      * Run the database seeds.
@@ -12,6 +12,6 @@ class ComunicadoSeeder extends Seeder
      */
     public function run()
     {
-        factory(Comunicado::class,20)->create();
+        factory(User::class,500)->create();
     }
 }

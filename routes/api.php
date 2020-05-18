@@ -17,9 +17,7 @@ use Illuminate\Support\Facades\Route;
 Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });
-Route::resource('/productos', 'ProductoController')->except([
-    'create','edit'
-]);
+//Route::resource('/productos', 'ProductoController')->except(['create','edit'])->name('productos');
 Route::resource('/archivoadjunto', 'ArchivoAdjuntoController')->except([
     'create','edit'
 ]);

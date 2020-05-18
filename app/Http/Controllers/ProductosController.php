@@ -8,14 +8,19 @@ use Illuminate\Broadcasting\Channel;
 use Illuminate\Http\Request;
 use Illuminate\Mail\Message;
 use Illuminate\Support\Facades\Validator;
+use ProductosSeeder;
 
 class ProductosController extends Controller
 {
     //-----------------MUESTRA TODOS LOS PRODUCTOS-----------------------------------------
     public function index()
     {
-        $producto=Productos::select("productos.*")->get()->toArray();
-        return $producto;
+        $products=Productos::paginate();
+        //$producto=Productos::select("productos.*")->get()->toArray();
+        return response(compact('products'));/*
+            'estado'=>'ok',
+            'respuesta'=>$products
+        ]);*/
     }
     //----------------CREA LA PLANTILLA PARA UN NUEVO REGISTRO------------------------------
     public function create()
