@@ -2,6 +2,7 @@
 
 use Illuminate\Database\Seeder;
 use Caffeinated\Shinobi\Models\Permission;
+use Caffeinated\Shinobi\Models\Role;
 
 class TablaPermisosSeeder extends Seeder
 {
@@ -12,6 +13,11 @@ class TablaPermisosSeeder extends Seeder
      */
     public function run()
     {
+        Role::create([
+            'name'  => 'Admin',
+            'slug'  => 'admin',
+            'special' => 'all-access'
+        ]);
         Permission::create([
             'name'          => 'Navegar usuario',
             'slug'          => 'users.index',
@@ -32,7 +38,7 @@ class TablaPermisosSeeder extends Seeder
             'slug'          => 'users.destroy',
             'description'   => 'Eliminar cualquier usuario del sistema',
         ]);
-        
+
         //ROLES
         Permission::create([
             'name'          => 'Navegar roles',
@@ -85,7 +91,7 @@ class TablaPermisosSeeder extends Seeder
             'name'          => 'Eliminar Productos',
             'slug'          => 'productos.destroy',
             'description'   => 'Eliminar cualquier Producto del sistema',
-        ]); 
+        ]);
 
         //Archivo Adjunto
         Permission::create([
@@ -112,7 +118,7 @@ class TablaPermisosSeeder extends Seeder
             'name'          => 'Eliminar Archivos Adjuntos',
             'slug'          => 'archivosadjuntos.destroy',
             'description'   => 'Eliminar cualquier Archivos Adjuntos del sistema',
-        ]); 
+        ]);
 
         //Archivo Adjunto Comunicado
         Permission::create([
@@ -139,7 +145,7 @@ class TablaPermisosSeeder extends Seeder
             'name'          => 'Eliminar Archivo Adjunto Comunicado',
             'slug'          => 'archivosadjuntoscomunicados.destroy',
             'description'   => 'Eliminar cualquier Archivo Adjunto Comunicado del sistema',
-        ]); 
+        ]);
 
         //Comunicados
         Permission::create([
@@ -166,7 +172,7 @@ class TablaPermisosSeeder extends Seeder
             'name'          => 'Eliminar Comunicado',
             'slug'          => 'comunicados.destroy',
             'description'   => 'Eliminar cualquier Comunicado del sistema',
-        ]); 
+        ]);
 
         //Detalles de entrega
         Permission::create([
@@ -193,7 +199,7 @@ class TablaPermisosSeeder extends Seeder
             'name'          => 'Eliminar Detalle de entrega',
             'slug'          => 'detallesentregas.destroy',
             'description'   => 'Eliminar cualquier Detalle de Entrega del sistema',
-        ]); 
+        ]);
 
         //Detalle de hoja de ruta
         Permission::create([
@@ -220,7 +226,7 @@ class TablaPermisosSeeder extends Seeder
             'name'          => 'Eliminar Detalle de Hoja de Ruta',
             'slug'          => 'detalleshojaderuta.destroy',
             'description'   => 'Eliminar cualquier Detalle de Hoja de Ruta del sistema',
-        ]); 
+        ]);
 
         //Detalle de Reserva
         Permission::create([
@@ -247,7 +253,7 @@ class TablaPermisosSeeder extends Seeder
             'name'          => 'Eliminar Detalle de Reserva',
             'slug'          => 'detallesreservas.destroy',
             'description'   => 'Eliminar cualquier Detalle del sistema',
-        ]); 
+        ]);
 
         //Entrega
         Permission::create([
@@ -274,7 +280,7 @@ class TablaPermisosSeeder extends Seeder
             'name'          => 'Eliminar Entrega',
             'slug'          => 'entregas.destroy',
             'description'   => 'Eliminar cualquier Entrega del sistema',
-        ]); 
+        ]);
 
         //Hoja de Ruta
         Permission::create([
@@ -301,7 +307,7 @@ class TablaPermisosSeeder extends Seeder
             'name'          => 'Eliminar Hoja de Ruta',
             'slug'          => 'hojaderutas.destroy',
             'description'   => 'Eliminar cualquier Hoja de Ruta del sistema',
-        ]); 
+        ]);
 
         //Nota
         Permission::create([
@@ -328,7 +334,7 @@ class TablaPermisosSeeder extends Seeder
             'name'          => 'Eliminar Nota',
             'slug'          => 'notas.destroy',
             'description'   => 'Eliminar cualquier Nota del sistema',
-        ]); 
+        ]);
 
         //Personal de Planta
         Permission::create([
@@ -355,7 +361,7 @@ class TablaPermisosSeeder extends Seeder
             'name'          => 'Eliminar Persona de planta',
             'slug'          => 'personaldeplanta.destroy',
             'description'   => 'Eliminar cualquier Persona de planta del sistema',
-        ]); 
+        ]);
 
         //Reserva
         Permission::create([
@@ -382,6 +388,6 @@ class TablaPermisosSeeder extends Seeder
             'name'          => 'Eliminar Reserva',
             'slug'          => 'reservas.destroy',
             'description'   => 'Eliminar cualquier Reserva del sistema',
-        ]); 
+        ]);
     }
 }

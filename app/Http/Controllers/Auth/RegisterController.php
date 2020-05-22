@@ -1,7 +1,7 @@
 <?php
 
 namespace App\Http\Controllers\Auth;
-
+use App\Rules\AlfebetoEspPunto;
 use App\Http\Controllers\Controller;
 use App\Providers\RouteServiceProvider;
 use App\Models\User;
@@ -55,8 +55,8 @@ class RegisterController extends Controller
             'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
             'password' => ['required', 'string', 'min:8', 'confirmed'],
             'CI'        =>'unique:users|min:6|numeric',
-            'NOMBRES'   =>'required|max:50|string',
-            'APELLIDOS' =>'required|string|max:50',
+            'NOMBRES'   =>['required',new AlfebetoEspPunto],
+            'APELLIDOS' =>['required',new AlfebetoEspPunto],
             'FECHANACIMIENTO'=>'required|date',
             //'FOTO'      =>'nullable|mimes:jpeg,bmp,png',
             //'GENERO'    =>'boolean|required',

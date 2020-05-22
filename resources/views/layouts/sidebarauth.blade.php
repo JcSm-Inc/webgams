@@ -237,12 +237,14 @@
                                 </p>
                             </a>
                             <ul class="nav nav-treeview">
+                                @can('products.index')
                                 <li class="nav-item">
-                                    <a href="pages/charts/chartjs.html" class="nav-link">
+                                    <a href="{{ route('productos.index')}}" class="nav-link">
                                         <i class="fas fa-shopping-cart nav-icon"></i>
                                         <p>Administracion de Productos</p>
                                     </a>
                                 </li>
+                                @endcan
                                 <li class="nav-item">
                                     <a href="pages/charts/flot.html" class="nav-link">
                                         <i class="fas fa-cart-plus nav-icon"></i>
@@ -311,7 +313,19 @@
 
         <!-- Content Wrapper. Contains page content -->
         <div class="content-wrapper">
-                @yield('contenido')
+            @if(session('info'))
+                <div class="container">
+                    <div class="row justify-content-center">
+                        <div class="col-md-8 col-md-offset-2">
+                            <div class="alert alert-success">
+                                {{session('info')}}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            @endif
+            
+            @yield('contenido')
         </div>
         <!-- /.content-wrapper -->
         <footer class="main-footer">

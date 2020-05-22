@@ -4,18 +4,35 @@ namespace Tests\Feature;
 
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Illuminate\Foundation\Testing\WithFaker;
+use Illuminate\Foundation\Testing\WithoutMiddleware;
 use Tests\TestCase;
 
 class ProductosTest extends TestCase
 {
+    use WithoutMiddleware;
+    use RefreshDatabase;
     /**
      * @test
      */
-    public function mostrarProductos()
+     
+    public function test_Nuevo_Producto()
     {
-        
-        $response = $this->call('GET',route('productos.index'));
-        //$response->assertJsonStructure();
-        $response->assertStatus(200);
+        $this->withoutExceptionHandling();
+        $this->post('/productos/',[
+            'CODPROD'    => 'CR3452',
+            'NOMBRE'    => 'as',
+            'DESCRIPCION'=>'',
+            'TIPO'      => 'MATERIAL DE ESCRITORIO',
+            'FOTO'      => 'none',
+            'STOCK'     => '532213'
+        ])->assertStatus(200);
+        $this->assertDatabaseHas('productos',[
+            'CODPROD'    => 'CR3452',
+            'NOMBRE'    => 'as',
+            'DESCRIPCION'=>'',
+            'TIPO'      => 'MATERIAL DE ESCRITORIO',
+            'FOTO'      => 'none',
+            'STOCK'     => '532213'
+        ]);
     }
 }

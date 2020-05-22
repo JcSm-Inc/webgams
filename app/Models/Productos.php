@@ -15,5 +15,5 @@ class Productos extends Model
         'FOTO',
         'STOCK'
     ];
-    public $timestamps=false;
+
 }
