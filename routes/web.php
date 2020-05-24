@@ -22,7 +22,6 @@ Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
 
-
 Route::middleware(['auth'])->group(function () {
     //PRODUCTOS
     // crear
@@ -30,13 +29,14 @@ Route::middleware(['auth'])->group(function () {
         ->middleware('can:productos.create');
 
     //visualizar el sitado
-    Route::get('productos', 'ProductosController@index')->name('productos.index')
+    Route::get('productos/', 'ProductosController@index')->name('productos.index')
         ->middleware('can:productos.index');
+
     // ver el formulario de creacion
     Route::get('productos/create', 'ProductosController@create')->name('productos.create')
         ->middleware('can:productos.create');
     // actualizar
-    Route::put('productos/{producto}', 'ProductosController@update')->name('oos.update')
+    Route::put('productos/{producto}', 'ProductosController@update')->name('productos.update')
         ->middleware('can:productos.edit');
     //ver el detalle
     Route::get('productos/{producto}', 'ProductosController@show')->name('productos.show')

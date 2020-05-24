@@ -35,7 +35,7 @@
                                    <td>{{$producto->CODPROD}}</td> 
                                    <td>{{$producto->NOMBRE}}</td>
                                    <td width="10px">
-                                       <a href="{{ route('productos.show',$producto)}}" class="nav-link">
+                                       <a href="{{ route('productos.show',$producto->id)}}" class="nav-link">
                                         <i class="far fa-eye"></i>
                                         </a>
                                     </td>
@@ -46,7 +46,7 @@
                                    </td>
                                    <td width="10px">
                                         {!!
-                                            Form::open(['route' => ['productos.destroy',$producto],
+                                            Form::open(['route' => ['productos.destroy',$producto->id],
                                             'method' => 'DELETE'])
                                         !!}
                                             <button class="btn btn-xs  btn-block btn-outline-danger">

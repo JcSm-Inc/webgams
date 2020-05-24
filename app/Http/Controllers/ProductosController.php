@@ -14,17 +14,14 @@ use ProductosSeeder;
 class ProductosController extends Controller
 {
     //-----------------MUESTRA TODOS LOS PRODUCTOS-----------------------------------------
-    public function index()
+    public function index(Request $request)
     {
-        //$productos=Productos::all();
-        $productos = Productos::paginate(10);
-        //$producto=Productos::select("productos.*")->get()->toArray();
+        $id = $request->get('buscar');
+        $productos = Productos::Nombres($id)->paginate(10);
         return view('productos/index', ['productos' => $productos]); //response(compact('productos'));
-        /*
-            'estado'=>'ok',
-            'respuesta'=>$products
-        ]);*/
     }
+
+
     //----------------CREA LA PLANTILLA PARA UN NUEVO REGISTRO------------------------------
     public function create()
     {
@@ -50,14 +47,9 @@ class ProductosController extends Controller
         }
     }
     //---------------------------MUESTRA UN PRODUCTO--------------------------------------
-    public function show($id)
+    public function show(Productos $producto)
     {
-        $producto = Productos::select("productos.*")->where("productos.id", $id)->first();
-        return response()->json([
-            "ok"    => true,
-            "data"  =>  $producto,
-            "id"    => $id
-        ]);
+        return view('productos.show', compact('producto'));
     }
     //-------------------------ACTUALIZA DATOS DE UN PRODUCTO------------------------------
     public function update(ValidarProducto $request, $id)
