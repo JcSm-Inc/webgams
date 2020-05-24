@@ -13,7 +13,7 @@ class ValidarComunicado extends FormRequest
      */
     public function authorize()
     {
-        return false;
+        return true;
     }
 
     /**
@@ -24,7 +24,10 @@ class ValidarComunicado extends FormRequest
     public function rules()
     {
         return [
-            //
+            'FECHA'=> 'required|date',
+            'TITULO'=> 'required|min:3|max:45',
+            'DESCRIPCION'=> 'required|max:100',
+            'idPERSONAL_DE_PLANTA'=> 'required'
         ];
     }
 }
