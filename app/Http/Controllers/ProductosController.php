@@ -25,6 +25,7 @@ class ProductosController extends Controller
     //----------------CREA LA PLANTILLA PARA UN NUEVO REGISTRO------------------------------
     public function create()
     {
+        return view('productos.create');
     }
     //---------------CREA LA PLANTILLA PARA ACTUALIZAR UN REGISTRO--------------------------
     public function edit(Productos $producto)
@@ -34,16 +35,12 @@ class ProductosController extends Controller
     public function store(ValidarProducto $request)
     {
         try {
-            $var = Productos::insert($request->all());
-            return response()->json([
-                'ok'    =>  true,
-                'mensaje' =>  'Productos agregado correctamente'
-            ]);
+            $product = Product::create($request->all());
+            return redirect()->route('products.edit',$product->id)
+                ->with('info','Producto guardado con exito');
         } catch (\Exception $ex) {
-            return response()->json([
-                'ok'    =>  false,
-                'error' =>  $ex->getMessage()
-            ]);
+            return redirect()->route('products.edit',$product->id)
+            ->with($ex->getMessage());
         }
     }
     //---------------------------MUESTRA UN PRODUCTO--------------------------------------
