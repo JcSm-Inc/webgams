@@ -1,4 +1,5 @@
 {
     "editor.formatOnSave": true,
-    "editor.codeActionsOnSave": true
+    "editor.codeActionsOnSave": true,
+    "git.ignoreLimitWarning": true
 }

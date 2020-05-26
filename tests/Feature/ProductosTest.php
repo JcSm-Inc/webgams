@@ -14,22 +14,22 @@ class ProductosTest extends TestCase
     /**
      * @test
      */
-     
-    public function test_Nuevo_Producto()
+
+    public function Nuevo_Producto()
     {
         $this->withoutExceptionHandling();
-        $this->post('/productos/',[
+        $this->post('/productos/', [
             'CODPROD'    => 'CR3452',
             'NOMBRE'    => 'as',
-            'DESCRIPCION'=>'',
+            'DESCRIPCION' => '',
             'TIPO'      => 'MATERIAL DE ESCRITORIO',
             'FOTO'      => 'none',
             'STOCK'     => '532213'
         ])->assertStatus(200);
-        $this->assertDatabaseHas('productos',[
+        $this->assertDatabaseHas('productos', [
             'CODPROD'    => 'CR3452',
             'NOMBRE'    => 'as',
-            'DESCRIPCION'=>'',
+            'DESCRIPCION' => '',
             'TIPO'      => 'MATERIAL DE ESCRITORIO',
             'FOTO'      => 'none',
             'STOCK'     => '532213'
