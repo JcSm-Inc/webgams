@@ -27,6 +27,10 @@
     <link rel="stylesheet" href="plugins/summernote/summernote-bs4.css">
     <!-- Google Font: Source Sans Pro -->
     <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700" rel="stylesheet">
+
+    <link rel="stylesheet" href="{{asset('MDB/css/mdb.min.css')}}" />
+    <!-- Your custom styles (optional) 
+    <link rel="stylesheet" href="MBD/css/style.css" />-->
 </head>
 
 <body class="hold-transition sidebar-mini layout-fixed">
@@ -61,6 +65,11 @@
             </form>
         @auth
         <ul class="navbar-nav ml-auto">
+
+
+
+
+
             <!-- Messages Dropdown Menu -->
             <li class="nav-item dropdown">
                 <a class="nav-link" data-toggle="dropdown" href="#">
@@ -338,8 +347,8 @@
     <script src="plugins/bs-custom-file-input/bs-custom-file-input.min.js"></script>
     <!-- ChartJS -->
     <script src="plugins/chart.js/Chart.min.js"></script>
-    <!-- Sparkline -->
-    <script src="plugins/sparklines/sparkline.js"></script>
+    <!-- Sparkline 
+    <script src="plugins/sparklines/sparkline.js"></script>-->
     <!-- JQVMap -->
     <script src="plugins/jqvmap/jquery.vmap.min.js"></script>
     <script src="plugins/jqvmap/maps/jquery.vmap.usa.js"></script>
@@ -356,10 +365,22 @@
     <script src="plugins/overlayScrollbars/js/jquery.overlayScrollbars.min.js"></script>
     <!-- AdminLTE App -->
     <script src="dist/js/adminlte.js"></script>
-    <!-- AdminLTE dashboard demo (This is only for demo purposes) -->
-    <script src="dist/js/pages/dashboard.js"></script>
+    <!-- AdminLTE dashboard demo (This is only for demo purposes) 
+    <script src="dist/js/pages/dashboard.js"></script>-->
     <!-- AdminLTE for demo purposes -->
     <script src="dist/js/demo.js"></script>
+
+        <!-- TEMAS MDB-->
+    <!-- jQuery -->
+    <script type="text/javascript" src="{{asset('MDB/js/jquery.min.js')}}"></script>
+    <!-- Bootstrap tooltips -->
+    <script type="text/javascript" src="{{asset('MDB/js/popper.min.js')}}"></script>
+    <!-- Bootstrap core JavaScript -->
+    <script type="text/javascript" src="{{asset('MDB/js/bootstrap.min.js')}}"></script> 
+    <!-- MDB core JavaScript -->
+    <script type="text/javascript" src="{{asset('MDB/js/mdb.min.js')}}"></script>
+    <!-- Your custom scripts (optional) -->
+    <script type="text/javascript"></script>
 </body>
 
 </html>

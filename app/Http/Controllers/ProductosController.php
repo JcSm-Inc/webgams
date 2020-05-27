@@ -30,17 +30,18 @@ class ProductosController extends Controller
     //---------------CREA LA PLANTILLA PARA ACTUALIZAR UN REGISTRO--------------------------
     public function edit(Productos $producto)
     {
+        return view('productos.edit', compact('producto'));
     }
     //-------------------------GUARDAR UN NUEVO REGISTRO------------------------------------
     public function store(ValidarProducto $request)
     {
         try {
-            $product = Product::create($request->all());
-            return redirect()->route('products.edit',$product->id)
-                ->with('info','Producto guardado con exito');
+            $product = Productos::create($request->all());
+            return redirect()->route('productos.edit', $product->id)
+                ->with('info', 'Producto guardado con exito');
         } catch (\Exception $ex) {
-            return redirect()->route('products.edit',$product->id)
-            ->with($ex->getMessage());
+            return redirect()->route('productos.edit', $product->id)
+                ->with($ex->getMessage());
         }
     }
     //---------------------------MUESTRA UN PRODUCTO--------------------------------------

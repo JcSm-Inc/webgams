@@ -8,7 +8,7 @@
                 <div class="card-header">
                     Productos
                         @can('productos.create')
-                        <a href="#" class="btn btn-sm btn-primary pull-right-align">
+                <a href="{{route('productos.create')}}" class="btn btn-sm btn-primary pull-right-align">
                             Crear
                         </a>
                         @endcan
@@ -30,7 +30,7 @@
                             @foreach($productos as $producto)
                                 <tr>
                                     <td>
-                                        <img src="{{$producto->FOTO}}" alt="User Avatar" class="img-size-50 mr-3 img-circle ">
+                                        <img src="{{asset($producto->FOTO)}}" alt="User Avatar" class="img-size-50 mr-3 img-circle ">
                                     </td>
                                    <td>{{$producto->CODPROD}}</td> 
                                    <td>{{$producto->NOMBRE}}</td>
