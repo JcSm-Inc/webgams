@@ -353,9 +353,6 @@
             </div>
             </div>
             <!--Modal: Login with Avatar Form-->
-
-
-
             @yield('contenido')
         </div>
         <!-- /.content-wrapper -->
@@ -372,13 +369,23 @@
         </aside>
         <!-- /.control-sidebar -->
     </div>
-    <!-- ./wrapper -->
-    @yield('scripts')
+    <!-- ./wrapper--> 
+    <!--@ yield('scripts')-->
     <!-- jQuery -->
     <script src="{{asset('plugins/jquery/jquery.min.js')}}"></script>
     <!-- jQuery UI 1.11.4 -->
     <script src="{{asset('plugins/jquery-ui/jquery-ui.min.js')}}"></script>
+    
+    <script src="{{asset('js/subirimagen.js')}}" type="text/javascript"></script>
+    <script>
+        $(document).ready(function(){
+        $(document).on('change', '#FOTO', function(){
+            readImage(this);});});
+
+
+    </script>
     <!-- Resolve conflict in jQuery UI tooltip with Bootstrap tooltip -->
+
     <script>
         $.widget.bridge('uibutton', $.ui.button)
     </script>

@@ -58,15 +58,15 @@
                           <div class="info-box-content">
                               <div class="container">
                                 <label class="btn btn-success btn-file">
-                                      Subir Fotografia <input type="file" name="file" id="file" style="display: none;">
+                                      Subir Fotografia <input type="file" name="FOTO" id="FOTO" style="display: none;">
                                 </label>
                                 <br >
-                                <span id="uploaded_image"></span>
+                                <img id="blah" src="https://via.placeholder.com/150" alt="Tu imagen" height="350" width="500" class="img-thumbnail"/>
                                 @error('FOTO')
                                     <span class="invalid-feedback" role="alert">
                                         <strong>{{ $message }}</strong>
                                     </span>
-                            @enderror
+                                @enderror
                               </div>
                           </div>
                           <!-- /.info-box-content -->
@@ -168,6 +168,7 @@
               </div>
 </div>
 @stop
+
 @section('scripts')
 
 <script src="plugins/jquery/jquery.min.js"></script>

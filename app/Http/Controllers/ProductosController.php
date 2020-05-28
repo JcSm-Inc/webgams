@@ -35,14 +35,30 @@ class ProductosController extends Controller
     //-------------------------GUARDAR UN NUEVO REGISTRO------------------------------------
     public function store(ValidarProducto $request)
     {
-        try {
-            $product = Productos::create($request->all());
-            return redirect()->route('productos.edit', $product->id)
-                ->with('info', 'Producto guardado con exito');
-        } catch (\Exception $ex) {
-            return redirect()->route('productos.edit', $product->id)
+
+        //try {
+        //$faker = $this->getFaker();
+        $alfa = 'abcdefghijklmnopqrstuvwxyz';
+        $num = '0123456789';
+        $cod = substr(str_shuffle($alfa), 2, 3) . substr(str_shuffle($num), 2, 3);
+        $foto = $request->file('FOTO')->store('public/productos');
+        $product = Productos::create(
+            [
+                'CODPROD' => $cod, //$faker->unique()->bothify('??###'),
+                'NOMBRE' => $request['NOMBRE'],
+                'DESCRIPCION' => $request['DESCRIPCION'],
+                'STOCK' => $request['STOCK'],
+                'FOTO' => $foto,
+                'TIPO' => $request['groupOfDefaultRadios']
+
+            ]
+        );
+        return redirect()->route('productos.create', $product->id)
+            ->with('info', 'Producto guardado con exito');
+        /*} catch (\Exception $ex) {
+            return redirect()->route('productos.create', $product->id)
                 ->with($ex->getMessage());
-        }
+        }*/
     }
     //---------------------------MUESTRA UN PRODUCTO--------------------------------------
     public function show(Productos $producto)

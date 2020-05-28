@@ -24,11 +24,11 @@ class ValidarProducto extends FormRequest
     public function rules()
     {
         return [
-            'CODPROD'    => 'required|unique:productos|min:3|max:6',
+            //'CODPROD'    => 'required|unique:productos|min:3|max:6',
             'NOMBRE'    => 'required|max:100',
-            'DESCRIPCION'=>'nullable|max:200',
+            'DESCRIPCION' => 'nullable|max:200',
             'TIPO'      => 'max:45',
-            'FOTO'      => 'max:100',
+            'FOTO'      => 'nullable|image|mimes:jpeg,bmp,png',
             'STOCK'     => 'numeric'
         ];
     }
