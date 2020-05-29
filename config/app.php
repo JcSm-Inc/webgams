@@ -179,6 +179,8 @@ return [
         Collective\Html\HtmlServiceProvider::class,
         // caffeinated/shinobi seccion de service provider
         Caffeinated\Shinobi\ShinobiServiceProvider::class,
+        //Conversor de PDF
+        Barryvdh\DomPDF\ServiceProvider::class,
 
     ],
 
@@ -234,6 +236,8 @@ return [
         //agregado por jose 
         'Form' => Collective\Html\FormFacade::class,
         'Html' => Collective\Html\HtmlFacade::class,
+        //conversor de pdf
+        'PDF' => Barryvdh\DomPDF\Facade::class,
 
     ],
 
