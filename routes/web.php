@@ -19,6 +19,7 @@ Route::get('/', function () {
 
 Auth::routes();
 
+Route::get('generar-pdf', 'ProductosController@productosPDF');
 
 Route::get('/home', 'HomeController@index')->name('home');
 

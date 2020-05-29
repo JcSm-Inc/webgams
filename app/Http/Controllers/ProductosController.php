@@ -10,6 +10,7 @@ use Illuminate\Http\Request;
 use Illuminate\Mail\Message;
 use Illuminate\Support\Facades\Validator;
 use ProductosSeeder;
+use PDF;
 
 class ProductosController extends Controller
 {
@@ -20,7 +21,15 @@ class ProductosController extends Controller
         $productos = Productos::Nombres($id)->paginate(10);
         return view('productos/index', ['productos' => $productos]); //response(compact('productos'));
     }
+    //---------------GENERAR PDF-----------------------------------------------------------
+    public function productosPDF()
+    {
+        $productos = Productos::get();
+        $data = ['title' => 'jose coaquira'];
+        $pdf = PDF::loadView('productos/pdf/productos', compact('productos'))->setPaper('legal', 'landscape');
 
+        return $pdf->stream('productos.pdf');
+    }
 
     //----------------CREA LA PLANTILLA PARA UN NUEVO REGISTRO------------------------------
     public function create()
