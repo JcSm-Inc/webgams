@@ -42,7 +42,7 @@ class ProductosController extends Controller
         $num = '0123456789';
         $cod = substr(str_shuffle($alfa), 2, 3) . substr(str_shuffle($num), 2, 3);
         $foto = $request->file('FOTO')->store('public/productos');
-        $product = Productos::create(
+        $producto = Productos::create(
             [
                 'CODPROD' => $cod, //$faker->unique()->bothify('??###'),
                 'NOMBRE' => $request['NOMBRE'],
@@ -53,7 +53,7 @@ class ProductosController extends Controller
 
             ]
         );
-        return redirect()->route('productos.create', $product->id)
+        return redirect()->route('productos.edit', $producto->id)
             ->with('info', 'Producto guardado con exito');
         /*} catch (\Exception $ex) {
             return redirect()->route('productos.create', $product->id)
@@ -66,28 +66,18 @@ class ProductosController extends Controller
         return view('productos.show', compact('producto'));
     }
     //-------------------------ACTUALIZA DATOS DE UN PRODUCTO------------------------------
-    public function update(ValidarProducto $request, $id)
+    public function update(ValidarProducto $request, Productos $producto)
     {
-        $entrada = $request->all();
-        try {
-            $producto = Productos::find($id);
-            if ($producto == false) {
-                return response()->json([
-                    'ok' => false,
-                    'error' => "No se encontro el producto"
-                ]);
-            }
-            $producto->update($entrada);
-            return response()->json([
-                'ok' => true,
-                'mensaje' => 'Datos actualizados correctamente'
-            ]);
-        } catch (\Exception $ex) {
-            return response()->json([
-                'ok' => false,
-                'error' => $ex->getMessage()
-            ]);
-        }
+        $producto->update([
+            'NOMBRE' => $request['NOMBRE'],
+            'DESCRIPCION' => $request['DESCRIPCION'],
+            'STOCK' => $request['STOCK'],
+            //'FOTO' => $foto,
+            //'TIPO' => $request['groupOfDefaultRadios']
+        ]);
+
+        return redirect()->route('productos.edit', $producto->id)
+            ->with('info', 'Producto actualizado con exito');
     }
     //------------------------ELIMINA UN PRODUCTO DEL REGISTRO-----------------------------
     public function destroy($id)
