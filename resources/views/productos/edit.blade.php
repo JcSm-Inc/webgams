@@ -10,7 +10,7 @@
 
                 <div class="col-lg-6 mb-4 mb-lg-0 d-flex align-items-center justify-content-center">
                     <div class="view overlay zoom">
-                        <img id="blah" src="{{Storage::url($producto->FOTO)}}" class="img-fluid" alt="Producto">
+                        <img id="blah" src="{{storage_path().'/'.$producto->FOTO}}" class="img-fluid" alt="Producto">
                         <div class="mask flex-center">
                             <label class="btn btn-outline-success btn-file">
                             Subir imagen<input type="file" name="FOTO" id="FOTO" style="display: none;">
