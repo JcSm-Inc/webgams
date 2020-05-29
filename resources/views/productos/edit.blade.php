@@ -10,10 +10,10 @@
 
                 <div class="col-lg-6 mb-4 mb-lg-0 d-flex align-items-center justify-content-center">
                     <div class="view overlay zoom">
-                        <img id="blah" src="{{storage_path().'/'.$producto->FOTO}}" class="img-fluid" alt="Producto">
+                        <img id="blah" src="{{asset('storage/'.$producto->FOTO)}}" class="img-fluid" alt="Producto">
                         <div class="mask flex-center">
                             <label class="btn btn-outline-success btn-file">
-                            Subir imagen<input type="file" name="FOTO" id="FOTO" style="display: none;">
+                            Cambiar imagen<input type="file" name="FOTO" id="FOTO" style="display: none;">
                             </label>
                         </div>
                     </div>
@@ -21,7 +21,7 @@
                 <div class="col-lg-6 mb-4 mb-lg-0">
                     
                     <div class="px-4">
-                        <h3 class="font-weight-bold">Agregar Producto</h3>
+                        <h3 class="font-weight-bold">Actualizar Producto</h3>
 
                             @if ($errors->any())
                                 <p>Hay errores!</p> 

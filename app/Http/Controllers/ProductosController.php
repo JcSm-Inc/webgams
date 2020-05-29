@@ -41,7 +41,7 @@ class ProductosController extends Controller
         $alfa = 'abcdefghijklmnopqrstuvwxyz';
         $num = '0123456789';
         $cod = substr(str_shuffle($alfa), 2, 3) . substr(str_shuffle($num), 2, 3);
-        $foto = $request->file('FOTO')->store('public/productos');
+        $foto = $request->file('FOTO')->store('productos');
         $producto = Productos::create(
             [
                 'CODPROD' => $cod, //$faker->unique()->bothify('??###'),
