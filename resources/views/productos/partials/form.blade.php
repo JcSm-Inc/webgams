@@ -1,15 +1,26 @@
 
 <div class='md-form'>
-    {{ Form::text('NOMBRE',null, ['id'=>'NOMBRE','class'=>'form-control']) }}
-    {{ Form::label('inputMDEx','Nombre') }}
+    {{ Form::text('NOMBRE',null, ['id'=>'NOMBRE','class'=>'form-control'.( $errors->has('NOMBRE') ? ' is-invalid' : '' )]) }}
+    {{ Form::label('inputMDEx','Nombre',['required']) }}
+    <div class="invalid-feedback">
+        @error('NOMBRE')
+            {{ $message }}
+        @enderror
+    </div>
 </div>
+
 <div class='md-form'>
     {{ Form::text('DESCRIPCION',null, ['id'=>'DESCRIPCION','class'=>'form-control']) }}
     {{ Form::label('inputMDEx','Descripcion') }}
 </div>
 <div class='md-form'>
-    {{ Form::text('STOCK',null, ['id'=>'STOCK','class'=>'form-control']) }}
+    {{ Form::text('STOCK',null, ['id'=>'STOCK','class'=>'form-control'.( $errors->has('STOCK') ? ' is-invalid' : '' )]) }}
     {{ Form::label('inputMDEx','Cantidad') }}
+    <div class="invalid-feedback">
+        @error('STOCK')
+            {{ $message }}
+        @enderror
+    </div>
 </div>
 <div class='md-form '>
     <h5>Tipo</h5>
@@ -19,7 +30,7 @@
         <input type="radio" class="custom-control-input" id="defaultGroupExample1" name="groupOfDefaultRadios" value="MATERIAL DE ESCRITORIO"
         @isset($producto)
         {{ $producto->TIPO == 'MATERIAL DE ESCRITORIO' ? 'checked' : '' }}
-        @endisset>
+        @endisset checked>
         <label class="custom-control-label" for="defaultGroupExample1">Material de Escritorio</label>
     </div>
     
