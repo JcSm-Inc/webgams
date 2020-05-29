@@ -8,9 +8,9 @@
                 <div class="card-header">
                     Productos
                         @can('productos.create')
-                <a href="{{route('productos.create')}}" class="btn btn-sm btn-primary pull-right-align">
-                            Crear
-                        </a>
+                            <a href="{{route('productos.create')}}" class="btn btn-sm btn-primary pull-right-align">
+                                Crear
+                            </a>
                         @endcan
                 </div>
 

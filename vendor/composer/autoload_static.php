@@ -504,7 +504,6 @@ class ComposerStaticInitc21198dfa9d5bff2df311b75d45c5f75
         'App\\Http\\Controllers\\ProductosController' => __DIR__ . '/../..' . '/app/Http/Controllers/ProductosController.php',
         'App\\Http\\Controllers\\ReservaController' => __DIR__ . '/../..' . '/app/Http/Controllers/ReservaController.php',
         'App\\Http\\Controllers\\UserController' => __DIR__ . '/../..' . '/app/Http/Controllers/UserController.php',
-        'App\\Http\\Helpers\\Helper' => __DIR__ . '/../..' . '/app/Http/Helpers/Helper.php',
         'App\\Http\\Kernel' => __DIR__ . '/../..' . '/app/Http/Kernel.php',
         'App\\Http\\Middleware\\Authenticate' => __DIR__ . '/../..' . '/app/Http/Middleware/Authenticate.php',
         'App\\Http\\Middleware\\CheckForMaintenanceMode' => __DIR__ . '/../..' . '/app/Http/Middleware/CheckForMaintenanceMode.php',
