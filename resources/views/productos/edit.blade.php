@@ -13,7 +13,7 @@
                         <img id="blah" src="{{asset('storage/'.$producto->FOTO)}}" class="img-fluid" alt="Producto">
                         <div class="mask flex-center">
                             <label class="btn btn-outline-success btn-file">
-                            Cambiar imagen<input type="file" name="FOTO" id="FOTO" style="display: none;">
+                                Cambiar imagen<input type="file" name="FOTO" id="FOTO" style="display: none;">
                             </label>
                         </div>
                     </div>

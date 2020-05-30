@@ -2,8 +2,6 @@
 <html>
 <head>
     <title>Listado de Productos</title>
-    <link rel="stylesheet" href="{{asset('plugins/tempusdominus-bootstrap-4/css/tempusdominus-bootstrap-4.min.css')}}">
-    <link rel="stylesheet" href="{{asset('MDB/css/mdb.min.css')}}" />
     <style>
         @page { margin: 90px 50px; }
         #header { position: fixed; left: 0px; top: -90px; right: 0px; height: 90px; background-color: orange; text-align: center; }
@@ -37,10 +35,10 @@
         @foreach($productos as $producto)
             <tr>
                 <td>
-                    <img src="{{asset($producto->FOTO)}}" alt="User Avatar" width="50" height="50" class="img-size-50 mr-3 img-circle ">
+                    <img src="{{asset($producto->FOTO)}}" alt="User Avatar" width="40" height="40">
                 </td>
-            <td>{{$producto->CODPROD}}</td> 
-            <td>{{$producto->NOMBRE}}</td>
+                <td>{{$producto->CODPROD}}</td> 
+                <td>{{$producto->NOMBRE}}</td>
                 <td>{{$producto->DESCRIPCION}}</td>
                 <td>{{$producto->TIPO}}</td>
                 <td>{{$producto->STOCK}}</td>
@@ -49,21 +47,6 @@
     </tbody>
 </table>
     </main>
-<footer>
-    <h2>
-        Numero de Hoja
-    </h2>
-</footer>
-    <!-- TEMAS MDB-->
-    <!-- jQuery -->
-    <script type="text/javascript" src="{{asset('MDB/js/jquery.min.js')}}"></script>
-    <!-- Bootstrap tooltips -->
-    <script type="text/javascript" src="{{asset('MDB/js/popper.min.js')}}"></script>
-    <!-- Bootstrap core JavaScript -->
-    <script type="text/javascript" src="{{asset('MDB/js/bootstrap.min.js')}}"></script>
-    <!-- MDB core JavaScript -->
-    <script type="text/javascript" src="{{asset('MDB/js/mdb.min.js')}}"></script>
-    <!-- Your custom scripts (optional) -->
-    <script type="text/javascript"></script>
+
 </body>
 </html>

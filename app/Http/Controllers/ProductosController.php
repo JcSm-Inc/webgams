@@ -10,6 +10,7 @@ use Illuminate\Http\Request;
 use Illuminate\Mail\Message;
 use Illuminate\Support\Facades\Validator;
 use ProductosSeeder;
+use Illuminate\Support\Facades\Storage;
 use PDF;
 
 class ProductosController extends Controller
@@ -25,8 +26,7 @@ class ProductosController extends Controller
     public function productosPDF()
     {
         $productos = Productos::get();
-        $data = ['title' => 'jose coaquira'];
-        $pdf = PDF::loadView('productos/pdf/productos', compact('productos'))->setPaper('legal', 'landscape');
+        $pdf = PDF::loadView('productos/pdf/productos', compact('productos'))->setPaper('letter', 'landscape');
 
         return $pdf->stream('productos.pdf');
     }
@@ -77,12 +77,17 @@ class ProductosController extends Controller
     //-------------------------ACTUALIZA DATOS DE UN PRODUCTO------------------------------
     public function update(ValidarProducto $request, Productos $producto)
     {
+        $foto = $producto->FOTO;
+        if (isset($request['FOTO']) == true) {
+            Storage::delete($foto);
+            $foto = $request->file('FOTO')->store('productos');
+        }
         $producto->update([
             'NOMBRE' => $request['NOMBRE'],
             'DESCRIPCION' => $request['DESCRIPCION'],
             'STOCK' => $request['STOCK'],
-            //'FOTO' => $foto,
-            //'TIPO' => $request['groupOfDefaultRadios']
+            'FOTO' => $foto,
+            'TIPO' => $request['groupOfDefaultRadios']
         ]);
 
         return redirect()->route('productos.edit', $producto->id)

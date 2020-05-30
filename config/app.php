@@ -175,7 +175,7 @@ return [
         // App\Providers\BroadcastServiceProvider::class,
         App\Providers\EventServiceProvider::class,
         App\Providers\RouteServiceProvider::class,
-        // agregado por jose
+        // agregado por 
         Collective\Html\HtmlServiceProvider::class,
         // caffeinated/shinobi seccion de service provider
         Caffeinated\Shinobi\ShinobiServiceProvider::class,
@@ -233,7 +233,7 @@ return [
         'URL' => Illuminate\Support\Facades\URL::class,
         'Validator' => Illuminate\Support\Facades\Validator::class,
         'View' => Illuminate\Support\Facades\View::class,
-        //agregado por jose 
+        //agregado por 
         'Form' => Collective\Html\FormFacade::class,
         'Html' => Collective\Html\HtmlFacade::class,
         //conversor de pdf

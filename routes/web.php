@@ -19,12 +19,15 @@ Route::get('/', function () {
 
 Auth::routes();
 
-Route::get('generar-pdf', 'ProductosController@productosPDF');
+
 
 Route::get('/home', 'HomeController@index')->name('home');
 
 Route::middleware(['auth'])->group(function () {
     //PRODUCTOS
+    // crear reporte
+    Route::get('productos/generar-pdf', 'ProductosController@productosPDF')->name('productos.generar-pdf')
+        ->middleware('can:productos.index');
     // crear
     Route::post('productos/store', 'ProductosController@store')->name('productos.store')
         ->middleware('can:productos.create');
