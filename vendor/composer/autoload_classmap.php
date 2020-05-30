@@ -6,8 +6,10 @@ $vendorDir = dirname(dirname(__FILE__));
 $baseDir = dirname($vendorDir);
 
 return array(
+    'ActualizarStockSeeder' => $baseDir . '/database/seeds/ActualizarStockSeeder.php',
     'App\\Console\\Kernel' => $baseDir . '/app/Console/Kernel.php',
     'App\\Exceptions\\Handler' => $baseDir . '/app/Exceptions/Handler.php',
+    'App\\Http\\Controllers\\ActualizarStockController' => $baseDir . '/app/Http/Controllers/ActualizarStockController.php',
     'App\\Http\\Controllers\\ArchivoAdjuntoComunicadoController' => $baseDir . '/app/Http/Controllers/ArchivoAdjuntoComunicadoController.php',
     'App\\Http\\Controllers\\ArchivoAdjuntoController' => $baseDir . '/app/Http/Controllers/ArchivoAdjuntoController.php',
     'App\\Http\\Controllers\\Auth\\ConfirmPasswordController' => $baseDir . '/app/Http/Controllers/Auth/ConfirmPasswordController.php',
@@ -61,6 +63,7 @@ return array(
     'App\\Providers\\EventServiceProvider' => $baseDir . '/app/Providers/EventServiceProvider.php',
     'App\\Providers\\RouteServiceProvider' => $baseDir . '/app/Providers/RouteServiceProvider.php',
     'App\\Rules\\AlfebetoEspPunto' => $baseDir . '/app/Rules/AlfebetoEspPunto.php',
+    'App\\actualizarStock' => $baseDir . '/app/actualizarStock.php',
     'ArchivoAdjuntoComunicadoSeeder' => $baseDir . '/database/seeds/ArchivoAdjuntoComunicadoSeeder.php',
     'ArchivoAdjuntoSeeder' => $baseDir . '/database/seeds/ArchivoAdjuntoSeeder.php',
     'Asm89\\Stack\\Cors' => $vendorDir . '/asm89/stack-cors/src/Asm89/Stack/Cors.php',

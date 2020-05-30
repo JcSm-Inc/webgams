@@ -56,7 +56,7 @@ class ProductosController extends Controller
         }
         $producto = Productos::create(
             [
-                'CODPROD' => $cod, //$faker->unique()->bothify('??###'),
+                'CODPROD' => $cod,
                 'NOMBRE' => $request['NOMBRE'],
                 'DESCRIPCION' => $request['DESCRIPCION'],
                 'STOCK' => $request['STOCK'],

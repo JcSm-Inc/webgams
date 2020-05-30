@@ -14,11 +14,11 @@ class AddForeignKeyNotaTable extends Migration
     public function up()
     {
         Schema::table('nota', function (Blueprint $table) {
-            $table->foreign('idARCHIVOADJUNTO','nota_idARCHIVOADJUNTO_foerign' )
-            ->references('id')->on('archivoadjunto');
-            $table->foreign('idUSUARIO','nota_idUSUARIO_foerign')
-            ->references('id')->on('users');
-		});
+            $table->foreign('idARCHIVOADJUNTO', 'nota_idARCHIVOADJUNTO_foerign')
+                ->references('id')->on('archivoadjunto');
+            $table->foreign('idUSUARIO', 'nota_idUSUARIO_foerign')
+                ->references('id')->on('users');
+        });
     }
 
     /**

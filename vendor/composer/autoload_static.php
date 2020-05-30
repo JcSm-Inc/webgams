@@ -508,8 +508,10 @@ class ComposerStaticInitc21198dfa9d5bff2df311b75d45c5f75
     );
 
     public static $classMap = array (
+        'ActualizarStockSeeder' => __DIR__ . '/../..' . '/database/seeds/ActualizarStockSeeder.php',
         'App\\Console\\Kernel' => __DIR__ . '/../..' . '/app/Console/Kernel.php',
         'App\\Exceptions\\Handler' => __DIR__ . '/../..' . '/app/Exceptions/Handler.php',
+        'App\\Http\\Controllers\\ActualizarStockController' => __DIR__ . '/../..' . '/app/Http/Controllers/ActualizarStockController.php',
         'App\\Http\\Controllers\\ArchivoAdjuntoComunicadoController' => __DIR__ . '/../..' . '/app/Http/Controllers/ArchivoAdjuntoComunicadoController.php',
         'App\\Http\\Controllers\\ArchivoAdjuntoController' => __DIR__ . '/../..' . '/app/Http/Controllers/ArchivoAdjuntoController.php',
         'App\\Http\\Controllers\\Auth\\ConfirmPasswordController' => __DIR__ . '/../..' . '/app/Http/Controllers/Auth/ConfirmPasswordController.php',
@@ -563,6 +565,7 @@ class ComposerStaticInitc21198dfa9d5bff2df311b75d45c5f75
         'App\\Providers\\EventServiceProvider' => __DIR__ . '/../..' . '/app/Providers/EventServiceProvider.php',
         'App\\Providers\\RouteServiceProvider' => __DIR__ . '/../..' . '/app/Providers/RouteServiceProvider.php',
         'App\\Rules\\AlfebetoEspPunto' => __DIR__ . '/../..' . '/app/Rules/AlfebetoEspPunto.php',
+        'App\\actualizarStock' => __DIR__ . '/../..' . '/app/actualizarStock.php',
         'ArchivoAdjuntoComunicadoSeeder' => __DIR__ . '/../..' . '/database/seeds/ArchivoAdjuntoComunicadoSeeder.php',
         'ArchivoAdjuntoSeeder' => __DIR__ . '/../..' . '/database/seeds/ArchivoAdjuntoSeeder.php',
         'Asm89\\Stack\\Cors' => __DIR__ . '/..' . '/asm89/stack-cors/src/Asm89/Stack/Cors.php',
