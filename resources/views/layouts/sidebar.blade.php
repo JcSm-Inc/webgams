@@ -334,7 +334,7 @@
     </div>
     <!-- ./wrapper -->
     <!--@ yield('scripts')-->
-
+    <script type="text/javascript" src="js/app.js"></script>
     <!-- jQuery -->
     <script src="plugins/jquery/jquery.min.js"></script>
     <!-- jQuery UI 1.11.4 -->
