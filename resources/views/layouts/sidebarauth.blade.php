@@ -224,7 +224,7 @@
 
                                 
                                 <li class="nav-item">
-                                    <a href="#" class="nav-link">
+                                <a href="{{route('reserva.index')}}" class="nav-link">
                                         <i class="fas fa-cart-plus nav-icon"></i>
                                         <p>Reserva de Productos</p>
                                     </a>
@@ -370,7 +370,8 @@
         <!-- /.control-sidebar -->
     </div>
     <!-- ./wrapper--> 
-    <!--@ yield('scripts')-->
+    <!--  importando la libreria de react-->
+    <script type="text/javascript" src="js/app.js"></script>
     <!-- jQuery -->
     <script src="{{asset('plugins/jquery/jquery.min.js')}}"></script>
     <!-- jQuery UI 1.11.4 -->

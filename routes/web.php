@@ -19,7 +19,8 @@ Route::get('/', function () {
 
 Auth::routes();
 
-Route::get('productos/index1', 'ProductosController@index1')->name('productos.index1');
+Route::get('productos/indexReact', 'ProductosController@indexReact')->name('productos.indexReact');
+Route::get('reserva/', 'ReservaController@index')->name('reserva.index');
 
 Route::get('/home', 'HomeController@index')->name('home');
 

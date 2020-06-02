@@ -16,7 +16,8 @@ class CreateReservasTable extends Migration
         Schema::create('reserva', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->dateTime('FECHARESERVA');
-			$table->unsignedBigInteger('idPERSONAL_DE_PLANTA');
+            $table->unsignedBigInteger('idPERSONAL_DE_PLANTA');
+            $table->string('ESTADO', 15);
             $table->timestamps();
         });
     }

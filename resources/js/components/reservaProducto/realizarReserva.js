@@ -1,9 +1,9 @@
 import React, { Component } from "react";
 import ReactDOM from "react-dom";
-import ListaProductos from "./reservaProducto/ListaProductos";
-import ListaItemReserva from "./reservaProducto/ListaItemReserva";
+import ListaProductos from "./ListaProductos";
+import ListaItemReserva from "./ListaItemReserva";
 
-class Example extends Component {
+class RealizarReserva extends Component {
     render() {
         return (
             <table className="table">
@@ -17,8 +17,8 @@ class Example extends Component {
         );
     }
 }
-export default Example;
+export default RealizarReserva;
 
-if (document.getElementById("example")) {
-    ReactDOM.render(<Example />, document.getElementById("example"));
+if (document.getElementById("reserva")) {
+    ReactDOM.render(<RealizarReserva />, document.getElementById("reserva"));
 }

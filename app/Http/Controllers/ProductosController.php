@@ -22,10 +22,11 @@ class ProductosController extends Controller
         $productos = Productos::Nombres($id)->paginate(10);
         return view('productos/index', ['productos' => $productos]); //response(compact('productos'));
     }
-    public function index1()
+    //---------index para usar en React-------------------------
+    public function indexReact()
     {
         $productos = Productos::all();
-        return response()->json(compact('productos')); //response(compact('productos'));
+        return response()->json(compact('productos'));
     }
     //---------------GENERAR PDF-----------------------------------------------------------
     public function productosPDF()
