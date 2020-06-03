@@ -6,5 +6,18 @@ use Illuminate\Database\Eloquent\Model;
 
 class DetalleReserva extends Model
 {
-    //
+    public $table = "detallereserva";
+    protected $fillable = [
+        'CANTIDAD',
+        'idRESERVA',
+        'idPRODUCTOS'
+    ];
+    public function Reserva()
+    {
+        return $this->belongsTo('App\Models\Reserva', 'idRESERVA', 'id');
+    }
+    public function Productos()
+    {
+        return $this->belongsTo('App\Models\Producto', 'idPRODUCTOS', 'id');
+    }
 }

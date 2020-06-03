@@ -27,4 +27,9 @@ class Productos extends Model
     {
         return $query->where('DESCRIPCION', 'like', "%$nombre");
     }
+    //funcion para enlazar a detalle reserva
+    public function DetalleReserva()
+    {
+        return $this->hasMany('App\Models\DetalleReserva', 'idPRODUCTOS', 'id');
+    }
 }
