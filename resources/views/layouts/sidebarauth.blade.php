@@ -31,9 +31,9 @@
     <link rel="stylesheet" href="{{asset('MDB/css/mdb.min.css')}}" />
     <!-- Your custom styles (optional) 
     <link rel="stylesheet" href="MBD/css/style.css" />-->
-</head>
+</head> 
 
-<body class="hold-transition sidebar-mini layout-fixed">
+<body class="hold-transition sidebar-mini layout-fixed layout-navbar-fixed">
     <div class="wrapper">
 
         <!-- Navbar -->
@@ -70,6 +70,18 @@
             
             <!-- NAVEGADOR DE LINKS DERECHO -->
             <ul class="navbar-nav ml-auto">
+                <li class="nav-item dropdown">
+                    <a class="nav-link" data-toggle="dropdown" href="#">
+                        <div id="carrito"></div>
+                    </a>
+                    <div class="dropdown-menu dropdown-menu-xl dropdown-menu-right">
+                      <div id="listaitemreserva"></div>
+                    </div>
+                </li>
+
+
+
+
                 <!-- Messages Dropdown Menu -->
                 <li class="nav-item dropdown">
                     <div class="view overlay zoom">

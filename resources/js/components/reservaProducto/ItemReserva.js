@@ -1,12 +1,13 @@
 import React, { Component } from "react";
 import ReactDOM from "react-dom";
 
+const valor = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
 class ItemReserva extends Component {
     constructor(props) {
         super(props);
-        this.state = {
-            nombre: ""
-        };
+        /*this.state = {
+            nombres: ""
+        };*/
     }
 
     render() {
@@ -25,21 +26,36 @@ class ItemReserva extends Component {
                         </div>
                     </div>
                     <div className="col-md-7 mb-lg-0 mb-4">
-                        <h4>{this.props.nombre}</h4>
+                        <h5>
+                            <strong>{this.props.nombre}</strong>
+                        </h5>
                         <form action="" className="form-inline">
                             <div className="form-group">
-                                <label>Cant.:</label>
+                                <p>Cant.:</p>
                                 <select
                                     id={"select" + this.props.id}
                                     className="browser-default custom-select"
-                                    defaultValue="1"
+                                    onChange={event => {
+                                        this.props.onChange(
+                                            this.props.id,
+                                            event.target.value
+                                        );
+                                    }}
                                 >
-                                    <option selected value="1">
-                                        1
-                                    </option>
-                                    <option value="2">2</option>
-                                    <option value="3">3</option>
-                                    <option value="4">4</option>
+                                    {valor.map(item => {
+                                        return (
+                                            <option
+                                                key={
+                                                    this.props.id +
+                                                    "select" +
+                                                    item
+                                                }
+                                                value={item}
+                                            >
+                                                {item}
+                                            </option>
+                                        );
+                                    })}
                                 </select>
                                 <button
                                     type="button"

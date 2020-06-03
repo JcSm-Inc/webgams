@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import ReactDOM from "react-dom";
 import axios from "axios";
 import CardProducto from "./CardProducto";
+import Carrito from "../Carrito";
 
 class ListaProductos extends Component {
     constructor(props) {
@@ -21,10 +22,10 @@ class ListaProductos extends Component {
             <div className="card scrollbar-light-blue">
                 <ul className="list-group list-group-flush">
                     <li className="list-group-item">
-                        <h5>Productos</h5>
+                        <h5 className="text-center">Productos</h5>
                     </li>
                     <li className="list-group-item">
-                        <div className="row row-cols-1 row-cols-md-2 row-cols-md-3">
+                        <div className="row row-cols-1 row-cols-md-2 row-cols-md-3 row-cols-md-4 row-cols-md-5 ">
                             {this.state.productos.map((producto, i) => {
                                 return (
                                     <div key={producto.id}>

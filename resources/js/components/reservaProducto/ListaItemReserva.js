@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import ReactDOM from "react-dom";
 import pubsub from "pubsub-js";
 import ItemReserva from "./ItemReserva";
+import axios from "axios";
 
 class ListaItemReserva extends Component {
     constructor(props) {
@@ -10,6 +11,8 @@ class ListaItemReserva extends Component {
             productos: []
         };
         this.borrarItem = this.borrarItem.bind(this);
+        this.onChange = this.onChange.bind(this);
+        this.submitHandler = this.submitHandler.bind(this);
     }
     onEventReceived() {
         console.log("se recibio mesaje desde otro componente");
@@ -19,10 +22,8 @@ class ListaItemReserva extends Component {
             "listener",
             function(topic, item) {
                 //al recibir un evento
-                console.log(topic, item);
                 const items = [...this.state.productos, item];
                 this.setState({ productos: items });
-                console.log(this.state.productos);
             }.bind(this)
         );
     }
@@ -33,16 +34,36 @@ class ListaItemReserva extends Component {
         const filtradoItems = this.state.productos.filter(
             item => item.id !== key
         );
+        const num = -1;
+        pubsub.publish("carrito", num);
         this.setState({
             productos: filtradoItems
         });
+    }
+    onChange(id, valor) {
+        const item = this.state.productos;
+        item.find(p => p.id === id).cantidad = valor;
+        this.setState({ productos: item });
+        console.log(this.state.productos);
+    }
+    submitHandler(e) {
+        e.preventDefault();
+        console.log(this.state);
+        axios
+            .post("../public/reserva/store", this.state)
+            .then(response => {
+                console.log(response);
+            })
+            .catch(error => {
+                console.log(error);
+            });
     }
     render() {
         return (
             <div className="card">
                 <ul className="list-group list-group-flush">
                     <li className="list-group-item">
-                        <h4>Pedido de producto</h4>
+                        <h6 className="text-center">Pedido de producto</h6>
                     </li>
                     <li className="list-group-item">
                         {this.state.productos.map((producto, i) => {
@@ -56,14 +77,15 @@ class ListaItemReserva extends Component {
                                             descripcion={producto.descripcion}
                                             cantidad={producto.cantidad}
                                             borrarItem={this.borrarItem}
+                                            onChange={this.onChange}
                                         />
                                     </div>
                                 </div>
                             );
                         })}
                     </li>
-                    <form action="">
-                        <button className="btn btn-outline-blue">
+                    <form onSubmit={this.submitHandler}>
+                        <button type="submit" className="btn btn-outline-blue">
                             Realizar Pedido
                         </button>
                     </form>
@@ -73,3 +95,9 @@ class ListaItemReserva extends Component {
     }
 }
 export default ListaItemReserva;
+if (document.getElementById("listaitemreserva")) {
+    ReactDOM.render(
+        <ListaItemReserva />,
+        document.getElementById("listaitemreserva")
+    );
+}

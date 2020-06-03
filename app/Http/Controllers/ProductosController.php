@@ -5,7 +5,6 @@ namespace App\Http\Controllers;
 use App\Http\Requests\ValidarProducto;
 use App\Models\Productos;
 use Illuminate\Broadcasting\Channel;
-//use Dotenv\Validator;
 use Illuminate\Http\Request;
 use Illuminate\Mail\Message;
 use Illuminate\Support\Facades\Validator;

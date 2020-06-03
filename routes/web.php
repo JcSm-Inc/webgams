@@ -21,6 +21,7 @@ Auth::routes();
 
 Route::get('productos/indexReact', 'ProductosController@indexReact')->name('productos.indexReact');
 Route::get('reserva/', 'ReservaController@index')->name('reserva.index');
+Route::post('reserva/store', 'ReservaController@store')->name('reserva.store');
 
 Route::get('/home', 'HomeController@index')->name('home');
 

@@ -6,14 +6,17 @@ import ListaItemReserva from "./reservaProducto/ListaItemReserva";
 class Example extends Component {
     render() {
         return (
+            <ListaProductos />
+            /*
             <table className="table">
                 <td className="col-1 w-50">
-                    <ListaProductos />
+                    
                 </td>
                 <td className="col-1 w-50">
                     <ListaItemReserva />
                 </td>
             </table>
+            */
         );
     }
 }

@@ -6,6 +6,8 @@ import ListaItemReserva from "./ListaItemReserva";
 class RealizarReserva extends Component {
     render() {
         return (
+            <ListaProductos />
+            /*
             <table className="table">
                 <td className="col-1 w-50">
                     <ListaProductos />
@@ -13,7 +15,7 @@ class RealizarReserva extends Component {
                 <td className="col-1 w-50">
                     <ListaItemReserva />
                 </td>
-            </table>
+            </table>*/
         );
     }
 }
