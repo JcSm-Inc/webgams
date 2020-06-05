@@ -12,11 +12,11 @@ class DetalleReserva extends Model
         'idRESERVA',
         'idPRODUCTOS'
     ];
-    public function Reserva()
+    public function reserva()
     {
         return $this->belongsTo('App\Models\Reserva', 'idRESERVA', 'id');
     }
-    public function Productos()
+    public function productos()
     {
         return $this->belongsTo('App\Models\Producto', 'idPRODUCTOS', 'id');
     }

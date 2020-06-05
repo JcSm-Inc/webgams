@@ -12,7 +12,7 @@ class Reserva extends Model
         'idPERSONAL_DE_PLANTA',
         'ESTADO'
     ];
-    public function DetalleReserva()
+    public function detallereserva()
     {
         return $this->hasMany('App\Models\DetalleReserva', 'idRESERVA', 'id');
     }

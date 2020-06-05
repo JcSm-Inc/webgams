@@ -6,10 +6,11 @@ use Caffeinated\Shinobi\Concerns\HasRolesAndPermissions;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
+use Illuminate\Database\Eloquent\Model;
 
 class User extends Authenticatable
 {
-    use Notifiable,HasRolesAndPermissions;
+    use Notifiable, HasRolesAndPermissions;
 
     /**
      * The attributes that are mass assignable.
@@ -47,7 +48,6 @@ class User extends Authenticatable
 
     public function personal_de_planta()
     {
-        return $this->hasOne('App\Models\Personal_de_Planta','idUSUARIO','id');
+        return $this->hasOne('App\Models\Personal_de_Planta', 'idUSUARIO', 'id');
     }
-    
 }

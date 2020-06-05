@@ -3,7 +3,11 @@
 namespace App\Http\Controllers;
 
 use App\Models\Reserva;
+use App\Models\User;
+use App\Models\DetalleReserva;
+use App\Models\Productos;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class ReservaController extends Controller
 {
@@ -14,6 +18,7 @@ class ReservaController extends Controller
      */
     public function index()
     {
+
         return view('reservaProducto/index');
     }
 
@@ -33,9 +38,29 @@ class ReservaController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
+
     public function store(Request $request)
     {
-        return response($request);
+        $usuario = User::find(Auth::user()->id);
+        $pdp = $usuario->personal_de_planta;
+        $reserva = Reserva::create(
+            [
+                'FECHARESERVA' => now(),
+                'idPERSONAL_DE_PLANTA' => $pdp->id,
+                'ESTADO' => 'ACTIVO'
+            ]
+        );
+        $productos = $request['productos'];
+        foreach ($productos as $producto) {
+            $detallereserva = DetalleReserva::create([
+                'CANTIDAD' => $producto['cantidad'],
+                'idRESERVA' => $reserva->id,
+                'idPRODUCTOS' => $producto['id']
+            ]);
+        }
+
+        $detalle = $reserva->detallereserva;
+        return response($detalle);
     }
 
     /**
