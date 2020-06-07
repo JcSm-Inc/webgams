@@ -32,13 +32,6 @@ class ReservaController extends Controller
         //
     }
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
-
     public function store(Request $request)
     {
         $usuario = User::find(Auth::user()->id);
@@ -52,6 +45,7 @@ class ReservaController extends Controller
         );
         $productos = $request['productos'];
         foreach ($productos as $producto) {
+            $cantidad = min($producto['cantidad'], Productos::productoDisponible($producto['id']));
             $detallereserva = DetalleReserva::create([
                 'CANTIDAD' => $producto['cantidad'],
                 'idRESERVA' => $reserva->id,

@@ -14,8 +14,8 @@ class ListaProductos extends Component {
     async componentDidMount() {
         const res = await axios.get("../public/productos/indexReact");
         this.setState({ productos: res.data.productos });
-        //console.log(res.data);
-        // console.log(this.state.productos);
+        console.log(res);
+        //console.log(this.state.productos);
     }
     render() {
         return (

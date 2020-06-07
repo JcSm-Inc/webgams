@@ -25,7 +25,7 @@ class CardProducto extends Component {
         pubsub.publish("listener", this.state);
         const num = 1;
         pubsub.publish("carrito", num);
-        console.log(num);
+        //console.log(num);
     }
     render() {
         return (

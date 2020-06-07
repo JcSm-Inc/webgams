@@ -24,7 +24,7 @@ class ProductosController extends Controller
     //---------index para usar en React-------------------------
     public function indexReact()
     {
-        $productos = Productos::all();
+        $productos = Productos::productosDisponibles();
         return response()->json(compact('productos'));
     }
     //---------------GENERAR PDF-----------------------------------------------------------

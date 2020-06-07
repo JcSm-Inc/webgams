@@ -19,7 +19,7 @@ class Carrito extends Component {
                 //al recibir un evento
                 const i = this.state.productos + item;
                 this.setState({ productos: i });
-                console.log(this.state.productos);
+                //console.log(this.state.productos);
             }.bind(this)
         );
     }

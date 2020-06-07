@@ -66976,8 +66976,7 @@ var Carrito = /*#__PURE__*/function (_Component) {
         var i = this.state.productos + item;
         this.setState({
           productos: i
-        });
-        console.log(this.state.productos);
+        }); //console.log(this.state.productos);
       }.bind(this));
     }
   }, {
@@ -67182,8 +67181,7 @@ var CardProducto = /*#__PURE__*/function (_Component) {
       e.preventDefault();
       pubsub_js__WEBPACK_IMPORTED_MODULE_2___default.a.publish("listener", this.state);
       var num = 1;
-      pubsub_js__WEBPACK_IMPORTED_MODULE_2___default.a.publish("carrito", num);
-      console.log(num);
+      pubsub_js__WEBPACK_IMPORTED_MODULE_2___default.a.publish("carrito", num); //console.log(num);
     }
   }, {
     key: "render",
@@ -67442,14 +67440,13 @@ var ListaItemReserva = /*#__PURE__*/function (_Component) {
   }, {
     key: "onChange",
     value: function onChange(id, valor) {
-      var item = this.state.productos;
-      item.find(function (p) {
-        return p.id === id;
+      var items = this.state.productos;
+      items.find(function (item) {
+        return item.id === id;
       }).cantidad = valor;
       this.setState({
-        productos: item
-      });
-      console.log(this.state.productos);
+        productos: items
+      }); //console.log(this.state.productos);
     }
   }, {
     key: "submitHandler",
@@ -67597,10 +67594,10 @@ var ListaProductos = /*#__PURE__*/function (_Component) {
                 res = _context.sent;
                 this.setState({
                   productos: res.data.productos
-                }); //console.log(res.data);
-                // console.log(this.state.productos);
+                });
+                console.log(res); //console.log(this.state.productos);
 
-              case 4:
+              case 5:
               case "end":
                 return _context.stop();
             }

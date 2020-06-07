@@ -41,10 +41,10 @@ class ListaItemReserva extends Component {
         });
     }
     onChange(id, valor) {
-        const item = this.state.productos;
-        item.find(p => p.id === id).cantidad = valor;
-        this.setState({ productos: item });
-        console.log(this.state.productos);
+        const items = this.state.productos;
+        items.find(item => item.id === id).cantidad = valor;
+        this.setState({ productos: items });
+        //console.log(this.state.productos);
     }
     submitHandler(e) {
         e.preventDefault();

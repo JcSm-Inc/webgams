@@ -32,4 +32,29 @@ class Productos extends Model
     {
         return $this->hasMany('App\Models\DetalleReserva', 'idPRODUCTOS', 'id');
     }
+    public static function productoDisponible($id)
+    {
+        $disponible = Productos::find($id)->STOCK;
+        $reservado = Reserva::join('detallereserva', 'reserva.id', '=', 'detallereserva.idRESERVA')
+            ->where('reserva.ESTADO', '=', 'ACTIVO')
+            ->where('detallereserva.idPRODUCTOS', '=', $id)
+            ->sum('detallereserva.cantidad');
+        return $disponible - $reservado;
+    }
+    public static function productosDisponibles()
+    {
+        $productos = Productos::all()->where('STOCK', '>', 0);
+        $i = 0;
+        $disponibles = [];
+        foreach ($productos as $producto) {
+            $producto->STOCK = Productos::productoDisponible($producto->id);
+            if ($producto->STOCK > 0) {
+                array_push($disponibles, $producto);
+            }
+            $i++;
+            //$producto->delete();
+        }
+        //$productos
+        return $disponibles;
+    }
 }
