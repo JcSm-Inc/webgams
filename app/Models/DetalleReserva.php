@@ -18,6 +18,6 @@ class DetalleReserva extends Model
     }
     public function productos()
     {
-        return $this->belongsTo('App\Models\Producto', 'idPRODUCTOS', 'id');
+        return $this->belongsTo('App\Models\Productos', 'idPRODUCTOS', 'id');
     }
 }

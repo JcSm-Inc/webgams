@@ -52,7 +52,9 @@ class ListaItemReserva extends Component {
         axios
             .post("../public/reserva/store", this.state)
             .then(response => {
-                console.log(response);
+                const h = response.data.reserva.id;
+                window.location = "../public/reserva/" + h + "/edit";
+                console.log(h);
             })
             .catch(error => {
                 console.log(error);

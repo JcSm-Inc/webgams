@@ -67,9 +67,14 @@ class DetalleReservaController extends Controller
      * @param  \App\DetalleReserva  $detalleReserva
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, DetalleReserva $detalleReserva)
+    public function update(Request $request, $id)
     {
-        //
+        $detallereserva = DetalleReserva::find($id);
+        $estado = $detallereserva->reserva->ESTADO;
+        if ($estado == 'ELABORADO') {
+            $detallereserva->update(['CANTIDAD' => $request[$id]]);
+        }
+        return back()->with('info', 'Actualizado correctamente');
     }
 
     /**
@@ -78,8 +83,20 @@ class DetalleReservaController extends Controller
      * @param  \App\DetalleReserva  $detalleReserva
      * @return \Illuminate\Http\Response
      */
-    public function destroy(DetalleReserva $detalleReserva)
+    public function destroy($id)
     {
-        //
+        try {
+            $detallereserva = DetalleReserva::find($id);
+            if ($detallereserva == false) {
+                return response()->json([
+                    'ok' => false,
+                    'error' => 'No se encontro el Productos'
+                ]);
+            }
+            $detallereserva->delete();
+            return back()->with('info', 'Eliminado correctamente');
+        } catch (\Exception $ex) {
+            return back()->with('info', 'Error inesperado al Eliminar (no se elimino)');
+        }
     }
 }

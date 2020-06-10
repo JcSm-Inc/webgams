@@ -67454,7 +67454,9 @@ var ListaItemReserva = /*#__PURE__*/function (_Component) {
       e.preventDefault();
       console.log(this.state);
       axios__WEBPACK_IMPORTED_MODULE_4___default.a.post("../public/reserva/store", this.state).then(function (response) {
-        console.log(response);
+        var h = response.data.reserva.id;
+        window.location = "../public/reserva/" + h + "/edit";
+        console.log(h);
       })["catch"](function (error) {
         console.log(error);
       });

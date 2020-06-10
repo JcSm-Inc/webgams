@@ -8,6 +8,7 @@ use App\Models\DetalleReserva;
 use App\Models\Productos;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use PDF;
 
 class ReservaController extends Controller
 {
@@ -40,21 +41,23 @@ class ReservaController extends Controller
             [
                 'FECHARESERVA' => now(),
                 'idPERSONAL_DE_PLANTA' => $pdp->id,
-                'ESTADO' => 'ACTIVO'
+                'ESTADO' => 'ELABORADO'
             ]
         );
         $productos = $request['productos'];
         foreach ($productos as $producto) {
             $cantidad = min($producto['cantidad'], Productos::productoDisponible($producto['id']));
-            $detallereserva = DetalleReserva::create([
-                'CANTIDAD' => $producto['cantidad'],
-                'idRESERVA' => $reserva->id,
-                'idPRODUCTOS' => $producto['id']
-            ]);
+            if ($cantidad > 0) {
+                $detallereserva = DetalleReserva::create([
+                    'CANTIDAD' => $cantidad,
+                    'idRESERVA' => $reserva->id,
+                    'idPRODUCTOS' => $producto['id']
+                ]);
+            }
         }
 
         $detalle = $reserva->detallereserva;
-        return response($detalle);
+        return response()->json(compact('reserva', 'detalle'));
     }
 
     /**
@@ -74,21 +77,27 @@ class ReservaController extends Controller
      * @param  \App\Reserva  $reserva
      * @return \Illuminate\Http\Response
      */
-    public function edit(Reserva $reserva)
+    public function edit(Reserva $reservas)
     {
-        //
+        $detalle = $reservas->detallereserva;
+        return view('reservaProducto.edit', compact('reservas', 'detalle'));
     }
 
     /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Reserva  $reserva
-     * @return \Illuminate\Http\Response
+     * Actualizacion de la tabla reserva
      */
-    public function update(Request $request, Reserva $reserva)
+    public function update(Request $request, $id)
     {
-        //
+        $usuario = User::find(Auth::user()->id);
+        $reserva = Reserva::find($id);
+        if ($reserva->idPERSONAL_DE_PLANTA == $usuario->personal_de_planta->id) {
+            $reserva->update(['ESTADO' => 'ACTIVO']);
+
+            $detallereserva = $reserva->detallereserva;
+            $pdf = PDF::loadView('reservaProducto/pdf/reservaproductos', compact('reserva', 'detallereserva'))->setPaper('letter');
+            return $pdf->download('reservaproductos.pdf');
+            //return back()->with('info', 'Actualizado correctamente');
+        }
     }
 
     /**
@@ -97,8 +106,22 @@ class ReservaController extends Controller
      * @param  \App\Reserva  $reserva
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Reserva $reserva)
+    public function destroy($id)
     {
-        //
+        try {
+            $reserva = Reserva::find($id);
+
+            if ($reserva == false) {
+                return back()->with('info', 'No existe el registro');
+            } else {
+                $estado = $reserva->ESTADO;
+                if ($estado == 'ELABORADO') {
+                    $reserva->delete();
+                    return redirect('home')->with('info', 'Eliminado correctamente');
+                } else return back()->with('info', 'Ya se envio la reserva no se puede eliminar');
+            }
+        } catch (\Exception $ex) {
+            return back()->with('info', 'Error inesperado al Eliminar (no se elimino)');
+        }
     }
 }

@@ -229,7 +229,7 @@
                                 <li class="nav-item">
                                     <a href="{{ route('productos.index')}}" class="nav-link">
                                         <i class="fas fa-shopping-cart nav-icon"></i>
-                                        <p>Administracion de Productos</p>
+                                        <p>Administrar Productos</p>
                                     </a>
                                 </li>
                                 @endcan
@@ -365,7 +365,7 @@
             </div>
             </div>
             <!--Modal: Login with Avatar Form-->
-            @yield('contenido')
+                    @yield('contenido')
         </div>
         <!-- /.content-wrapper -->
         <footer class="main-footer">
@@ -383,7 +383,7 @@
     </div>
     <!-- ./wrapper--> 
     <!--  importando la libreria de react-->
-    <script type="text/javascript" src="js/app.js"></script>
+    <script type="text/javascript" src="{{asset('js/app.js')}}"></script>
     <!-- jQuery -->
     <script src="{{asset('plugins/jquery/jquery.min.js')}}"></script>
     <!-- jQuery UI 1.11.4 -->

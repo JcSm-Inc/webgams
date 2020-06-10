@@ -21,7 +21,13 @@ Auth::routes();
 
 Route::get('productos/indexReact', 'ProductosController@indexReact')->name('productos.indexReact');
 Route::get('reserva/', 'ReservaController@index')->name('reserva.index');
+Route::get('reserva/{reservas}/edit', 'ReservaController@edit')->name('reserva.edit');
 Route::post('reserva/store', 'ReservaController@store')->name('reserva.store');
+Route::put('reserva/{reservas}', 'ReservaController@update')->name('reserva.update');
+Route::delete('reserva/{reservas}', 'ReservaController@destroy')->name('reserva.destroy');
+
+Route::delete('detallereserva/{detallereservas}', 'DetalleReservaController@destroy')->name('detallereserva.destroy');
+Route::put('detallereserva/{detallereservas}', 'DetalleReservaController@update')->name('detallereserva.update');
 
 Route::get('/home', 'HomeController@index')->name('home');
 

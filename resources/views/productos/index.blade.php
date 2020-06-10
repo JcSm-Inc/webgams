@@ -1,7 +1,8 @@
 @extends('layouts.sidebarauth')
 
 @section('contenido')
-<div class="container">
+<section class="content">
+<div class="container-fluid">
     <div class="row justify-content-center">
         <div class="col-md-8">
             <div class="card">
@@ -64,4 +65,5 @@
         </div>
     </div>
 </div>
+</section>
 @endsection
