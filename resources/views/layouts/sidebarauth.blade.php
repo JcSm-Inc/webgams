@@ -236,7 +236,7 @@
 
                                 
                                 <li class="nav-item">
-                                <a href="{{route('reserva.index')}}" class="nav-link">
+                                <a href="{{route('reserva.create')}}" class="nav-link">
                                         <i class="fas fa-cart-plus nav-icon"></i>
                                         <p>Reserva de Productos</p>
                                     </a>

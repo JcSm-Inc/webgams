@@ -21,6 +21,7 @@ Auth::routes();
 
 Route::get('productos/indexReact', 'ProductosController@indexReact')->name('productos.indexReact');
 Route::get('reserva/', 'ReservaController@index')->name('reserva.index');
+Route::get('reserva/create', 'ReservaController@create')->name('reserva.create');
 Route::get('reserva/{reservas}/edit', 'ReservaController@edit')->name('reserva.edit');
 Route::post('reserva/store', 'ReservaController@store')->name('reserva.store');
 Route::put('reserva/{reservas}', 'ReservaController@update')->name('reserva.update');

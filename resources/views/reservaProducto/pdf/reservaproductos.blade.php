@@ -43,7 +43,7 @@
         <p class="page">Pagina </p>
     </div>
     <main>
-    <p align="right"><br>Soracachi, {{Carbon\Carbon::now()->isoFormat('LL')}}<br></p>
+    <p align="right"><br>Soracachi, {{(new Carbon\Carbon($reserva->FECHARESERVA))->isoFormat('LL')}}<br></p>
     <p><br>A:  &nbsp;&nbsp;&nbsp; H.Oscar Flores Adrián <br>
         <strong>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ALCALDE MUNICIPAL  DE  SORACACHI</strong><br><br>
         &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Lic.  Juan José Chacón Bozo<br>	

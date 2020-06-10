@@ -20,7 +20,7 @@ class ReservaController extends Controller
     public function index()
     {
 
-        return view('reservaProducto/index');
+        //return view('reservaProducto/index');
     }
 
     /**
@@ -30,7 +30,7 @@ class ReservaController extends Controller
      */
     public function create()
     {
-        //
+        return view('reservaProducto/create');
     }
 
     public function store(Request $request)
