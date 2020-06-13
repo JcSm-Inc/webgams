@@ -3,7 +3,7 @@
 
             <div class="content">
                 <div class="title m-b-md">
-                <div id="example"></div>
+                <div id="listacategorias"></div>
                 </div>
 
 

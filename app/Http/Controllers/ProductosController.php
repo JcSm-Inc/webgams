@@ -24,7 +24,14 @@ class ProductosController extends Controller
     //---------index para usar en React-------------------------
     public function indexReact()
     {
-        $productos = Productos::productosDisponibles();
+        $productos = Productos::productosMasConsumidos(20);
+        return response()->json(compact('productos'));
+    }
+    //---------index para usar en React-------------------------
+    public function indexCategorias(Request $request)
+    {
+        $categoria = $request['CATEGORIA'];
+        $productos = Productos::productosCategorias($categoria);
         return response()->json(compact('productos'));
     }
     //---------------GENERAR PDF-----------------------------------------------------------
@@ -57,7 +64,8 @@ class ProductosController extends Controller
         $cod = substr(str_shuffle($alfa), 2, 3) . substr(str_shuffle($num), 2, 3);
         $foto = null;
         if (isset($request['FOTO']) == true) {
-            $foto = $request->file('FOTO')->store('productos');
+            $foto = $request->file('FOTO')->store('img/productos');
+            $foto = 'storage/' . $foto;
         }
         $producto = Productos::create(
             [
@@ -87,8 +95,9 @@ class ProductosController extends Controller
     {
         $foto = $producto->FOTO;
         if (isset($request['FOTO']) == true) {
-            Storage::delete($foto);
-            $foto = $request->file('FOTO')->store('productos');
+            //Storage::delete($foto);
+            $foto = $request->file('FOTO')->store('img/productos');
+            $foto = 'storage/' . $foto;
         }
         $producto->update([
             'NOMBRE' => $request['NOMBRE'],

@@ -20,6 +20,8 @@ Route::get('/', function () {
 Auth::routes();
 
 Route::get('productos/indexReact', 'ProductosController@indexReact')->name('productos.indexReact');
+Route::get('productos/indexCategorias', 'ProductosController@indexCategorias')->name('productos.indexCategorias');
+
 Route::get('reserva/', 'ReservaController@index')->name('reserva.index');
 Route::get('reserva/create', 'ReservaController@create')->name('reserva.create');
 Route::get('reserva/{reservas}/edit', 'ReservaController@edit')->name('reserva.edit');

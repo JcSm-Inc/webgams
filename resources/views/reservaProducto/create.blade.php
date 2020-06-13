@@ -1,5 +1,5 @@
 @extends('layouts.sidebarauth')
 
 @section('contenido')
-<div id="reserva"></div>
+<div id="listacategorias"></div>
 @endsection

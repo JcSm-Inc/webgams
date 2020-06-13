@@ -2,7 +2,9 @@ import React, { Component } from "react";
 import ReactDOM from "react-dom";
 import pubsub from "pubsub-js";
 import ItemReserva from "./ItemReserva";
+import "./scrollbar.css";
 import axios from "axios";
+const url = process.env.MIX_APP_LOCAL_URL;
 
 class ListaItemReserva extends Component {
     constructor(props) {
@@ -22,8 +24,16 @@ class ListaItemReserva extends Component {
             "listener",
             function(topic, item) {
                 //al recibir un evento
-                const items = [...this.state.productos, item];
-                this.setState({ productos: items });
+                let sw = this.state.productos.findIndex(
+                    producto => producto.id === item.id
+                );
+                console.log(sw);
+                if (sw < 0) {
+                    const num = 1;
+                    pubsub.publish("carrito", num);
+                    const items = [...this.state.productos, item];
+                    this.setState({ productos: items });
+                }
             }.bind(this)
         );
     }
@@ -50,10 +60,10 @@ class ListaItemReserva extends Component {
         e.preventDefault();
         console.log(this.state);
         axios
-            .post("../public/reserva/store", this.state)
+            .post(url + "reserva/store", this.state)
             .then(response => {
                 const h = response.data.reserva.id;
-                window.location = "../public/reserva/" + h + "/edit";
+                window.location = url + "reserva/" + h + "/edit";
                 console.log(h);
             })
             .catch(error => {
@@ -62,36 +72,43 @@ class ListaItemReserva extends Component {
     }
     render() {
         return (
-            <div className="card">
-                <ul className="list-group list-group-flush">
-                    <li className="list-group-item">
-                        <h6 className="text-center">Pedido de producto</h6>
-                    </li>
-                    <li className="list-group-item">
-                        {this.state.productos.map((producto, i) => {
-                            return (
-                                <div key={producto.id}>
-                                    <div className="col mb-4">
-                                        <ItemReserva
-                                            id={producto.id}
-                                            imagen={producto.imagen}
-                                            nombre={producto.nombre}
-                                            descripcion={producto.descripcion}
-                                            cantidad={producto.cantidad}
-                                            borrarItem={this.borrarItem}
-                                            onChange={this.onChange}
-                                        />
+            <div>
+                <div className="card">
+                    <ul className="list-group list-group-flush">
+                        <li className="list-group-item">
+                            <h6 className="text-center">Pedido de producto</h6>
+                        </li>
+                        <li className="list-group-item scrollbar scrollbar-primary">
+                            {this.state.productos.map((producto, i) => {
+                                return (
+                                    <div key={producto.id}>
+                                        <div className="col mb-4">
+                                            <ItemReserva
+                                                id={producto.id}
+                                                imagen={url + producto.imagen}
+                                                nombre={producto.nombre}
+                                                descripcion={
+                                                    producto.descripcion
+                                                }
+                                                cantidad={producto.cantidad}
+                                                borrarItem={this.borrarItem}
+                                                onChange={this.onChange}
+                                            />
+                                        </div>
                                     </div>
-                                </div>
-                            );
-                        })}
-                    </li>
-                    <form onSubmit={this.submitHandler}>
-                        <button type="submit" className="btn btn-outline-blue">
-                            Realizar Pedido
-                        </button>
-                    </form>
-                </ul>
+                                );
+                            })}
+                        </li>
+                        <form onSubmit={this.submitHandler}>
+                            <button
+                                type="submit"
+                                className="btn btn-outline-blue"
+                            >
+                                Realizar Pedido
+                            </button>
+                        </form>
+                    </ul>
+                </div>
             </div>
         );
     }

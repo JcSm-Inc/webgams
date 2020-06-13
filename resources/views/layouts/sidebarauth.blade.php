@@ -307,17 +307,7 @@
 
         <!-- Content Wrapper. Contains page content -->
         <div class="content-wrapper">
-            @if(session('info'))
-                <div class="container">
-                    <div class="row justify-content-center">
-                        <div class="col-md-8 col-md-offset-2">
-                            <div class="alert alert-success">
-                                {{session('info')}}
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            @endif
+            
 
 
             <!--Modal: Login with Avatar Form-->
@@ -364,8 +354,38 @@
             </div>
             </div>
             </div>
-            <!--Modal: Login with Avatar Form-->
-                    @yield('contenido')
+                        <!-- Content Wrapper. Contains page content -->
+                <!-- Content Header (Page header) -->
+                <div class="content-header">
+                <div class="container-fluid">
+                    <div class="row mb-2">
+                    <div class="col-sm-6">
+                        <h1 class="m-0 text-dark">SW</h1>
+                    </div><!-- /.col -->
+                    <div class="col-sm-6">
+                        <ol class="breadcrumb float-sm-right">
+                        <li class="breadcrumb-item"><a href="#">Inicio</a></li>
+                        <li class="breadcrumb-item active">Sarai</li>
+                        </ol>
+                    </div><!-- /.col -->
+                    </div><!-- /.row -->
+                </div><!-- /.container-fluid -->
+                </div>
+                <!-- /.content-header -->
+                @if(session('info'))
+                <div class="container">
+                    <div class="row justify-content-center">
+                        <div class="col-md-12 col-md-offset-2">
+                            <div class="alert alert-success">
+                                {{session('info')}}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                @endif
+                <!-- Main content -->
+                <!--Modal: Login with Avatar Form-->
+                        @yield('contenido')
         </div>
         <!-- /.content-wrapper -->
         <footer class="main-footer">

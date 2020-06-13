@@ -3,7 +3,9 @@ import ReactDOM from "react-dom";
 import axios from "axios";
 import CardProducto from "./CardProducto";
 import Carrito from "../Carrito";
+import Categorias from "./Categorias";
 
+const url = process.env.MIX_APP_LOCAL_URL;
 class ListaProductos extends Component {
     constructor(props) {
         super(props);
@@ -12,7 +14,7 @@ class ListaProductos extends Component {
         };
     }
     async componentDidMount() {
-        const res = await axios.get("../public/productos/indexReact");
+        const res = await axios.get(url + "productos/indexReact");
         this.setState({ productos: res.data.productos });
         console.log(res);
         //console.log(this.state.productos);

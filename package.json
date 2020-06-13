@@ -25,6 +25,7 @@
         "sass-loader": "^8.0.0"
     },
     "dependencies": {
-        "pubsub-js": "^1.8.0"
+        "pubsub-js": "^1.8.0",
+        "react-horizontal-scrolling-menu": "^0.7.7"
     }
 }

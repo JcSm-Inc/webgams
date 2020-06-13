@@ -16,8 +16,8 @@ class CreateEntregasTable extends Migration
         Schema::create('entrega', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->dateTime('FECHAENTREGA');
-			$table->boolean('ESTADO');
-			$table->unsignedBigInteger('idPERSONAL_DE_PLANTA');
+            $table->string('ESTADO', 15);
+            $table->unsignedBigInteger('idPERSONAL_DE_PLANTA');
             $table->timestamps();
         });
     }

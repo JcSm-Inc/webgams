@@ -31,7 +31,7 @@
                             @foreach($productos as $producto)
                                 <tr>
                                     <td>
-                                        <img src="{{asset('storage/'.$producto->FOTO)}}" alt="User Avatar" class="img-size-50 mr-3 img-circle ">
+                                        <img src="{{asset($producto->FOTO)}}" alt="User Avatar" class="img-size-50 mr-3 img-circle ">
                                     </td>
                                    <td>{{$producto->CODPROD}}</td> 
                                    <td>{{$producto->NOMBRE}}</td>
