@@ -18,9 +18,12 @@ Route::get('/', function () {
 });
 
 Auth::routes();
+Route::get('solicitud/create', 'HojadeRutaController@create')->name('solicitud.create');
+Route::post('solicitud/store', 'HojadeRutaController@store')->name('solicitud.store');
 
 Route::get('productos/indexReact', 'ProductosController@indexReact')->name('productos.indexReact');
 Route::get('productos/indexCategorias', 'ProductosController@indexCategorias')->name('productos.indexCategorias');
+Route::get('productos/buscar', 'ProductosController@buscar')->name('productos.buscar');
 
 Route::get('reserva/', 'ReservaController@index')->name('reserva.index');
 Route::get('reserva/create', 'ReservaController@create')->name('reserva.create');

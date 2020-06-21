@@ -195,7 +195,7 @@
                             </a>
                             <ul class="nav nav-treeview">
                                 <li class="nav-item">
-                                    <a href="pages/layout/top-nav.html" class="nav-link">
+                                <a href="{{route('solicitud.create')}}" class="nav-link">
                                         <i class="far fa-file nav-icon"></i>
                                         <p>Nueva Hoja de Ruta</p>
                                     </a>

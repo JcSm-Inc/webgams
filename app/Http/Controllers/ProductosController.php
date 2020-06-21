@@ -22,6 +22,12 @@ class ProductosController extends Controller
         return view('productos/index', ['productos' => $productos]); //response(compact('productos'));
     }
     //---------index para usar en React-------------------------
+    public function buscar(Request $request)
+    {
+        $nombre = $request['buscar'];
+        $productos = Productos::buscar($nombre, 10);
+        return response()->json(compact('productos'));
+    }
     public function indexReact()
     {
         $productos = Productos::productosMasConsumidos(20);

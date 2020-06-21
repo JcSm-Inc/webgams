@@ -24,7 +24,7 @@ class HojadeRutaController extends Controller
      */
     public function create()
     {
-        //
+        return view('solicitudes.create');
     }
 
     /**

@@ -1,6 +1,8 @@
 import React, { Component } from "react";
 import ReactDOM from "react-dom";
 import Categorias from "./Categorias";
+import BuscarProducto from "./BuscarProducto";
+
 const url = process.env.MIX_APP_LOCAL_URL;
 
 class ListaCategorias extends Component {
@@ -34,6 +36,7 @@ class ListaCategorias extends Component {
     render() {
         return (
             <div>
+                <BuscarProducto />
                 <h4>Productos mas Consumidos</h4>
                 <Categorias items={this.state.productos} />
                 <h4>Material de Escritorio</h4>
