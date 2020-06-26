@@ -16,4 +16,8 @@ class Reserva extends Model
     {
         return $this->hasMany('App\Models\DetalleReserva', 'idRESERVA', 'id');
     }
+    public function personal_de_planta()
+    {
+        return $this->belongsTo('App\Models\Personal_de_Planta', 'idPERSONAL_DE_PLANTA', 'id');
+    }
 }

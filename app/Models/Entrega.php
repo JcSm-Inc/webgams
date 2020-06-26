@@ -16,4 +16,8 @@ class Entrega extends Model
     {
         return $this->hasMany('App\Models\DetalleEntrega', 'idENTREGA', 'id');
     }
+    public function personal_de_planta()
+    {
+        return $this->belongsTo('App\Models\Personal_de_Planta', 'idPERSONAL_DE_PLANTA', 'id');
+    }
 }

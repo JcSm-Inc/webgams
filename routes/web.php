@@ -18,6 +18,14 @@ Route::get('/', function () {
 });
 
 Auth::routes();
+Route::get('entregas/', 'EntregaController@index')->name('entregas.index');
+Route::get('entregas/create', 'EntregaController@create')->name('entregas.create');
+Route::get('entregas/{entrega}/edit', 'EntregaController@edit')->name('entregas.edit');
+Route::post('entregas/store', 'EntregaController@store')->name('entregas.store');
+Route::get('entregas/{entrega}', 'EntregaController@show')->name('entregas.show');
+Route::put('entregas/{entrega}', 'EntregaController@update')->name('entregas.update');
+Route::delete('entregas/{entrega}', 'EntregaController@destroy')->name('entregas.destroy');
+
 Route::get('solicitud/create', 'HojadeRutaController@create')->name('solicitud.create');
 Route::post('solicitud/store', 'HojadeRutaController@store')->name('solicitud.store');
 

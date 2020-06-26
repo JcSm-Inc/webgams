@@ -2,8 +2,13 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\ValidarEntrega;
+use App\Models\DetalleEntrega;
 use App\Models\Entrega;
+use App\Models\Productos;
+use App\Models\Reserva;
 use Illuminate\Http\Request;
+use PDF;
 
 class EntregaController extends Controller
 {
@@ -14,7 +19,10 @@ class EntregaController extends Controller
      */
     public function index()
     {
-        //
+        $entregas = Reserva::where('ESTADO', '=', 'ACTIVO')
+            ->orderBy('FECHARESERVA', 'asc')
+            ->paginate(15);
+        return view('entregaProductos/index', compact('entregas'));
     }
 
     /**
@@ -22,9 +30,13 @@ class EntregaController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function create(Request $request)
     {
-        //
+        $id = $request['entrega'];
+        $reservas = Reserva::find($id);
+        $detalle = $reservas->detallereserva;
+
+        return view('entregaProductos/create', compact('reservas', 'detalle'));
     }
 
     /**
@@ -33,9 +45,35 @@ class EntregaController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(ValidarEntrega $request)
     {
-        //
+        $reserva = $request->session()->get('reserva');
+        $detallereserva = $request->session()->get('detallereserva');
+        $entrega = Entrega::create(
+            [
+                'FECHAENTREGA' => now(),
+                'idPERSONAL_DE_PLANTA' => $reserva->idPERSONAL_DE_PLANTA,
+                'ESTADO' => 'ENTREGADO'
+            ]
+        );
+        $reserva->update(['ESTADO' => 'ENTREGADO']);
+        $detalles = [];
+        foreach ($detallereserva as $item) {
+            if ($request["opcion" . $item->id] == '1') {
+                $cantidad = min($request["" . $item->id], $item->productos->STOCK);
+                $detalleEntrega = DetalleEntrega::create([
+                    'CANTIDAD' => $cantidad,
+                    'idENTREGA' => $entrega->id,
+                    'idPRODUCTOS' => $item->idPRODUCTOS
+                ]);
+                array_push($detalles, $detalleEntrega);
+                $Producto = Productos::find($item->idPRODUCTOS);
+                $Producto->update(['STOCK' => $Producto->STOCK - $cantidad]);
+            }
+        }
+        $pdf = PDF::loadView('entregaProductos/pdf/entregaproductos', compact('entrega', 'detalles'))->setPaper('letter');
+        return $pdf->stream('entrega.pdf');
+        dd($detalles);
     }
 
     /**

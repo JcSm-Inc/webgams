@@ -244,7 +244,7 @@
 
 
                                 <li class="nav-item">
-                                    <a href="#" class="nav-link">
+                                    <a href="{{ route('entregas.index')}}" class="nav-link">
                                         <i class="fas fa-cart-arrow-down nav-icon"></i>
                                         <p>Entrega de Productos</p>
                                     </a>
