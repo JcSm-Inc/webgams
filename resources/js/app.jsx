@@ -14,3 +14,4 @@ require("./bootstrap");
 
 require("./components/Example");
 require("./components/reservaProducto/realizarReserva");
+require("./components/reservaProducto/ListaCategorias");

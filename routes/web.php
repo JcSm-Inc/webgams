@@ -18,9 +18,23 @@ Route::get('/', function () {
 });
 
 Auth::routes();
+Route::get('entregas/', 'EntregaController@index')->name('entregas.index');
+Route::get('entregas/create', 'EntregaController@create')->name('entregas.create');
+Route::get('entregas/{entrega}/edit', 'EntregaController@edit')->name('entregas.edit');
+Route::post('entregas/store', 'EntregaController@store')->name('entregas.store');
+Route::get('entregas/{entrega}', 'EntregaController@show')->name('entregas.show');
+Route::put('entregas/{entrega}', 'EntregaController@update')->name('entregas.update');
+Route::delete('entregas/{entrega}', 'EntregaController@destroy')->name('entregas.destroy');
+
+Route::get('solicitud/create', 'HojadeRutaController@create')->name('solicitud.create');
+Route::post('solicitud/store', 'HojadeRutaController@store')->name('solicitud.store');
 
 Route::get('productos/indexReact', 'ProductosController@indexReact')->name('productos.indexReact');
+Route::get('productos/indexCategorias', 'ProductosController@indexCategorias')->name('productos.indexCategorias');
+Route::get('productos/buscar', 'ProductosController@buscar')->name('productos.buscar');
+
 Route::get('reserva/', 'ReservaController@index')->name('reserva.index');
+Route::get('reserva/create', 'ReservaController@create')->name('reserva.create');
 Route::get('reserva/{reservas}/edit', 'ReservaController@edit')->name('reserva.edit');
 Route::post('reserva/store', 'ReservaController@store')->name('reserva.store');
 Route::put('reserva/{reservas}', 'ReservaController@update')->name('reserva.update');

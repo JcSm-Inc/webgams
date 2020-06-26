@@ -20,4 +20,12 @@ class Personal_de_Planta extends Model
     {
         return $this->hasMany('App\Models\Comunicado', 'idPERSONAL_DE_PLANTA', 'id');
     }
+    public function reserva()
+    {
+        return $this->hasOne('App\Models\Reserva', 'idPERSONAL_DE_PLANTA', 'id');
+    }
+    public function entrega()
+    {
+        return $this->hasMany('App\Models\Personal_de_Planta', 'idPERSONAL_DE_PLANTA', 'id');
+    }
 }

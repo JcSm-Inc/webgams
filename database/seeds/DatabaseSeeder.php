@@ -16,8 +16,9 @@ class DatabaseSeeder extends Seeder
     {
         //$this->call(TablaPermisosSeeder::class);
         //$this->call(UserSeeder::class);
-        //$this->call(ProductosSeeder::class);
+        $this->call(ProductosSeeder::class);
+        //$this->call(EntregaSeeder::class);
         //$this->call(ComunicadoSeeder::class);
-        $this->call(PersonalDePlantaSeeder::class);
+        //$this->call(PersonalDePlantaSeeder::class);
     }
 }

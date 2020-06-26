@@ -3,8 +3,8 @@
 <head>
     <title>Listado de Productos</title>
     <style>
-        @page { margin: 90px 50px; }
-        #header { position: fixed; left: 0px; top: -90px; right: 0px; height: 90px; background-color: white; text-align: center; }
+        @page { margin-top: 130px; margin-bottom: 80px;margin-left: 100px; margin-right: 80px;  }
+        #header { position: fixed; left: 0px; top: -130px; right: 0px; height: 90px; background-color: white; text-align: center; }
         #footer { position: fixed; left: 0px; bottom: -90px; right: 0px; height: 90px; background-color: white; text-align: right; }
         #footer .page:after { content: counter(page, arabic); }
         #h {
@@ -26,6 +26,7 @@
                 </th>
                 <th class="text-center" id="h">
                     <h6><font size="12">Gobierno Autonomo Municipal de Soracachi</font><br> seccion- Provincia Cercado<br>ORURO- BOLIVIA</h6>
+                    <hr>
                 </th>  
                 <th align="right">
                     <img src="{{asset('./extras/img/aplicacion/escudobolivia.png')}}" alt="User Avatar" width="80" height="80">
@@ -33,7 +34,7 @@
             </tr>
         
         </table>
-        <hr>
+        
             
     </div>
     <div id="footer">
@@ -43,7 +44,7 @@
         <p class="page">Pagina </p>
     </div>
     <main>
-    <p align="right"><br>Soracachi, {{Carbon\Carbon::now()->isoFormat('LL')}}<br></p>
+    <p align="right"><br>Soracachi, {{(new Carbon\Carbon($reserva->FECHARESERVA))->isoFormat('LL')}}<br></p>
     <p><br>A:  &nbsp;&nbsp;&nbsp; H.Oscar Flores Adrián <br>
         <strong>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ALCALDE MUNICIPAL  DE  SORACACHI</strong><br><br>
         &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Lic.  Juan José Chacón Bozo<br>	

@@ -12,25 +12,15 @@ use PDF;
 
 class ReservaController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
     public function index()
     {
 
-        return view('reservaProducto/index');
+        //return view('reservaProducto/index');
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
     public function create()
     {
-        //
+        return view('reservaProducto/create');
     }
 
     public function store(Request $request)
@@ -60,23 +50,11 @@ class ReservaController extends Controller
         return response()->json(compact('reserva', 'detalle'));
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  \App\Reserva  $reserva
-     * @return \Illuminate\Http\Response
-     */
     public function show(Reserva $reserva)
     {
         //
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  \App\Reserva  $reserva
-     * @return \Illuminate\Http\Response
-     */
     public function edit(Reserva $reservas)
     {
         $detalle = $reservas->detallereserva;
@@ -100,12 +78,6 @@ class ReservaController extends Controller
         }
     }
 
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  \App\Reserva  $reserva
-     * @return \Illuminate\Http\Response
-     */
     public function destroy($id)
     {
         try {

@@ -10,7 +10,7 @@
                 </div>
 
                 <div class="card-body">
-                    <img src="{{'.'.$producto->FOTO}}" alt="User Avatar" class="img-size-50 mr-3 img-circle ">
+                    <img src="{{asset($producto->FOTO)}}" alt="User Avatar" class="img-size-50 mr-3 img-circle ">
                     <p><strong>CODIGO DE PRODUCTO:</strong>{{$producto->CODPROD}}</p>
                     <p><strong>NOMBRE:</strong>{{$producto->NOMBRE}}</p>
                     <p><strong>DESCRIPCION:</strong>{{$producto->DESCRIPCION}}</p>
