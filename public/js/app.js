@@ -67820,7 +67820,7 @@ function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.g
 
 
 
-var url = "http://localhost/laravel/webgams/public/";
+var url = "http://127.0.0.1/laravel/webgams/public/";
 
 var BuscarProducto = /*#__PURE__*/function (_Component) {
   _inherits(BuscarProducto, _Component);
@@ -67962,7 +67962,7 @@ function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.g
 
 
 
-var url = "http://localhost/laravel/webgams/public/";
+var url = "http://127.0.0.1/laravel/webgams/public/";
 
 var CardProducto = /*#__PURE__*/function (_Component) {
   _inherits(CardProducto, _Component);
@@ -68326,7 +68326,7 @@ function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.g
 
 
 
-var url = "http://localhost/laravel/webgams/public/";
+var url = "http://127.0.0.1/laravel/webgams/public/";
 
 var ListaCategorias = /*#__PURE__*/function (_Component) {
   _inherits(ListaCategorias, _Component);
@@ -68365,8 +68365,9 @@ var ListaCategorias = /*#__PURE__*/function (_Component) {
                 this.setState({
                   productos: res.data.productos
                 });
+                console.log(res.data.productos);
 
-              case 4:
+              case 5:
               case "end":
                 return _context.stop();
             }
@@ -68526,7 +68527,7 @@ function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.g
 
 
 
-var url = "http://localhost/laravel/webgams/public/";
+var url = "http://127.0.0.1/laravel/webgams/public/";
 
 var ListaItemReserva = /*#__PURE__*/function (_Component) {
   _inherits(ListaItemReserva, _Component);
@@ -68717,7 +68718,7 @@ function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.g
 
 
 
-var url = "http://localhost/laravel/webgams/public/";
+var url = "http://127.0.0.1/laravel/webgams/public/";
 
 var ListaProductos = /*#__PURE__*/function (_Component) {
   _inherits(ListaProductos, _Component);

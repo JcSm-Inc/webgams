@@ -18,6 +18,7 @@ class ListaCategorias extends Component {
     async componentDidMount() {
         const res = await axios.get(url + "productos/indexReact");
         this.setState({ productos: res.data.productos });
+        console.log(res.data.productos);
     }
     async componentWillMount() {
         const cat = await axios.get(url + "productos/indexCategorias", {

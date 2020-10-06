@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\actualizarStock;
+use App\Models\actualizarStock;
 use Illuminate\Http\Request;
 
 class ActualizarStockController extends Controller

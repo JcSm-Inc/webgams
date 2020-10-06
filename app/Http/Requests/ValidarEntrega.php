@@ -25,7 +25,7 @@ class ValidarEntrega extends FormRequest
     {
         return [
             //'CODPROD'    => 'required|unique:productos|min:3|max:6',
-            '*.reserva.ESTADO'    => 'required|in:ACTIVO'
+            '*.*.ESTADO'    => 'required|in:ACTIVO'
         ];
     }
 }
