@@ -233,7 +233,14 @@
                                     </a>
                                 </li>
                                 @endcan
-
+                                @can('productos.edit')
+                                <li class="nav-item">
+                                    <a href="{{ route('actualizarstock.index')}}" class="nav-link">
+                                        <i class="fas fa-shopping-cart nav-icon"></i>
+                                        <p>Actualizar Stock</p>
+                                    </a>
+                                </li>
+                                @endcan
                                 
                                 <li class="nav-item">
                                 <a href="{{route('reserva.create')}}" class="nav-link">

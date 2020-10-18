@@ -33,12 +33,22 @@ Route::get('productos/indexReact', 'ProductosController@indexReact')->name('prod
 Route::get('productos/indexCategorias', 'ProductosController@indexCategorias')->name('productos.indexCategorias');
 Route::get('productos/buscar', 'ProductosController@buscar')->name('productos.buscar');
 
+
+
 Route::get('reserva/', 'ReservaController@index')->name('reserva.index');
 Route::get('reserva/create', 'ReservaController@create')->name('reserva.create');
 Route::get('reserva/{reservas}/edit', 'ReservaController@edit')->name('reserva.edit');
 Route::post('reserva/store', 'ReservaController@store')->name('reserva.store');
 Route::put('reserva/{reservas}', 'ReservaController@update')->name('reserva.update');
 Route::delete('reserva/{reservas}', 'ReservaController@destroy')->name('reserva.destroy');
+
+Route::get('actualizarstock/', 'ActualizarStockController@index')->name('actualizarstock.index');
+Route::get('actualizarstock/{producto}', 'ActualizarStockController@show')->name('actualizarstock.show');
+Route::get('actualizarstock/create', 'ActualizarStockController@create')->name('actualizarstock.create');
+Route::get('actualizarstock/{actualizarstocks}/edit', 'ActualizarStockController@edit')->name('actualizarstock.edit');
+Route::post('actualizarstock/store', 'ActualizarStockController@store')->name('actualizarstock.store');
+Route::put('actualizarstock/{actualizarstocks}', 'ActualizarStockController@update')->name('actualizarstock.update');
+Route::delete('actualizarstock/{actualizarstocks}', 'ActualizarStockController@destroy')->name('actualizarstock.destroy');
 
 Route::delete('detallereserva/{detallereservas}', 'DetalleReservaController@destroy')->name('detallereserva.destroy');
 Route::put('detallereserva/{detallereservas}', 'DetalleReservaController@update')->name('detallereserva.update');
@@ -57,7 +67,9 @@ Route::middleware(['auth'])->group(function () {
     //visualizar el sitado
     Route::get('productos/', 'ProductosController@index')->name('productos.index')
         ->middleware('can:productos.index');
-
+    //actualizar stock
+    Route::get('productos/actualizar_stock', 'ProductosController@actualizar_stock')->name('productos.actualizar_stock')
+        ->middleware('can:productos.edit');
     // ver el formulario de creacion
     Route::get('productos/create', 'ProductosController@create')->name('productos.create')
         ->middleware('can:productos.create');

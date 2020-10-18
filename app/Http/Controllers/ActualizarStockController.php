@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\actualizarStock;
+use App\Models\Productos;
 use Illuminate\Http\Request;
 
 class ActualizarStockController extends Controller
@@ -12,9 +13,12 @@ class ActualizarStockController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
-        //
+        $id = $request->get('buscar');
+            $productos = Productos::Nombres($id)->paginate(10);
+            return view('actualizarstock/index', ['productos' => $productos]); 
+            //response(compact('productos'));
     }
 
     /**
@@ -44,9 +48,11 @@ class ActualizarStockController extends Controller
      * @param  \App\actualizarStock  $actualizarStock
      * @return \Illuminate\Http\Response
      */
-    public function show(actualizarStock $actualizarStock)
+    public function show(Productos $producto)
     {
-        //
+
+        return view('actualizarstock/show', ['producto'=>$producto]);
+        //return view('productos.show', compact('producto'));
     }
 
     /**
