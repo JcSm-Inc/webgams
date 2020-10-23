@@ -28,10 +28,10 @@
                         <thead>
                             <tr>
                                 <th width="10px">
-                                    FECHA ACTUALIZACION
-                                </th>
-                                <th width="10px"> CANTIDAD </th>     
+                                    FECHA
+                                </th>   
                                 <th>NRO DOC</th>
+                                <th>PROVEEDOR</th>
                                 <th>PU</th>
                                 <th>CANTIDAD</th>
                                 <th colspan="2">&nbsp;</th>
@@ -40,36 +40,21 @@
                         <tbody>
                             @foreach($actualizaciones as $stock)
                                 <tr>
-                                    <td>
-                                        <img src="{{asset($producto->FOTO)}}" alt="User Avatar" class="img-size-50 mr-3 img-circle ">
-                                    </td>
-                                   <td>{{$producto->CODPROD}}</td> 
-                                   <td>{{$producto->NOMBRE}}</td>
-                                   <td width="10px">
-                                       <a href="{{ route('productos.show',$producto)}}" class="nav-link">
-                                        <i class="far fa-eye"></i>
-                                        </a>
-                                    </td>
+                                    <td>{{$stock->FECHA}}</td>
+                                   <td>{{$stock->NRO_DOCUMENTO}}</td> 
+                                   <td>{{$stock->PROVEEDOR}}</td>
+                                   <td>{{$stock->PU}}</td>
+                                   <td>{{$stock->CANTIDAD}}</td>
                                    <td width="10px">
                                     <a href="{{ route('productos.edit',$producto)}}" class="nav-link">
                                         <i class="far fa-edit"></i>
                                         </a>
                                    </td>
-                                   <td width="10px">
-                                        {!!
-                                            Form::open(['route' => ['productos.destroy',$producto],
-                                            'method' => 'DELETE'])
-                                        !!}
-                                            <button class="btn btn-xs  btn-block btn-outline-danger">
-                                                <i class="far fa-trash-alt"></i>
-                                            </button>
-                                        {!! Form::close() !!}
-                                   </td>
+                                   
                                 </tr>
                             @endforeach
                         </tbody>
                     </table>
-                    {{$productos->render()}}
                 </div>
             </div>
         </div>

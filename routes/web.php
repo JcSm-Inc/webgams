@@ -44,7 +44,7 @@ Route::delete('reserva/{reservas}', 'ReservaController@destroy')->name('reserva.
 
 Route::get('actualizarstock/', 'ActualizarStockController@index')->name('actualizarstock.index');
 Route::get('actualizarstock/{producto}', 'ActualizarStockController@show')->name('actualizarstock.show');
-Route::get('actualizarstock/create', 'ActualizarStockController@create')->name('actualizarstock.create');
+Route::get('actualizarstock/{actualizarstocks}/create', 'ActualizarStockController@create')->name('actualizarstock.create');
 Route::get('actualizarstock/{actualizarstocks}/edit', 'ActualizarStockController@edit')->name('actualizarstock.edit');
 Route::post('actualizarstock/store', 'ActualizarStockController@store')->name('actualizarstock.store');
 Route::put('actualizarstock/{actualizarstocks}', 'ActualizarStockController@update')->name('actualizarstock.update');

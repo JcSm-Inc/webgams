@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\actualizarStock;
 use App\Models\Productos;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Http\Request;
 
 class ActualizarStockController extends Controller
@@ -26,9 +27,9 @@ class ActualizarStockController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function create(Productos $producto)
     {
-        //
+        return view('actualizarStock/create',['producto'=>$producto]);
     }
 
     /**
@@ -39,7 +40,23 @@ class ActualizarStockController extends Controller
      */
     public function store(Request $request)
     {
-        //
+       
+        $actualizarStock = actualizarStock::create(
+            [
+                'CODPROD' => $cod,
+                
+                
+                'STOCK' => $request['STOCK'], 
+                'FECHA' => now(), 
+                'NRO_DOCUMENTO' => $request['NRO_DOCUMENTO'],
+                'PU' => $request['PU'],
+                'PROVEEDOR' => $request['PROVEEDOR'],
+              
+
+            ]
+        );
+        return redirect()->route('productos.edit', $producto->id)
+            ->with('info', 'Producto guardado con exito'); 
     }
 
     /**
@@ -50,8 +67,9 @@ class ActualizarStockController extends Controller
      */
     public function show(Productos $producto)
     {
-
-        return view('actualizarstock/show', ['producto'=>$producto]);
+        $id=$producto->id;
+        $actualizaciones  = actualizarStock::where('idPRODUCTO',$id)->GET();
+        return view('actualizarstock/show', ['producto'=>$producto,'actualizaciones'=>$actualizaciones]);
         //return view('productos.show', compact('producto'));
     }
 

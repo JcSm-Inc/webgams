@@ -20,7 +20,8 @@
                                 <th width="10px"> CODPROD </th>     
                                 <th>NOMBRE</th>
                                 <th>CANTIDAD DISPONIBLE</th>
-                                <th>HISTORIAL DE ACTUALIZACIONES</th>
+                                <th>HIST. DE ACT.</th>
+                                <th>AGREGAR</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -33,8 +34,13 @@
                                    <td>{{$producto->NOMBRE}}</td>
                                    <td>{{$producto->STOCK}}</td>
                                    <td width="10px">
-                                       <a href="{{ route('actualizarstock.show',$producto)}}" class="nav-link">
+                                       <a href="{{ route('actualizarstock.show',$producto)}}" class="btn btn-sm btn-warning pull-right-align">
                                         <i class="far fa-eye"></i>
+                                        </a>
+                                    </td>
+                                    <td width="10px">
+                                       <a href="{{ route('actualizarstock.create',$producto)}}" class="btn btn-sm btn-success pull-right-align">
+                                       <i class="fas fa-plus-circle"></i>
                                         </a>
                                     </td>
                                 </tr>
