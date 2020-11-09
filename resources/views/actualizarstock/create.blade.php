@@ -1,17 +1,27 @@
 @extends('layouts.sidebarauth')
 
 @section('contenido')
-<div class="container">
-    {!! Form::open(['route' => 'actualizarstock.store','enctype'=>'multipart/form-data','novalidate']) !!}
-    @csrf
-                <div class="col-lg-6 mb-4 mb-lg-0">
-                    
-                    <div class="px-4">
-                        <h3 class="font-weight-bold">Agregar producto a Existencias</h3>
-                                @include('actualizarstock.partials.form')  
+{{Session::forget('producto')}}
+{{Session::put('producto',$producto)}}
+<div class="container-fluid">
+    <div class="row justify-content-center">
+        {!! Form::open(['route' => 'actualizarstock.store','Method'=>'POST','novalidate']) !!}
+        @csrf
+                    <div class="col-12">
+                        
+                        <div class="card">
+                            <div class="card-header">
+                                <h3 class="font-weight-bold">AGREGAR PRODUCTO A EXISTENCIAS</h3>
+                            </div>
+                            <div class="card-body">
+                                @include('actualizarstock.partials.form')
+                            </div>
+                            
+                                    
+                        </div>
                     </div>
-                </div>
-                
-    {!! Form::close() !!}
+                    
+        {!! Form::close() !!}
+    </div>
 </div>
 @endsection

@@ -6,6 +6,8 @@ use App\Models\actualizarStock;
 use App\Models\Productos;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Http\Request;
+use App\Http\Requests\ValidarStock;
+use Illuminate\Support\Facades\Auth;
 
 class ActualizarStockController extends Controller
 {
@@ -18,6 +20,7 @@ class ActualizarStockController extends Controller
     {
         $id = $request->get('buscar');
             $productos = Productos::Nombres($id)->paginate(10);
+
             return view('actualizarstock/index', ['productos' => $productos]); 
             //response(compact('productos'));
     }
@@ -29,7 +32,7 @@ class ActualizarStockController extends Controller
      */
     public function create(Productos $producto)
     {
-        return view('actualizarStock/create',['producto'=>$producto]);
+        return view('actualizarstock/create',['producto'=>$producto]);
     }
 
     /**
@@ -38,24 +41,28 @@ class ActualizarStockController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(ValidarStock $request)
     {
-       
+        $producto=$request->session()->get('producto');
+        $cantidad=$request['CANTIDAD'];
         $actualizarStock = actualizarStock::create(
             [
-                'CODPROD' => $cod,
+                'idPRODUCTO' =>$producto->id,
                 
-                
-                'STOCK' => $request['STOCK'], 
+                'idUSER'=> Auth::user()->id,
+                'CANTIDAD' => $cantidad, 
                 'FECHA' => now(), 
                 'NRO_DOCUMENTO' => $request['NRO_DOCUMENTO'],
                 'PU' => $request['PU'],
-                'PROVEEDOR' => $request['PROVEEDOR'],
+                'PROVEEDOR' => $request['PROVEEDOR']
               
 
             ]
         );
-        return redirect()->route('productos.edit', $producto->id)
+        $producto->update([
+            'STOCK' => $producto->STOCK+$cantidad,
+        ]);
+        return redirect()->route('actualizarstock.edit', $actualizarStock->id)
             ->with('info', 'Producto guardado con exito'); 
     }
 
@@ -81,7 +88,7 @@ class ActualizarStockController extends Controller
      */
     public function edit(actualizarStock $actualizarStock)
     {
-        //
+        return view('actualizarstock.edit', compact('actualizarStock'));
     }
 
     /**

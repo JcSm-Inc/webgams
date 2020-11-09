@@ -2,23 +2,28 @@
 
 
 <div class='md-form'>
-    {{ Form::text('STOCK',null, ['id'=>'STOCK','class'=>'form-control'.( $errors->has('STOCK') ? ' is-invalid' : '' )]) }}
+    {{ Form::text('CANTIDAD',null, ['id'=>'CANTIDAD','class'=>'form-control'.( $errors->has('CANTIDAD') ? ' is-invalid' : '' )]) }}
     {{ Form::label('inputMDEx','Cantidad') }}
     <div class="invalid-feedback">
-        @error('STOCK')
+        @error('CANTIDAD')
             {{ $message }}
         @enderror
     </div>
 </div>
 <div class='md-form'>
-    {{ Form::text('PU',null, ['id'=>'PU','class'=>'form-control']) }}
-    {{ Form::label('inputMDEx','PU') }}
+    {{ Form::text('PU',null, ['id'=>'PU','class'=>'form-control'.( $errors->has('PU') ? ' is-invalid' : '' )]) }}
+    {{ Form::label('inputMDEx','Precio Unitario') }}
+    <div class="invalid-feedback">
+        @error('PU')
+            {{ $message }}
+        @enderror
+    </div>
 </div>
 <div class='md-form'>
-    {{ Form::text('PROVEEDOR',null, ['id'=>'NOMBRE','class'=>'form-control'.( $errors->has('PROVEEDOR') ? ' is-invalid' : '' )]) }}
-    {{ Form::label('inputMDEx','Proveedor',['required']) }}
+    {{ Form::text('PROVEEDOR',null, ['id'=>'PROVEEDOR','class'=>'form-control'.( $errors->has('PROVEEDOR') ? ' is-invalid' : '' )]) }}
+    {{ Form::label('inputMDEx','PROVEEDOR',['required']) }}
     <div class="invalid-feedback">
-        @error('proveedor')
+        @error('PROVEEDOR')
             {{ $message }}
         @enderror
     </div>
@@ -27,14 +32,15 @@
     {{ Form::text('NRO_DOCUMENTO',null, ['id'=>'NRO_DOCUMENTO','class'=>'form-control'.( $errors->has('NRO_DOCUMENTO') ? ' is-invalid' : '' )]) }}
     {{ Form::label('inputMDEx','Nro de Documento',['required']) }}
     <div class="invalid-feedback">
-        @error('proveedor')
+        @error('NRO_DOCUMENTO')
             {{ $message }}
         @enderror
     </div>
 </div>
 
 
-
-<div class="form-group">
-    {{ Form::submit('Guardar',['type'=>'button','class' => 'btn btn-success']) }}
+<div class="justify-content-center">
+    <div class="form-group">
+        {{ Form::submit('Guardar',['type'=>'button','class' => 'btn btn-success']) }}
+    </div>
 </div>

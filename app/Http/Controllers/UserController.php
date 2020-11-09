@@ -4,21 +4,22 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\ValidarUsuario;
 use App\Models\User;
-use Caffeinated\Shinobi\Contracts\Role;
+//use Caffeinated\Shinobi\Contracts\Role;
+use Caffeinated\Shinobi\Models\Role;
 use Illuminate\Http\Request;
 
 class UserController extends Controller
 {
     public function index(){
-        $user=User::paginate(15);
-        return view('users.index',compact('user'));
+        $users=User::paginate(15);
+        return view('roles_de_usuario.index',compact('users'));
     }
     public function show(User $user){
-        return view('users.show',compact('user'));
+        return view('roles_de_usuario.show',compact('user'));
     }
     public function edit(User $user){
         $roles=Role::get();
-        return view('users.edit',compact('user','roles'));
+        return view('roles_de_usuario.edit',compact('user','roles'));
     }
     public function update(ValidarUsuario $user,Request $request){
         $user->update($user->all());

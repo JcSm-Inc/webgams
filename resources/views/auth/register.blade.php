@@ -17,7 +17,7 @@
                 </div>
                 <!-- /.card-header -->
                 <div class="card-body">
-                  <form method="POST" role="form" action="{{ route('register') }}">
+                  <form method="POST" role="form" action="{{ route('register') }}" enctype="multipart/form-data">
                   @csrf
                     <!-- input states -->
                     <div class="row">

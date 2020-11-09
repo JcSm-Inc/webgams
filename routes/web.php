@@ -44,8 +44,8 @@ Route::delete('reserva/{reservas}', 'ReservaController@destroy')->name('reserva.
 
 Route::get('actualizarstock/', 'ActualizarStockController@index')->name('actualizarstock.index');
 Route::get('actualizarstock/{producto}', 'ActualizarStockController@show')->name('actualizarstock.show');
-Route::get('actualizarstock/{actualizarstocks}/create', 'ActualizarStockController@create')->name('actualizarstock.create');
-Route::get('actualizarstock/{actualizarstocks}/edit', 'ActualizarStockController@edit')->name('actualizarstock.edit');
+Route::get('actualizarstock/{producto}/create', 'ActualizarStockController@create')->name('actualizarstock.create');
+Route::get('actualizarstock/{actualizarStock}/edit', 'ActualizarStockController@edit')->name('actualizarstock.edit');
 Route::post('actualizarstock/store', 'ActualizarStockController@store')->name('actualizarstock.store');
 Route::put('actualizarstock/{actualizarstocks}', 'ActualizarStockController@update')->name('actualizarstock.update');
 Route::delete('actualizarstock/{actualizarstocks}', 'ActualizarStockController@destroy')->name('actualizarstock.destroy');
@@ -85,4 +85,47 @@ Route::middleware(['auth'])->group(function () {
     // ver el formulario de edicion
     Route::get('productos/{producto}/edit', 'ProductosController@edit')->name('productos.edit')
         ->middleware('can:productos.edit');
+
+        //USUARIO
+
+ 
+    //visualizar el sitado
+    Route::get('users','UserController@index')->name('users.index')
+        ->middleware('can:users.index');
+
+    // actualizar
+    Route::put('users/{user}','UserController@update')->name('users.update')
+        ->middleware('can:users.edit');
+    //ver el detalle
+    Route::get('users/{user}','UserController@show')->name('users.show')
+        ->middleware('can:users.show');
+    // eliminar
+    Route::delete('users/{user}','UserController@destroy')->name('users.destroy')
+        ->middleware('can:users.destroy');
+    // ver el formulario de edicion
+    Route::get('users/{user}/edit','UserController@edit')->name('users.edit')
+        ->middleware('can:users.edit');
+
+
+        	//Roles
+	Route::post('roles/store', 'RoleController@store')->name('roles.store')
+    ->middleware('can:roles.create');
+
+Route::get('roles', 'RoleController@index')->name('roles.index')
+    ->middleware('can:roles.index');
+
+Route::get('roles/create', 'RoleController@create')->name('roles.create')
+    ->middleware('can:roles.create');
+
+Route::put('roles/{role}', 'RoleController@update')->name('roles.update')
+    ->middleware('can:roles.edit');
+
+Route::get('roles/{role}', 'RoleController@show')->name('roles.show')
+    ->middleware('can:roles.show');
+
+Route::delete('roles/{role}', 'RoleController@destroy')->name('roles.destroy')
+    ->middleware('can:roles.destroy');
+
+Route::get('roles/{role}/edit', 'RoleController@edit')->name('roles.edit')
+    ->middleware('can:roles.edit');
 });
