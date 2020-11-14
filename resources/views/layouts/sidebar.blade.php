@@ -5,6 +5,7 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <title>GAMS</title>
+    <link rel="shorcut icon" type="image/x-icon" href="{{asset(getenv('DIR_PUBLIC').'extras/img/aplicacion/ico_gams.ico')}}">
     <!-- Tell the browser to be responsive to screen width -->
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <!-- Font Awesome -->
@@ -29,6 +30,8 @@
     <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700" rel="stylesheet">
 
     <link rel="stylesheet" href="{{asset('MDB/css/mdb.min.css')}}" />
+
+    <link href="css/styles.css" rel="stylesheet" />
     <!-- Your custom styles (optional) 
     <link rel="stylesheet" href="MBD/css/style.css" />-->
 </head>
@@ -111,7 +114,7 @@
                                     
                                     <p>
                                         <i class="right fas fa-user"></i>
-                                        Login
+                                        Ingresar
                                     </p>
                                 </a>
 
@@ -135,7 +138,7 @@
 
         <!-- CONTENEDOR PRINCIPAL DEL MENU LATERAL 
         <aside class="main-sidebar sidebar-dark-primary elevation-4">-->
-        <aside class="main-sidebar sidebar-light-blue elevation-4">
+        <aside class="main-sidebar sidebar-dark-primary elevation-4">
             <!-- Brand Logo -->
             <a href="index3.html" class="brand-link">
                 <img src="dist/img/logo.png" alt="AdminLTE Logo" class="brand-image img-circle elevation-3" style="opacity: .8">
@@ -144,15 +147,7 @@
 
             <!-- Sidebar -->
             <div class="sidebar">
-                <!-- Sidebar user panel (optional) -->
-                <div class="user-panel mt-3 pb-3 mb-3 d-flex">
-                    <div class="image">
-                        <img src="dist/img/user2-160x160.jpg" class="img-circle elevation-2" alt="User Image">
-                    </div>
-                    <div class="info">
-                      <a href="#" class="d-block">Alexander Pierce</a>
-                    </div>
-                </div>
+                
 
                 <!-- Sidebar Menu -->
                 <nav class="mt-2 ">
@@ -200,95 +195,10 @@
                             </a>
                         </li>
 
-                        <li class="nav-header">SERVICIOS</li>
-
-                        <li class="nav-item has-treeview">
-                            <a href="#" class="nav-link">
-                                <i class="nav-icon fas fa-search"></i>
-                                <p>
-                                    Rastreo de Solicitud
-                                    <i class="fas fa-angle-left right"></i>
-                                    <span class="badge badge-info right">6</span>
-                                </p>
-                            </a>
-                            <ul class="nav nav-treeview">
-                                <li class="nav-item">
-                                    <a href="pages/layout/top-nav.html" class="nav-link">
-                                        <i class="far fa-file nav-icon"></i>
-                                        <p>Nueva Hoja de Ruta</p>
-                                    </a>
-                                </li>
-                                <li class="nav-item">
-                                    <a href="pages/layout/top-nav-sidebar.html" class="nav-link">
-                                       
-                                        <i class="fas fa-dolly nav-icon"></i>
-                                        <p>Derivar hoja de ruta</p>
-                                    </a>
-                                </li>
-                                <li class="nav-item">
-                                    <a href="pages/layout/boxed.html" class="nav-link">
-                                        <i class="fas fa-search nav-icon"></i>
-                                        <p>Busqueda de Solicitud</p>
-                                    </a>
-                                </li>
-                            </ul>
-                        </li>
-                        <li class="nav-item has-treeview">
-                            <a href="#" class="nav-link">
-                                <i class="nav-icon fas fa-box-open"></i>
-                                <p>
-                                    Activos Fungibles
-                                    <i class="right fas fa-angle-left"></i>
-                                </p>
-                            </a>
-                            <ul class="nav nav-treeview">
-                                <li class="nav-item">
-                                    <a href="pages/charts/chartjs.html" class="nav-link">
-                                        <i class="fas fa-shopping-cart nav-icon"></i>
-                                        <p>Administracion de Productos</p>
-                                    </a>
-                                </li>
-                                <li class="nav-item">
-                                    <a href="pages/charts/flot.html" class="nav-link">
-                                        <i class="fas fa-cart-plus nav-icon"></i>
-                                        <p>Reserva de Productos</p>
-                                    </a>
-                                </li>
-                                <li class="nav-item">
-                                    <a href="pages/charts/inline.html" class="nav-link">
-                                        <i class="fas fa-cart-arrow-down nav-icon"></i>
-                                        <p>Entrega de Productos</p>
-                                    </a>
-                                </li>
-                                <li class="nav-item">
-                                    <a href="pages/charts/inline.html" class="nav-link">
-                                        <i class="fas fa-book-reader nav-icon"></i>
-                                        <p>Reportes</p>
-                                    </a>
-                                </li>
-                            </ul>
-                        </li>
 
                         <li class="nav-header">SISTEMA</li>
 
-                        <li class="nav-item has-treeview">
-                            <a href="#" class="nav-link">
-
-                                <i class="nav-icon fas fa-cogs"></i>
-                                <p>
-                                    Configuracion
-                                    <i class="fas fa-angle-left right"></i>
-                                </p>
-                            </a>
-                            <ul class="nav nav-treeview">
-                                <li class="nav-item">
-                                    <a href="pages/UI/general.html" class="nav-link">
-                                        <i class="far fa-circle nav-icon"></i>
-                                        <p>Administrar cuentas</p>
-                                    </a>
-                                </li>
-                            </ul>
-                        </li>
+                        
                         <li class="nav-item has-treeview">
                             <a href="#" class="nav-link">
                                 <i class="nav-icon fas fa-edit"></i>
@@ -297,15 +207,7 @@
                                 </p>
                             </a>
                         </li>
-                        <li class="nav-item has-treeview">
-                            <a href="#" class="nav-link">
-                                <i class="nav-icon fas fa-door-open"></i>
-                                <p>
-                                    Salir                                    
-                                </p>
-                            </a>
-                            
-                        </li>
+
                     </ul>
 
                 </nav>
@@ -393,6 +295,8 @@
     <script type="text/javascript" src="{{asset('MDB/js/mdb.min.js')}}"></script>
     <!-- Your custom scripts (optional) -->
     <script type="text/javascript"></script>
+
+    <script src="js/scripts.js"></script>
 </body>
 
 </html>

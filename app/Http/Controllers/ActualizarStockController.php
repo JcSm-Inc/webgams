@@ -2,8 +2,12 @@
 
 namespace App\Http\Controllers;
 
-use App\actualizarStock;
+use App\Models\actualizarStock;
+use App\Models\Productos;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Http\Request;
+use App\Http\Requests\ValidarStock;
+use Illuminate\Support\Facades\Auth;
 
 class ActualizarStockController extends Controller
 {
@@ -12,9 +16,13 @@ class ActualizarStockController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
-        //
+        $id = $request->get('buscar');
+            $productos = Productos::Nombres($id)->paginate(10);
+
+            return view('actualizarstock/index', ['productos' => $productos]); 
+            //response(compact('productos'));
     }
 
     /**
@@ -22,9 +30,9 @@ class ActualizarStockController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function create(Productos $producto)
     {
-        //
+        return view('actualizarstock/create',['producto'=>$producto]);
     }
 
     /**
@@ -33,9 +41,29 @@ class ActualizarStockController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(ValidarStock $request)
     {
-        //
+        $producto=$request->session()->get('producto');
+        $cantidad=$request['CANTIDAD'];
+        $actualizarStock = actualizarStock::create(
+            [
+                'idPRODUCTO' =>$producto->id,
+                
+                'idUSER'=> Auth::user()->id,
+                'CANTIDAD' => $cantidad, 
+                'FECHA' => now(), 
+                'NRO_DOCUMENTO' => $request['NRO_DOCUMENTO'],
+                'PU' => $request['PU'],
+                'PROVEEDOR' => $request['PROVEEDOR']
+              
+
+            ]
+        );
+        $producto->update([
+            'STOCK' => $producto->STOCK+$cantidad,
+        ]);
+        return redirect()->route('actualizarstock.edit', $actualizarStock->id)
+            ->with('info', 'Producto guardado con exito'); 
     }
 
     /**
@@ -44,9 +72,12 @@ class ActualizarStockController extends Controller
      * @param  \App\actualizarStock  $actualizarStock
      * @return \Illuminate\Http\Response
      */
-    public function show(actualizarStock $actualizarStock)
+    public function show(Productos $producto)
     {
-        //
+        $id=$producto->id;
+        $actualizaciones  = actualizarStock::where('idPRODUCTO',$id)->GET();
+        return view('actualizarstock/show', ['producto'=>$producto,'actualizaciones'=>$actualizaciones]);
+        //return view('productos.show', compact('producto'));
     }
 
     /**
@@ -57,7 +88,7 @@ class ActualizarStockController extends Controller
      */
     public function edit(actualizarStock $actualizarStock)
     {
-        //
+        return view('actualizarstock.edit', compact('actualizarStock'));
     }
 
     /**

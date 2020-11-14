@@ -9,6 +9,7 @@ use Illuminate\Foundation\Auth\RegistersUsers;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
 use PhpParser\Node\Stmt\Else_;
+use Illuminate\Support\Facades\Storage;
 
 class RegisterController extends Controller
 {
@@ -48,7 +49,7 @@ class RegisterController extends Controller
      * @param  array  $data
      * @return \Illuminate\Contracts\Validation\Validator
      */
-    protected function validator(array $data)
+    protected function validator(Request $data)
     {
         return Validator::make($data, [
             'nick' => ['required','unique:users', 'string', 'max:255'],
@@ -63,23 +64,26 @@ class RegisterController extends Controller
         ]);
     }
 
-    protected function create(array $data)
+    protected function create(Request $data)
     {
         if($data['customRadio']=='si'){ $genero=true;}
         else  {$genero=false;}
         $ci=$data['CI'];
         $originalDate = $data['FECHANACIMIENTO'];
         $fecha = date("Y-m-d", strtotime($originalDate));
-        $foto='';
-        if(isset( $data['FOTO']))  {
+        $foto=null;
+        if(isset( $data['FOTO'])==true)  {
+            /*
             $foto= $data['FOTO'];
             $ext = pathinfo($foto, PATHINFO_EXTENSION);
             $ubicacion='./extras/img/users/'.$ci.'.'.$ext;
             copy($foto,$ubicacion);
             unlink($foto);
-            $foto=$ubicacion;  
+            $foto=$ubicacion;  */
+            $foto = $data->file('FOTO')->store('img/usuarios');
+            $foto = 'storage/' . $foto;
         }
-        else  $foto='none';
+       // else  $foto='none';
         /**/
 
         return User::create([

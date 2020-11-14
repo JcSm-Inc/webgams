@@ -19,6 +19,9 @@ class CreateActualizarStocksTable extends Migration
             $table->date('FECHA');
             $table->unsignedBigInteger('idPRODUCTO');
             $table->unsignedBigInteger('idUSER');
+            $table->string('NRO_DOCUMENTO', 20);
+            $table->double('PU');
+            $table->string('PROVEEDOR', 100);
             $table->timestamps();
         });
     }

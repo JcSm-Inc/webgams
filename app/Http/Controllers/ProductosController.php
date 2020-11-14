@@ -116,6 +116,13 @@ class ProductosController extends Controller
         return redirect()->route('productos.edit', $producto->id)
             ->with('info', 'Producto actualizado con exito');
     }
+        //-----------------ACTUALIZAR STOCK-----------------------------------------
+        public function actualizar_stock(Request $request)
+        {
+            $id = $request->get('buscar');
+            $productos = Productos::Nombres($id)->paginate(10);
+            return view('productos/index', ['productos' => $productos]); //response(compact('productos'));
+        }
     //------------------------ELIMINA UN PRODUCTO DEL REGISTRO-----------------------------
     public function destroy($id)
     {

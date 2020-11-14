@@ -5,6 +5,7 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <title>GAMS</title>
+    <link rel="shorcut icon" type="image/x-icon" href="{{asset(getenv('DIR_PUBLIC').'extras/img/aplicacion/ico_gams.ico')}}">
     <!-- Tell the browser to be responsive to screen width -->
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <!-- Font Awesome -->
@@ -29,6 +30,9 @@
     <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700" rel="stylesheet">
 
     <link rel="stylesheet" href="{{asset('MDB/css/mdb.min.css')}}" />
+
+    <link href="css/styles.css" rel="stylesheet" />
+
     <!-- Your custom styles (optional) 
     <link rel="stylesheet" href="MBD/css/style.css" />-->
 </head> 
@@ -184,37 +188,7 @@
 
                         <li class="nav-header">SERVICIOS</li>
 
-                        <li class="nav-item has-treeview">
-                            <a href="#" class="nav-link">
-                                <i class="nav-icon fas fa-search"></i>
-                                <p>
-                                    Rastreo de Solicitud
-                                    <i class="fas fa-angle-left right"></i>
-                                    <span class="badge badge-info right">6</span>
-                                </p>
-                            </a>
-                            <ul class="nav nav-treeview">
-                                <li class="nav-item">
-                                <a href="{{route('solicitud.create')}}" class="nav-link">
-                                        <i class="far fa-file nav-icon"></i>
-                                        <p>Nueva Hoja de Ruta</p>
-                                    </a>
-                                </li>
-                                <li class="nav-item">
-                                    <a href="pages/layout/top-nav-sidebar.html" class="nav-link">
-                                       
-                                        <i class="fas fa-dolly nav-icon"></i>
-                                        <p>Derivar hoja de ruta</p>
-                                    </a>
-                                </li>
-                                <li class="nav-item">
-                                    <a href="pages/layout/boxed.html" class="nav-link">
-                                        <i class="fas fa-search nav-icon"></i>
-                                        <p>Busqueda de Solicitud</p>
-                                    </a>
-                                </li>
-                            </ul>
-                        </li>
+                        
                         <li class="nav-item has-treeview">
                             <a href="#" class="nav-link">
                                 <i class="nav-icon fas fa-box-open"></i>
@@ -233,7 +207,14 @@
                                     </a>
                                 </li>
                                 @endcan
-
+                                @can('productos.edit')
+                                <li class="nav-item">
+                                    <a href="{{ route('actualizarstock.index')}}" class="nav-link">
+                                        <i class="fas fa-shopping-cart nav-icon"></i>
+                                        <p>Actualizar Stock</p>
+                                    </a>
+                                </li>
+                                @endcan
                                 
                                 <li class="nav-item">
                                 <a href="{{route('reserva.create')}}" class="nav-link">
@@ -272,24 +253,30 @@
                                 </p>
                             </a>
                             <ul class="nav nav-treeview">
+                            @can('roles.index')
                                 <li class="nav-item">
-                                    <a href="#" class="nav-link">
-                                        <i class="far fa-circle nav-icon"></i>
-                                        <p>Administrar cuentas</p>
+                                    <a href="{{ route('roles.index') }}" class="nav-link">
+                                        <i class="fas fa-list nav-icon"></i>
+                                        <p>Administrar Roles</p>
                                     </a>
                                 </li>
+                            @endcan
                             </ul>
+                            <ul class="nav nav-treeview">
+                            @can('users.index')
+                                <li class="nav-item">
+                                    <a href="{{ route('users.index') }}" class="nav-link">
+                                        <i class="fas fa-users-cog nav-icon"></i>
+                                        <p>Administrar Roles de Usuarios</p>
+                                    </a>
+                                </li>
+                            @endcan
+                            </ul>
+
                         </li>
+
                         <li class="nav-item has-treeview">
-                            <a href="#" class="nav-link">
-                                <i class="nav-icon fas fa-edit"></i>
-                                <p>
-                                    Registrar
-                                </p>
-                            </a>
-                        </li>
-                        <li class="nav-item has-treeview">
-                            <a href="#" class="nav-link">
+                            <a href="{{ route('logout') }}" class="nav-link">
                                 <i class="nav-icon fas fa-door-open"></i>
                                 <p>
                                     Salir                                    

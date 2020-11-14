@@ -1,5 +1,6 @@
 <?php
 
+use App\Models\actualizarStock;
 use Illuminate\Database\Seeder;
 
 class ActualizarStockSeeder extends Seeder
@@ -11,6 +12,6 @@ class ActualizarStockSeeder extends Seeder
      */
     public function run()
     {
-        //
+        factory(actualizarStock::class, 20)->create();
     }
 }
