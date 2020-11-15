@@ -55,7 +55,7 @@ Route::put('detallereserva/{detallereservas}', 'DetalleReservaController@update'
 
 Route::get('/home', 'HomeController@index')->name('home');
 
-Route::middleware(['auth'])->group(function () {
+Route:: (['auth'])->group(function () {
     //PRODUCTOS
     // crear reporte
     Route::get('productos/generar-pdf', 'ProductosController@productosPDF')->name('productos.generar-pdf')

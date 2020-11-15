@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\ValidarProducto;
 use App\Models\Productos;
+
 use Illuminate\Broadcasting\Channel;
 use Illuminate\Http\Request;
 use Illuminate\Mail\Message;
@@ -116,13 +117,13 @@ class ProductosController extends Controller
         return redirect()->route('productos.edit', $producto->id)
             ->with('info', 'Producto actualizado con exito');
     }
-        //-----------------ACTUALIZAR STOCK-----------------------------------------
-        public function actualizar_stock(Request $request)
-        {
-            $id = $request->get('buscar');
-            $productos = Productos::Nombres($id)->paginate(10);
-            return view('productos/index', ['productos' => $productos]); //response(compact('productos'));
-        }
+    //-----------------ACTUALIZAR STOCK-----------------------------------------
+    public function actualizar_stock(Request $request)
+    {
+        $id = $request->get('buscar');
+        $productos = Productos::Nombres($id)->paginate(10);
+        return view('productos/index', ['productos' => $productos]); //response(compact('productos'));
+    }
     //------------------------ELIMINA UN PRODUCTO DEL REGISTRO-----------------------------
     public function destroy($id)
     {

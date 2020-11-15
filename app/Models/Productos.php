@@ -2,6 +2,8 @@
 
 namespace App\Models;
 
+use App\Models\actualizarStock;
+
 use Illuminate\Database\Eloquent\Model;
 
 class Productos extends Model
@@ -99,5 +101,20 @@ class Productos extends Model
                 array_push($disponibles, $producto);
         }
         return $disponibles;
+    }
+    public function stockCantidadFecha($fecha)
+    {
+        $resultado = actualizarStock::where('fecha', '<', $fecha)->where('idPRODUCTO', '=', $this->id)->sum('CANTIDAD');
+        return $resultado;
+    }
+    public function stockPrecioFecha($fecha)
+    {
+        $resultado = actualizarStock::selectRaw('SUM(PU*CANTIDAD) as costo')->where('fecha', '<', $fecha)->where('idPRODUCTO', '=', $this->id)->value('costo');
+        return $resultado;
+    }
+    public function cantidadEntregado($fecha)
+    {
+        $resultado = actualizarStock::selectRaw('SUM(PU*CANTIDAD) as costo')->where('fecha', '<', $fecha)->where('idPRODUCTO', '=', $this->id)->value('costo');
+        return $resultado;
     }
 }
