@@ -32,6 +32,8 @@
     <link rel="stylesheet" href="{{asset('MDB/css/mdb.min.css')}}" />
 
     <link href="css/styles.css" rel="stylesheet" />
+    <link rel="stylesheet" href="css/main.css" />
+    <noscript><link rel="stylesheet" href="css/noscript.css" /></noscript>
 
     <!-- Your custom styles (optional) 
     <link rel="stylesheet" href="MBD/css/style.css" />-->
@@ -163,7 +165,7 @@
                                     </a>
                                 </li>
                                 <li class="nav-item">
-                                    <a href="./index2.html" class="nav-link">
+                                    <a href="{{route('mision_vision.index')}}" class="nav-link">
                                         <i class="fas fa-street-view nav-icon"></i>
                                         <p>Mision, Vision y Objetivos</p>
                                     </a>
