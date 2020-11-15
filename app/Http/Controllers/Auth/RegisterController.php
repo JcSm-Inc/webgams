@@ -1,6 +1,7 @@
 <?php
 
 namespace App\Http\Controllers\Auth;
+
 use App\Rules\AlfebetoEspPunto;
 use App\Http\Controllers\Controller;
 use App\Providers\RouteServiceProvider;
@@ -49,30 +50,46 @@ class RegisterController extends Controller
      * @param  array  $data
      * @return \Illuminate\Contracts\Validation\Validator
      */
+
     protected function validator(Request $data)
     {
         return Validator::make($data, [
-            'nick' => ['required','unique:users', 'string', 'max:255'],
+            'nick' => ['required', 'unique:users', 'string', 'max:255'],
             'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
             'password' => ['required', 'string', 'min:8', 'confirmed'],
-            'CI'        =>'unique:users|min:6|numeric',
-            'NOMBRES'   =>['required',new AlfebetoEspPunto],
-            'APELLIDOS' =>['required',new AlfebetoEspPunto],
-            'FECHANACIMIENTO'=>'required|date',
-            //'FOTO'      =>'nullable|mimes:jpeg,bmp,png',
-            //'GENERO'    =>'boolean|required',
+            'CI'        => 'unique:users|min:6|numeric',
+            'NOMBRES'   => ['required'],
+            'APELLIDOS' => ['required'],
+            'FECHANACIMIENTO' => 'required|date',
+            'FOTO'      => 'nullable|mimes:jpeg,bmp,png',
+            'GENERO'    => 'boolean|required',
         ]);
     }
 
     protected function create(Request $data)
     {
-        if($data['customRadio']=='si'){ $genero=true;}
-        else  {$genero=false;}
-        $ci=$data['CI'];
+        /*  $data->validate([
+            'nick' => ['required', 'unique:users', 'string', 'max:255'],
+            'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
+            'password' => ['required', 'string', 'min:8', 'confirmed'],
+            'CI'        => 'unique:users|min:6|numeric',
+            'NOMBRES'   => ['required'],
+            'APELLIDOS' => ['required'],
+            'FECHANACIMIENTO' => 'required|date',
+            'FOTO'      => 'nullable|mimes:jpeg,bmp,png',
+            'GENERO'    => 'boolean|required',
+        ]);*/
+
+        if ($data['customRadio'] == 'si') {
+            $genero = true;
+        } else {
+            $genero = false;
+        }
+        $ci = $data['CI'];
         $originalDate = $data['FECHANACIMIENTO'];
         $fecha = date("Y-m-d", strtotime($originalDate));
-        $foto=null;
-        if(isset( $data['FOTO'])==true)  {
+        $foto = null;
+        if (isset($data['FOTO']) == true) {
             /*
             $foto= $data['FOTO'];
             $ext = pathinfo($foto, PATHINFO_EXTENSION);
@@ -83,20 +100,20 @@ class RegisterController extends Controller
             $foto = $data->file('FOTO')->store('img/usuarios');
             $foto = 'storage/' . $foto;
         }
-       // else  $foto='none';
+        // else  $foto='none';
         /**/
 
         return User::create([
             'nick' => $data['nick'],
-            'email' => strtolower ( $data['email']),
+            'email' => strtolower($data['email']),
             'password' => Hash::make($data['password']),
-            'CI'        =>$ci,
-            'NOMBRES'   =>strtoupper($data['NOMBRES']),
-            'APELLIDOS' =>strtoupper($data['APELLIDOS']),
-            'FECHANACIMIENTO'=>$fecha,
-            'FOTO'      =>$foto,
+            'CI'        => $ci,
+            'NOMBRES'   => strtoupper($data['NOMBRES']),
+            'APELLIDOS' => strtoupper($data['APELLIDOS']),
+            'FECHANACIMIENTO' => $fecha,
+            'FOTO'      => $foto,
             'GENERO'    =>  $genero,
-            'TIPO'      =>'USUARIO EXTERNO'//$data['TIPO']
+            'TIPO'      => 'USUARIO EXTERNO' //$data['TIPO']
         ]);
     }
 }
