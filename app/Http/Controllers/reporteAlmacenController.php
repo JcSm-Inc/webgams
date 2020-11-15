@@ -11,7 +11,7 @@ use App\Models\User;
 use App\Models\DetalleEntrega;
 
 
-class reporte_almacen extends Controller
+class reporteAlmacenController extends Controller
 {
     //-----------------MUESTRA TODOS LOS PRODUCTOS-----------------------------------------
     public function index()
@@ -20,6 +20,6 @@ class reporte_almacen extends Controller
         $reporte1 = Productos::select('CODPROD', 'NOMBRE')->get();
         $reporte2 = actualizarStock::where('fecha', '<', $fecha);
         $productos = Productos::paginate(10);
-        return view('productos/index', ['productos' => $productos]); //response(compact('productos'));
+        return view('reporte_almacen/index', ['productos' => $productos]); //response(compact('productos'));
     }
 }

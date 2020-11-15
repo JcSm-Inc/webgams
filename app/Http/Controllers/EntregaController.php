@@ -68,7 +68,7 @@ class EntregaController extends Controller
                 ]);
                 array_push($detalles, $detalleEntrega);
                 $Producto = Productos::find($item->idPRODUCTOS);
-                $Producto->update(['STOCK' => $Producto->STOCK - $cantidad]);
+                $Producto->update(['STOCK' => ($Producto->STOCK - $cantidad)]);
             }
         }
         $pdf = PDF::loadView('entregaProductos/pdf/entregaproductos', compact('entrega', 'detalles'))->setPaper('letter');

@@ -17,7 +17,7 @@ class AuthServiceProvider extends ServiceProvider
     public function register()
     {
         $this->registerAuthenticator();
-        $this->registerUserResolver();
+        $this->Resolver();
         $this->registerAccessGate();
         $this->registerRequestRebindHandler();
         $this->registerEventRebindHandler();
@@ -49,10 +49,11 @@ class AuthServiceProvider extends ServiceProvider
      *
      * @return void
      */
-    protected function registerUserResolver()
+    protected function Resolver()
     {
         $this->app->bind(
-            AuthenticatableContract::class, function ($app) {
+            AuthenticatableContract::class,
+            function ($app) {
                 return call_user_func($app['auth']->userResolver());
             }
         );
@@ -94,7 +95,7 @@ class AuthServiceProvider extends ServiceProvider
     protected function registerEventRebindHandler()
     {
         $this->app->rebinding('events', function ($app, $dispatcher) {
-            if (! $app->resolved('auth')) {
+            if (!$app->resolved('auth')) {
                 return;
             }
 

@@ -34,6 +34,10 @@ Route::get('productos/indexCategorias', 'ProductosController@indexCategorias')->
 Route::get('productos/buscar', 'ProductosController@buscar')->name('productos.buscar');
 
 
+Route::get('reporte_almacen/', 'reporteAlmacenController@index')->name('reporte_almacen.index');
+
+
+
 
 Route::get('reserva/', 'ReservaController@index')->name('reserva.index');
 Route::get('reserva/create', 'ReservaController@create')->name('reserva.create');

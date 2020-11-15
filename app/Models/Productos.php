@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use App\Models\DetalleEntrega;
 use App\Models\actualizarStock;
 
 use Illuminate\Database\Eloquent\Model;
@@ -102,19 +103,22 @@ class Productos extends Model
         }
         return $disponibles;
     }
-    public function stockCantidadFecha($fecha)
+    public function stockCantidadFecha($fecha, $operador)
     {
-        $resultado = actualizarStock::where('fecha', '<', $fecha)->where('idPRODUCTO', '=', $this->id)->sum('CANTIDAD');
+        $resultado = actualizarStock::where('fecha', $operador, $fecha)->where('idPRODUCTO', '=', $this->id)->sum('CANTIDAD');
         return $resultado;
     }
-    public function stockPrecioFecha($fecha)
+    public function stockPrecioFecha($fecha, $operador)
     {
-        $resultado = actualizarStock::selectRaw('SUM(PU*CANTIDAD) as costo')->where('fecha', '<', $fecha)->where('idPRODUCTO', '=', $this->id)->value('costo');
+        $resultado = actualizarStock::selectRaw('SUM(PU*CANTIDAD) as costo')->where('fecha', $operador, $fecha)->where('idPRODUCTO', '=', $this->id)->value('costo');
         return $resultado;
     }
-    public function cantidadEntregado($fecha)
+    public function cantidadEntregado($fecha, $operador)
     {
-        $resultado = actualizarStock::selectRaw('SUM(PU*CANTIDAD) as costo')->where('fecha', '<', $fecha)->where('idPRODUCTO', '=', $this->id)->value('costo');
+        $resultado = DetalleEntrega::selectRaw('SUM(CANTIDAD) as costo')
+            ->join('entrega', 'idENTREGA', '=', 'entrega.id')
+            ->where('entrega.FECHAENTREGA', $operador, $fecha)
+            ->where('idPRODUCTOS', '=', $this->id)->value('costo');
         return $resultado;
     }
 }

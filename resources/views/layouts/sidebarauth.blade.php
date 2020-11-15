@@ -233,7 +233,7 @@
 
 
                                 <li class="nav-item">
-                                    <a href="#" class="nav-link">
+                                    <a href="{{route('reporte_almacen.index')}}" class="nav-link">
                                         <i class="fas fa-book-reader nav-icon"></i>
                                         <p>Reportes</p>
                                     </a>
