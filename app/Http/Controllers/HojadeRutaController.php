@@ -14,7 +14,6 @@ class HojadeRutaController extends Controller
      */
     public function index()
     {
-        //
     }
 
     /**
