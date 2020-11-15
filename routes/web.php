@@ -59,6 +59,12 @@ Route::put('detallereserva/{detallereservas}', 'DetalleReservaController@update'
 
 Route::get('/home', 'HomeController@index')->name('home');
 
+Route::get('mision_vision/', 'InformacionController@misionvision')->name('mision_vision.index');
+
+
+
+
+
 Route::middleware(['auth'])->group(function () {
     //PRODUCTOS
     // crear reporte

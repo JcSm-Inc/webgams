@@ -12,6 +12,6 @@ class PersonalDePlantaSeeder extends Seeder
      */
     public function run()
     {
-        factory(Personal_de_Planta::class, 10)->create();
+        factory(Personal_de_Planta::class, 20)->create();
     }
 }
