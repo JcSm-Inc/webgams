@@ -7,10 +7,10 @@
             <div class="col-md-12">
                 <div class="card">
                     <div class="card-header">
-                        Productos
+                        RESUMEN DE CONSOLIDADO POR PRODUCTO
                             @can('productos.create')
-                                <a href="{{route('productos.create')}}" class="btn btn-sm btn-primary pull-right-align">
-                                    Crear
+                                <a href="{{route('reporte_almacen.consolidadoProducto')}}" class="btn btn-sm btn-primary pull-right-align">
+                                    <i class="fas fa-print">Imprimir</i>
                                 </a>
                             @endcan
                     </div>
@@ -19,16 +19,28 @@
                         <table class="table table-striped table-hover">
                             <thead>
                                 <tr>
-                                    <th width="10px">
-                                        Imagen
+                                    <th  rowspan="2" width="10px">
+                                        IMAGEN
                                     </th>
-                                    <th width="10px"> CODPROD </th>     
-                                    <th>NOMBRE</th>
-                                    <th>UNIDAD</th>
-                                    <th>INVENTARIO INICIAL</th>
-                                    <th>INGRESOS</th>
-                                    <th>SALIDAS</th>
+                                    <th  rowspan="2" width="10px"> CODPROD </th>     
+                                    <th rowspan="2">NOMBRE</th>
+                                    <th  rowspan="2">UNIDAD</th>
+                                    <th colspan="2">INVENTARIO INICIAL</th>
+                                    <th colspan="2">INGRESOS</th>
+                                    <th colspan="2">SALIDAS</th>
                                     <th>STOCK</th>
+                                    <th colspan="3">&nbsp;</th>
+                                </tr>
+                                <tr>
+                                    
+                                    <th>UNID.</th>
+                                    <th>S/.</th>
+                                    <th>UNID.</th>
+                                    <th>S/.</th>
+                                    <th>UNID.</th>
+                                    <th>S/.</th>
+                                    <th>UNID.</th>
+                                    <th>S/.</th>
                                     <th colspan="3">&nbsp;</th>
                                 </tr>
                             </thead>
@@ -42,9 +54,13 @@
                                        <td>{{$producto->NOMBRE}}</td>
                                        <td>{{$producto->UNIDAD}}</td>
                                        <td>{{$producto->stockCantidadFecha('2019/12/31','<')-$producto->cantidadEntregado('2019/12/31','<')}}</td>
+                                       <td>{{$producto->stockPrecioFecha('2019/12/31','<')-$producto->stockPrecioEntregadoPeriodo('2019/12/31')}}</td>
                                        <td>{{$producto->stockCantidadFecha(now(),'<')-$producto->stockCantidadFecha('2019/12/31','<')}}</td>
+                                       <td>{{$producto->stockPrecioFecha(now(),'<')-$producto->stockPrecioFecha('2019/12/31','<')}}</td>
                                        <td>{{$producto->cantidadEntregado(now(),'<')-$producto->cantidadEntregado('2019/12/31','<')}}</td>
+                                       <td>{{$producto->stockPrecioEntregadoPeriodo(now())-$producto->stockPrecioEntregadoPeriodo('2019/12/31')}}</td>
                                        <td>{{$producto->STOCK}}</td>
+                                       <td>{{$producto->stockPrecioFecha(now(),'<')-$producto->stockPrecioEntregadoPeriodo(now())}}</td>
                                     </tr>
                                 @endforeach
                             </tbody>

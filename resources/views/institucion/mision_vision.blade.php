@@ -43,19 +43,19 @@
 							<h2>OBJETIVO</h2>
 							<p> ENTRE LOS OBJETIVOS DE GESTlON SE EJECUTARON SEGÚN PROGRAMAS ESTRUCTURADAS POR EL MINISTERIO DE ECONOMIA Y FINANZAS PUBLICAS LAS CUALES SE  DETALLAN:
 
-								<UL>> PROMOCION Y FOMENTO A LA PRODUCCION AGROPECUARIA</UL>
-								<UL>> SANEMIENTO BÁSICO</UL>
-								<UL>> CONSTRUCCIÓN Y MANTENIMIENTO DE
+								<UL> PROMOCION Y FOMENTO A LA PRODUCCION AGROPECUARIA</UL>
+								<UL> SANEMIENTO BÁSICO</UL>
+								<UL> CONSTRUCCIÓN Y MANTENIMIENTO DE
 								MICRORIEGOS</UL>
-								<UL>> ALUMBRADO  PÚBLICO</UL>
-								<UL>> INSFRAESTRUCTURA URBANO Y RURAL</UL>
-								<UL>> CONSTRUCCIÓN Y MANTENIMIENTO DE CAMINOS
+								<UL> ALUMBRADO  PÚBLICO</UL>
+								<UL> INSFRAESTRUCTURA URBANO Y RURAL</UL>
+								<UL> CONSTRUCCIÓN Y MANTENIMIENTO DE CAMINOS
 								VECINALES</UL>
-								<UL>> SERVICIOS DE CATASTRO URBANO Y RURA</UL>
-								<UL>> SERVICIOS DE SALUD</UL>
-								<UL>> SERVICIOS DE EDUCACIÓN</UL>
-								<UL>> DESARROLLO Y PROMOCION DEL DEPORTE</UL>
-								<UL>> DESARROLLO DE LA CULTURA </UL>                            
+								<UL> SERVICIOS DE CATASTRO URBANO Y RURA</UL>
+								<UL> SERVICIOS DE SALUD</UL>
+								<UL> SERVICIOS DE EDUCACIÓN</UL>
+								<UL> DESARROLLO Y PROMOCION DEL DEPORTE</UL>
+								<UL> DESARROLLO DE LA CULTURA </UL>                            
 								</p>
 							<ul class="actions stacked">
 								<li><a href="#" class="button">vision</a></li>
@@ -64,5 +64,6 @@
 						<div class="image">
 							<img src="/extras/page_image/2.jpg" alt="" />
 						</div>
+					</section>
 </section>
 @endsection

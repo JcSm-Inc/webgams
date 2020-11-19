@@ -35,8 +35,10 @@ Route::get('productos/buscar', 'ProductosController@buscar')->name('productos.bu
 
 
 Route::get('reporte_almacen/', 'reporteAlmacenController@index')->name('reporte_almacen.index');
-
-
+Route::get('reporte_almacen/consolidadoProducto', 'reporteAlmacenController@imprimirConsolidadoProductos')->name('reporte_almacen.consolidadoProducto');
+Route::get('reporte_almacen/saldoExistenciasProducto', 'reporteAlmacenController@saldoExistenciasProducto')->name('reporte_almacen.saldoExistenciasProducto');
+Route::get('reporte_almacen/ingresoPeriodoFechas/{producto}', 'reporteAlmacenController@ingresoPeriodoFechas')->name('reporte_almacen.ingresoPeriodoFechas');
+Route::get('reporte_almacen/imprimirIngresoPeriodoFechas', 'reporteAlmacenController@imprimirIngresoPeriodoFechas')->name('reporte_almacen.imprimirIngresoPeriodoFechas');
 
 
 Route::get('reserva/', 'ReservaController@index')->name('reserva.index');

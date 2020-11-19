@@ -79,7 +79,8 @@ class ProductosController extends Controller
                 'CODPROD' => $cod,
                 'NOMBRE' => $request['NOMBRE'],
                 'DESCRIPCION' => $request['DESCRIPCION'],
-                'STOCK' => $request['STOCK'],
+                'UNIDAD' => $request['UNIDAD'],
+                'STOCK' => '0',
                 'FOTO' => $foto,
                 'TIPO' => $request['groupOfDefaultRadios']
 

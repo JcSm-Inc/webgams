@@ -19,10 +19,10 @@ class ActualizarStockController extends Controller
     public function index(Request $request)
     {
         $id = $request->get('buscar');
-            $productos = Productos::Nombres($id)->paginate(10);
+        $productos = Productos::Nombres($id)->paginate(10);
 
-            return view('actualizarstock/index', ['productos' => $productos]); 
-            //response(compact('productos'));
+        return view('actualizarstock/index', ['productos' => $productos]);
+        //response(compact('productos'));
     }
 
     /**
@@ -32,7 +32,7 @@ class ActualizarStockController extends Controller
      */
     public function create(Productos $producto)
     {
-        return view('actualizarstock/create',['producto'=>$producto]);
+        return view('actualizarstock/create', ['producto' => $producto]);
     }
 
     /**
@@ -43,27 +43,27 @@ class ActualizarStockController extends Controller
      */
     public function store(ValidarStock $request)
     {
-        $producto=$request->session()->get('producto');
-        $cantidad=$request['CANTIDAD'];
+        $producto = $request->session()->get('producto');
+        $cantidad = $request['CANTIDAD'];
         $actualizarStock = actualizarStock::create(
             [
-                'idPRODUCTO' =>$producto->id,
-                
-                'idUSER'=> Auth::user()->id,
-                'CANTIDAD' => $cantidad, 
-                'FECHA' => now(), 
+                'idPRODUCTO' => $producto->id,
+
+                'idUSER' => Auth::user()->id,
+                'CANTIDAD' => $cantidad,
+                'FECHA' => now(),
                 'NRO_DOCUMENTO' => $request['NRO_DOCUMENTO'],
                 'PU' => $request['PU'],
                 'PROVEEDOR' => $request['PROVEEDOR']
-              
+
 
             ]
         );
         $producto->update([
-            'STOCK' => $producto->STOCK+$cantidad,
+            'STOCK' => ($producto->STOCK + $cantidad),
         ]);
         return redirect()->route('actualizarstock.edit', $actualizarStock->id)
-            ->with('info', 'Producto guardado con exito'); 
+            ->with('info', 'Producto guardado con exito');
     }
 
     /**
@@ -74,9 +74,9 @@ class ActualizarStockController extends Controller
      */
     public function show(Productos $producto)
     {
-        $id=$producto->id;
-        $actualizaciones  = actualizarStock::where('idPRODUCTO',$id)->GET();
-        return view('actualizarstock/show', ['producto'=>$producto,'actualizaciones'=>$actualizaciones]);
+        $id = $producto->id;
+        $actualizaciones  = actualizarStock::where('idPRODUCTO', $id)->GET();
+        return view('actualizarstock/show', ['producto' => $producto, 'actualizaciones' => $actualizaciones]);
         //return view('productos.show', compact('producto'));
     }
 

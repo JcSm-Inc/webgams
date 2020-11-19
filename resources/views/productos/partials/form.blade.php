@@ -13,11 +13,12 @@
     {{ Form::text('DESCRIPCION',null, ['id'=>'DESCRIPCION','class'=>'form-control']) }}
     {{ Form::label('inputMDEx','Descripcion') }}
 </div>
+
 <div class='md-form'>
-    {{ Form::text('STOCK',null, ['id'=>'STOCK','class'=>'form-control'.( $errors->has('STOCK') ? ' is-invalid' : '' )]) }}
-    {{ Form::label('inputMDEx','Cantidad') }}
+    {{ Form::text('UNIDAD',null, ['id'=>'UNIDAD','class'=>'form-control'.( $errors->has('UNIDAD') ? ' is-invalid' : '' )]) }}
+    {{ Form::label('inputMDEx','Unidad') }}
     <div class="invalid-feedback">
-        @error('STOCK')
+        @error('UNIDAD')
             {{ $message }}
         @enderror
     </div>

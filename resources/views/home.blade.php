@@ -9,39 +9,7 @@
                 
             </div>
             </header>
-            <div class="container">
-                <div class="text-center">
-                    <h2 class="section-heading text-uppercase">PLAN OPERATIVO ANUAL</h2>
-                   
-                </div>
-                <div class="row text-center">
-                    <div class="col-md-4">
-                        <span class="fa-stack fa-4x">
-                            <i class="fas fa-circle fa-stack-2x text-primary"></i>
-                            <i class="fas fa-shopping-cart fa-stack-1x fa-inverse"></i>
-                        </span>
-                        <h4 class="my-3">MISION</h4>
-                        <p class="text-muted">La misión del gobierno autonomo municipal de soracachi desarrollar acciones, crea oportunidades, une esfuerzos e impulsa la cordinación interinstitucional con el objetivo de promover el desarrollo  económico-productivo, del desarrollo humano, la conservación de los recursos naturales, del medio ambiente y la buena administración municipal</p>
-                    </div>
-                    <div class="col-md-4">
-                        <span class="fa-stack fa-4x">
-                            <i class="fas fa-circle fa-stack-2x text-primary"></i>
-                            <i class="fas fa-laptop fa-stack-1x fa-inverse"></i>
-                        </span>
-                        <h4 class="my-3">VISION</h4>
-                        <p class="text-muted">La visión del Gobierno Autónomo Municipal  De Soracachi, es un municipio generador de un sistema productivo diversificado, ecológico y sostenible; con infraestructura productiva consolidada e integrada; con recursos humanos sanos y competitivos que aseguran sus ingresos, seguridad alimentaria y desarrollo de potencialidades rústicas y artesanales, preservando el medio ambiente y promoviendo la gobernabilidad</p>
-                    </div>
-                    <div class="col-md-4">
-                        <span class="fa-stack fa-4x">
-                            <i class="fas fa-circle fa-stack-2x text-primary"></i>
-                            <i class="fas fa-lock fa-stack-1x fa-inverse"></i>
-                        </span>
-                        <h4 class="my-3">OBJETIVO</h4>
-                        <p class="text-muted">Objetivo es Promover el fortalecimiento del sistema productivo del municipio, impulsando el desarrollo de actividades productivas, incrementando sus niveles de producción y productividad y el fortalecimiento de las cadenas productivas, para mejorar los ingresos de las familias</p>
-                    </div>
-                </div>
-            </div>
-        </section>
+</section>
         <!-- Portfolio Grid-->
         <section class="page-section bg-light" id="portfolio">
             <div class="container">

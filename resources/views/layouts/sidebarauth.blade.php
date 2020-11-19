@@ -32,7 +32,7 @@
     <link rel="stylesheet" href="{{asset('MDB/css/mdb.min.css')}}" />
 
     <link href="css/styles.css" rel="stylesheet" />
-    <link rel="stylesheet" href="css/main.css" />
+    <link rel="stylesheet" href="css/mains.css" />
     <noscript><link rel="stylesheet" href="css/noscript.css" /></noscript>
 
     <!-- Your custom styles (optional) 
@@ -51,27 +51,14 @@
                     <a class="nav-link" data-widget="pushmenu" href="#" role="button"><i class="fas fa-bars"></i></a>
                 </li>
                 <li class="nav-item d-none d-sm-inline-block">
-                    <a href="#" class="nav-link">Inicio</a>
+                <a href="{{route('home')}}" class="nav-link">Inicio</a>
                 </li>
                 <li class="nav-item d-none d-sm-inline-block">
                     <a href="#" class="nav-link">Contactos</a>
                 </li>
             </ul>
 
-            <!-- FORMULARIO BUSCAR 
-            <form class="form-inline ml-2"> -->
-                {!! Form::Open(['route'=>'productos.index','method'=>'GET','class'=>'form-inline ml-2'])!!}
-                <div class="input-group input-group-sm">
-                    {!! Form::text('buscar','', ['class'=>'form-control','placeholder'=>'Busqueda']) !!}
-                    <!--<input class="form-control form-control-navbar" type="search" placeholder="Buscar" aria-label="Search">-->
-                    <div class="input-group-append">
-                        <button class="btn btn-navbar" type="submit">
-            <i class="fas fa-search"></i>
-          </button>
-                    </div>
-                </div>
-            {!! Form::close() !!}
-         <!--   </form>-->
+
         @auth
             
             <!-- NAVEGADOR DE LINKS DERECHO -->
@@ -213,7 +200,7 @@
                                 <li class="nav-item">
                                     <a href="{{ route('actualizarstock.index')}}" class="nav-link">
                                         <i class="fas fa-shopping-cart nav-icon"></i>
-                                        <p>Actualizar Stock</p>
+                                        <p>Ingreso de Producto</p>
                                     </a>
                                 </li>
                                 @endcan
@@ -235,7 +222,7 @@
 
 
                                 <li class="nav-item">
-                                    <a href="{{route('reporte_almacen.index')}}" class="nav-link">
+                                    <a href="{{route('reporte_almacen.saldoExistenciasProducto')}}" class="nav-link">
                                         <i class="fas fa-book-reader nav-icon"></i>
                                         <p>Reportes</p>
                                     </a>
@@ -378,7 +365,7 @@
         </div>
         <!-- /.content-wrapper -->
         <footer class="main-footer">
-            <strong>Copyright &copy; 2020 <a href="#">Soft-JC-SMM</a>.</strong> Todos los derechos reservados.
+            <strong>Copyright &copy; 2020 <a href="#">Soft-SMM</a>.</strong> Todos los derechos reservados.
             <div class="float-right d-none d-sm-inline-block">
                 <b>Version</b> 1.0.0
             </div>

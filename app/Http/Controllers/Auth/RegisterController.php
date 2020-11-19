@@ -6,6 +6,7 @@ use App\Rules\AlfebetoEspPunto;
 use App\Http\Controllers\Controller;
 use App\Providers\RouteServiceProvider;
 use App\Models\User;
+use GuzzleHttp\Psr7\Request;
 use Illuminate\Foundation\Auth\RegistersUsers;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
@@ -51,35 +52,24 @@ class RegisterController extends Controller
      * @return \Illuminate\Contracts\Validation\Validator
      */
 
-    protected function validator(Request $data)
+    protected function validator(array $data)
     {
         return Validator::make($data, [
-            'nick' => ['required', 'unique:users', 'string', 'max:255'],
-            'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
-            'password' => ['required', 'string', 'min:8', 'confirmed'],
+            'nick' => 'required|unique:users|string|max:255',
+            'email' => 'required|string|email|max:255|unique:users',
+            'password' => 'required|string|min:8|confirmed',
             'CI'        => 'unique:users|min:6|numeric',
-            'NOMBRES'   => ['required'],
-            'APELLIDOS' => ['required'],
+            'NOMBRES'   => 'required',
+            'APELLIDOS' => 'required',
             'FECHANACIMIENTO' => 'required|date',
             'FOTO'      => 'nullable|mimes:jpeg,bmp,png',
-            'GENERO'    => 'boolean|required',
+            //'GENERO'    => 'boolean|required',
         ]);
     }
 
-    protected function create(Request $data)
+    protected function create(array $data)
     {
-        /*  $data->validate([
-            'nick' => ['required', 'unique:users', 'string', 'max:255'],
-            'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
-            'password' => ['required', 'string', 'min:8', 'confirmed'],
-            'CI'        => 'unique:users|min:6|numeric',
-            'NOMBRES'   => ['required'],
-            'APELLIDOS' => ['required'],
-            'FECHANACIMIENTO' => 'required|date',
-            'FOTO'      => 'nullable|mimes:jpeg,bmp,png',
-            'GENERO'    => 'boolean|required',
-        ]);*/
-
+        $request = app('request');
         if ($data['customRadio'] == 'si') {
             $genero = true;
         } else {
@@ -89,15 +79,15 @@ class RegisterController extends Controller
         $originalDate = $data['FECHANACIMIENTO'];
         $fecha = date("Y-m-d", strtotime($originalDate));
         $foto = null;
-        if (isset($data['FOTO']) == true) {
+        if (isset($request['FOTO']) == true) {
             /*
-            $foto= $data['FOTO'];
+            $foto= $request['FOTO'];
             $ext = pathinfo($foto, PATHINFO_EXTENSION);
             $ubicacion='./extras/img/users/'.$ci.'.'.$ext;
             copy($foto,$ubicacion);
             unlink($foto);
             $foto=$ubicacion;  */
-            $foto = $data->file('FOTO')->store('img/usuarios');
+            $foto = $request->file('FOTO')->store('img/usuarios');
             $foto = 'storage/' . $foto;
         }
         // else  $foto='none';

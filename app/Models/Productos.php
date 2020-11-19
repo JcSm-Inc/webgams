@@ -16,7 +16,8 @@ class Productos extends Model
         'DESCRIPCION',
         'TIPO',
         'FOTO',
-        'STOCK'
+        'STOCK',
+        'UNIDAD'
     ];
     public function scopeNombres($query, $nombre)
     {
@@ -120,5 +121,28 @@ class Productos extends Model
             ->where('entrega.FECHAENTREGA', $operador, $fecha)
             ->where('idPRODUCTOS', '=', $this->id)->value('costo');
         return $resultado;
+    }
+    public function stockPrecioEntregadoPeriodo($fechafin)
+    {
+        $cantidadEntregado = DetalleEntrega::selectRaw('SUM(CANTIDAD) as costo')
+            ->join('entrega', 'idENTREGA', '=', 'entrega.id')
+            ->where('entrega.FECHAENTREGA', '<=', $fechafin)
+            ->where('idPRODUCTOS', '=', $this->id)->value('costo');
+        $itemsStock = actualizarStock::where('idPRODUCTO', '=', $this->id)->get();
+        $cont = 0;
+        $precio = 0;
+        $total = $cantidadEntregado;
+        foreach ($itemsStock as $item) {
+            if ($item->CANTIDAD <= $total) {
+                $precio = $precio + ($item->PU * $item->CANTIDAD);
+                $total = $total - $item->CANTIDAD;
+            } else {
+                if ($total > 0) {
+                    $precio = $precio + ($item->PU * $total);
+                    $total = 0;
+                }
+            }
+        }
+        return $precio;
     }
 }
