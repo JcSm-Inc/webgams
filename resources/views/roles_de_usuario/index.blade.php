@@ -13,16 +13,24 @@
                     <table class="table table-striped table-hover">
                         <thead>
                             <tr>
-                                <th width="10px">ID</th>
+                                <th width="10px">CI</th>
+                                <th width="10px">
+                                    Imagen
+                                </th>
                                 <th>Nombre</th>
+                                <th>Cargo</th>
                                 <th colspan="3">&nbsp;</th>
                             </tr>
                         </thead>
                         <tbody>
                             @foreach($users as $user)
                             <tr>
-                                <td>{{ $user->id }}</td>
+                                <td>{{ $user->CI }}</td>
+                                <td>
+                                    <img src="{{asset($user->FOTO)}}" alt="User Avatar" class="img-size-50 mr-3 img-circle ">
+                                </td>
                                 <td>{{ $user->NOMBRES.' '.$user->APELLIDOS }}</td>
+                                <td>{{ $user->personal_de_planta->CARGO }}</td>
                                 @can('users.show')
                                 <td width="10px">
                                     <a href="{{ route('users.show', $user->id) }}" 

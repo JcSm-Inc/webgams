@@ -35,7 +35,7 @@
             <div class="card">
                 <div class="card-header text-bold text-center">
                     INGRESOS DE PRODUCTO 
-                    <a href="{{route('reporte_almacen.imprimirIngresoPeriodoFechas',['producto'=>$producto,'actualizaciones'=>$actualizaciones,'fechaini'=>$fechaini,'fechafin'=>$fechafin])}}" class="btn btn-sm btn-primary pull-right-align">
+                    <a href="{{route('reporte_almacen.imprimirIngresoPeriodoFechas',compact('producto','fechaini','fechafin'))}}" class="btn btn-sm btn-primary pull-right-align">
                         <i class="fas fa-print">Imprimir</i>
                     </a>
                 </div>

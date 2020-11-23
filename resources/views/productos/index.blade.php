@@ -14,7 +14,22 @@
                             </a>
                         @endcan
                 </div>
-
+                <div class="align-right">
+                    <!-- FORMULARIO BUSCAR 
+                            <form class="form-inline ml-2"> -->
+                                {!! Form::Open(['route'=>['productos.index'],'method'=>'GET','class'=>'form-inline ml-2'])!!}
+                                <div class="input-group input-group-sm">
+                                    {!! Form::text('buscar','', ['class'=>'form-control','placeholder'=>'Buscar por Nombre']) !!}
+                                    <!--<input class="form-control form-control-navbar" type="search" placeholder="Buscar" aria-label="Search">-->
+                                    <div class="input-group-append">
+                                        <button class="btn btn-navbar" type="submit">
+                                        <i class="fas fa-search"></i>
+                                    </button>
+                                    </div>
+                                </div>
+                            {!! Form::close() !!}
+                    <!--   </form>-->
+                    </div>
                 <div class="card-body">
                     <table class="table table-striped table-hover">
                         <thead>
@@ -24,6 +39,7 @@
                                 </th>
                                 <th width="10px"> CODPROD </th>     
                                 <th>NOMBRE</th>
+                                <th>DESCRIPCION</th>
                                 <th colspan="3">&nbsp;</th>
                             </tr>
                         </thead>
@@ -35,6 +51,7 @@
                                     </td>
                                    <td>{{$producto->CODPROD}}</td> 
                                    <td>{{$producto->NOMBRE}}</td>
+                                   <td>{{$producto->DESCRIPCION}}</td>
                                    <td width="10px">
                                        <a href="{{ route('productos.show',$producto)}}" class="nav-link">
                                         <i class="far fa-eye"></i>

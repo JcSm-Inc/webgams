@@ -25,13 +25,13 @@
                                    <td>{{$entrega->FECHARESERVA}}</td> 
                                    <td>{{$entrega->personal_de_planta->user->NOMBRES.' '.$entrega->personal_de_planta->user->APELLIDOS}}</td>
                                    <td width="10px">
-                                       <a href="{{ route('entregas.create',compact('entrega'))}}" class="nav-link">
-                                        <i class="fas fa-cart-arrow-down"></i>
+                                       <a href="{{ route('entregas.create',compact('entrega'))}}" class=" btn btn-xs btn-outline-success">
+                                        <i class="fas fa-cart-arrow-down">Entregar</i>
                                         </a>
                                     </td>
                                    <td width="10px">
                                         {!!
-                                            Form::open(['route' => ['entregas.destroy',$entrega],
+                                            Form::open(['route' => ['reserva.destroy',$entrega->id],
                                             'method' => 'DELETE'])
                                         !!}
                                             <button class="btn btn-xs  btn-block btn-outline-danger">

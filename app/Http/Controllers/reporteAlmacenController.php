@@ -49,12 +49,21 @@ class reporteAlmacenController extends Controller
     }
     public function imprimirIngresoPeriodoFechas(Request $request)
     {
-        $productos = $request->productos;
-        $actualizaciones = $request->actualizaciones;
-        $fechaini = $request->fechaini;
-        $fechafin = $request->fechafin;
-        $pdf = PDF::loadView('reporte_almacen/pdf/ingresoPeriodoFechas', compact('productos', 'actualizaciones', 'fechaini', 'fechafin'))->setPaper('letter', 'landscape');
+        //$request = app('request');
+        $fechaini = 0;
+        $fechafin = now();
+        $producto = Productos::find($request->get('producto'));
+        if (isset($request['fechafin']) == true && $request['fechafin'] != '') {
+            if (isset($request['fechaini']) == true && $request['fechaini'] != '') {
+                $fechaini = $request->get('fechaini');
+                $fechafin = $request->get('fechafin');
+            } else $fechafin = $request->get('fechafin');
+        }
+        $actualizaciones  = actualizarStock::where('FECHA', '>=', date("Y-m-d", strtotime($fechaini)))->where('FECHA', '<=', date("Y-m-d", strtotime($fechafin)))
+            ->where('idPRODUCTO', $producto->id)->GET();
+
+        $pdf = PDF::loadView('reporte_almacen/pdf/ingresoPeriodoFechas', compact('producto', 'actualizaciones', 'fechaini', 'fechafin'))->setPaper('letter');
         $pdf->getDomPDF()->set_option("enable_php", true);
-        return $pdf->download('ReporteIngresoPeriodoFechas.pdf');
+        return $pdf->download('Reporte Ingreso Periodo Fechas.pdf');
     }
 }

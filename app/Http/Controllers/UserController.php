@@ -13,7 +13,7 @@ class UserController extends Controller
 {
     public function index()
     {
-        $users = User::join('personal_de_planta', 'users.id', '=', 'personal_de_planta.idUSUARIO')->paginate(15);
+        $users = User::select('users.id', 'NOMBRES', 'APELLIDOS', 'CI', 'FOTO')->join('personal_de_planta', 'users.id', '=', 'personal_de_planta.idUSUARIO')->paginate(15);
         return view('roles_de_usuario.index', compact('users'));
     }
     public function show(User $user)
@@ -25,9 +25,9 @@ class UserController extends Controller
         $roles = Role::get();
         return view('roles_de_usuario.edit', compact('user', 'roles'));
     }
-    public function update(ValidarUsuario $user, Request $request)
+    public function update(User $user, Request $request)
     {
-        $user->update($user->all());
+        //$user->update($user->all());
 
         $user->roles()->sync($request->get('roles'));
 

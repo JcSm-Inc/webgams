@@ -17,10 +17,13 @@
                                     <i class="fas fa-print">Resumen de Consolidado por Producto</i>
                                 </a>
                                 <a href="{{route('reporte_almacen.consolidadoProducto')}}" class="btn btn-sm btn-primary pull-right-align">
-                                    <i class="fas fa-print">Imprimir</i>
+                                    <i class="fas fa-print">Despachos Clasificados por producto</i>
                                 </a>
                                 <a href="{{route('reporte_almacen.consolidadoProducto')}}" class="btn btn-sm btn-primary pull-right-align">
-                                    <i class="fas fa-print">Imprimir</i>
+                                    <i class="fas fa-print">Reporte de todos los despachos clasificados por Usuario</i>
+                                </a>
+                                <a href="{{route('reporte_almacen.consolidadoProducto')}}" class="btn btn-sm btn-primary pull-right-align">
+                                    <i class="fas fa-print">Imprimir Productos</i>
                                 </a>
                             @endcan
                         </div>
