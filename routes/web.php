@@ -26,8 +26,6 @@ Route::get('entregas/{entrega}', 'EntregaController@show')->name('entregas.show'
 Route::put('entregas/{entrega}', 'EntregaController@update')->name('entregas.update');
 Route::delete('entregas/{entrega}', 'EntregaController@destroy')->name('entregas.destroy');
 
-Route::get('solicitud/create', 'HojadeRutaController@create')->name('solicitud.create');
-Route::post('solicitud/store', 'HojadeRutaController@store')->name('solicitud.store');
 
 Route::get('productos/indexReact', 'ProductosController@indexReact')->name('productos.indexReact');
 Route::get('productos/indexCategorias', 'ProductosController@indexCategorias')->name('productos.indexCategorias');

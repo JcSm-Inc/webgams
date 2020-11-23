@@ -15,7 +15,7 @@ $factory->define(User::class, function (Faker $faker) {
 
     if ($sexo) {
         $nombres = $faker->firstNameMale();
-        $foto = "./extras/img/user/varon/";
+        $foto = "./extras/img/users/varon/";
     } else {
         $nombres = $faker->firstNameFemale();
         $foto = "./extras/img/users/mujer/";

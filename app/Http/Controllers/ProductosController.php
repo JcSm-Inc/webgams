@@ -110,7 +110,7 @@ class ProductosController extends Controller
         $producto->update([
             'NOMBRE' => $request['NOMBRE'],
             'DESCRIPCION' => $request['DESCRIPCION'],
-            'STOCK' => $request['STOCK'],
+            'UNIDAD' => $request['UNIDAD'],
             'FOTO' => $foto,
             'TIPO' => $request['groupOfDefaultRadios']
         ]);
