@@ -108,11 +108,10 @@ class ProductosController extends Controller
             $foto = 'storage/' . $foto;
         }
         $producto->update([
-            'NOMBRE' => $request['NOMBRE'],
-            'DESCRIPCION' => $request['DESCRIPCION'],
+          
+         
             'STOCK' => $request['STOCK'],
-            'FOTO' => $foto,
-            'TIPO' => $request['groupOfDefaultRadios']
+      
         ]);
 
         return redirect()->route('productos.edit', $producto->id)

@@ -27,7 +27,7 @@ class ProductosSeeder extends Seeder
             'NOMBRE' => 'GOMA EN BARRA',
             'DESCRIPCION' => 'GOMA EN BARRA',
             'TIPO' => 'MATERIAL DE ESCRITORIO',
-            'UNIDAD' => 'UNIDAD',
+            'UNIDAD' => 'CAJAS',
             'FOTO' => 'storage/img/productos/ME2.png',
             'STOCK' => '0'
         ]);
@@ -72,7 +72,7 @@ class ProductosSeeder extends Seeder
             'NOMBRE' => 'PLUMON DELGADO N°34 JGO X 12',
             'DESCRIPCION' => 'PLUMON DELGADO N°34 JGO X 12',
             'TIPO' => 'MATERIAL DE ESCRITORIO',
-            'UNIDAD' => 'UNIDAD',
+            'UNIDAD' => 'CAJA',
             'FOTO' => 'storage/img/productos/ME7.jfif',
             'STOCK' => '0'
         ]);
@@ -88,7 +88,7 @@ class ProductosSeeder extends Seeder
         Productos::create([
             'CODPROD' => 'ME9',
             'NOMBRE' => 'BORRADOR P/LAPIZ',
-            'DESCRIPCION' => 'BORRADOR P/LAPIZ',
+            'DESCRIPCION' => 'BORRADOR P/LAPIZ GOMA',
             'TIPO' => 'MATERIAL DE ESCRITORIO',
             'UNIDAD' => 'UNIDAD',
             'FOTO' => 'storage/img/productos/ME9.jfif',
@@ -97,10 +97,29 @@ class ProductosSeeder extends Seeder
         Productos::create([
             'CODPROD' => 'ME10',
             'NOMBRE' => 'TINTA PARA TAMPON',
-            'DESCRIPCION' => 'TINTA PARA TAMPON',
+            'DESCRIPCION' => 'TINTA PARA TAMPON COLOR NEGRO',
             'TIPO' => 'MATERIAL DE ESCRITORIO',
             'UNIDAD' => 'FRASCO',
             'FOTO' => 'storage/img/productos/ME10.jfif',
+            'STOCK' => '0'
+        ]);
+
+        Productos::create([
+            'CODPROD' => 'ME11',
+            'NOMBRE' => 'TINTA PARA TAMPON',
+            'DESCRIPCION' => 'TINTA PARA TAMPON COLOR ROJO',
+            'TIPO' => 'MATERIAL DE ESCRITORIO',
+            'UNIDAD' => 'FRASCO',
+            'FOTO' => 'storage/img/productos/ME11.jpg',
+            'STOCK' => '0'
+        ]);
+        Productos::create([
+            'CODPROD' => 'ME12',
+            'NOMBRE' => 'TINTA PARA TAMPON',
+            'DESCRIPCION' => 'TINTA PARA TAMPON COLOR AZUL',
+            'TIPO' => 'MATERIAL DE ESCRITORIO',
+            'UNIDAD' => 'FRASCO',
+            'FOTO' => 'storage/img/productos/ME12.jpg',
             'STOCK' => '0'
         ]);
     }
