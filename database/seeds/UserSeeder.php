@@ -22,7 +22,7 @@ class UserSeeder extends Seeder
             'NOMBRES' => 'OSCAR',
             'APELLIDOS' => 'FLORES ADRIAN',
             'FECHANACIMIENTO' => '1968/12/05',
-            'FOTO' => 'storage/img/user/U1.JPG',
+            'FOTO' => 'storage/img/users/U1.JPG',
             'GENERO' => 'MASCULINO',
             'TIPO' => 'USUARIO INTERNO'
         ]);
@@ -34,7 +34,7 @@ class UserSeeder extends Seeder
             'NOMBRES' => 'FREDDY',
             'APELLIDOS' => 'SUARES CAMARGO',
             'FECHANACIMIENTO' => '1968/11/05',
-            'FOTO' => 'storage/img/user/U2.JPG',
+            'FOTO' => 'storage/img/users/U2.JPG',
             'GENERO' => 'MASCULINO',
             'TIPO' => 'USUARIO INTERNO'
         ]);
