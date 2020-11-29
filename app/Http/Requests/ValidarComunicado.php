@@ -23,11 +23,16 @@ class ValidarComunicado extends FormRequest
      */
     public function rules()
     {
-        return [
-            'FECHA'=> 'required|date',
-            'TITULO'=> 'required|min:3|max:45',
-            'DESCRIPCION'=> 'required|max:100',
-            'idPERSONAL_DE_PLANTA'=> 'required'
+        $reglas = [
+            'TITULO' => 'required|min:3|max:45',
+            'DESCRIPCION' => 'required|max:100',
+            'CONTENIDO' => 'required',
         ];
+        if ($this->get('ARCHIVO')) {
+            $reglas = array_merge($reglas, [
+                'FOTO' => 'mimes:jpg,png,jpeg'
+            ]);
+        }
+        return $reglas;
     }
 }

@@ -16,10 +16,15 @@ class CreateComunicadosTable extends Migration
         Schema::create('comunicado', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->dateTime('FECHA');
-			$table->string('TITULO', 100);
-			$table->string('DESCRIPCION', 45)->nullable();
-			$table->unsignedBigInteger('idPERSONAL_DE_PLANTA');
-		
+            $table->string('TITULO', 128);
+            $table->mediumText('DESCRIPCION')->nullable();
+            $table->text('CONTENIDO')->nullable();
+            $table->string('slug', 128)->unique();
+            $table->string('CATEGORIA', 20);
+            $table->enum('ESTADO', ['PUBLICADO', 'BORRADOR'])->default('BORRADOR');
+            $table->string('ARCHIVO', 128)->nullable();
+            $table->unsignedBigInteger('idPERSONAL_DE_PLANTA');
+
             $table->timestamps();
         });
     }

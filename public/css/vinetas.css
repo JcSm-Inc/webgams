@@ -1,0 +1,16 @@
+ul {
+    list-style: none;
+    padding: 0px;
+    margin-left: 10px;
+    }
+    
+    ul li::before {
+    content: "\2022";  
+    color: rgb(19, 15, 15); 
+    display: inline-block; 
+    padding-right: 10px;
+    font-size: 25px;
+    line-height: 25px;
+    vertical-align: -11px;
+    width: 15px;
+    }

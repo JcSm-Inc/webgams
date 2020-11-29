@@ -15,7 +15,7 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
     return view('welcome');
-});
+})->name('welcome');
 
 Auth::routes();
 Route::get('entregas/', 'EntregaController@index')->name('entregas.index');
@@ -62,8 +62,12 @@ Route::get('/home', 'HomeController@index')->name('home');
 Route::get('mision_vision/', 'InformacionController@misionvision')->name('mision_vision.index');
 
 
-
-
+//visualizar el sitado
+Route::get('comunicadosweb/', 'ComunicadoController@indexweb')->name('comunicados.indexweb');
+//ver el comunicado
+Route::get('comunicados/comunicado/{slug}', 'ComunicadoController@comunicado')->name('comunicados.comunicado');
+//ver el categoria
+Route::get('comunicados/categoria/{slug}', 'ComunicadoController@categoria')->name('comunicados.categoria');
 
 Route::middleware(['auth'])->group(function () {
     //PRODUCTOS
@@ -95,6 +99,36 @@ Route::middleware(['auth'])->group(function () {
     // ver el formulario de edicion
     Route::get('productos/{producto}/edit', 'ProductosController@edit')->name('productos.edit')
         ->middleware('can:productos.edit');
+
+    //COMUNICADO
+
+    // crear
+    Route::post('comunicados/store', 'comunicadoController@store')->name('comunicados.store')
+        ->middleware('can:comunicados.create');
+
+    //visualizar el sitado
+    Route::get('comunicados/', 'ComunicadoController@index')->name('comunicados.index')
+        ->middleware('can:comunicados.index');
+
+    // ver el formulario de creacion
+    Route::get('comunicados/create', 'ComunicadoController@create')->name('comunicados.create')
+        ->middleware('can:comunicados.create');
+    // actualizar
+    Route::put('comunicados/{comunicado}', 'ComunicadoController@update')->name('comunicados.update')
+        ->middleware('can:comunicados.edit');
+    //ver el detalle
+    Route::get('comunicados/{comunicado}', 'ComunicadoController@show')->name('comunicados.show')
+        ->middleware('can:comunicados.show');
+
+    // eliminar
+    Route::delete('comunicados/{comunicado}', 'ComunicadoController@destroy')->name('comunicados.destroy')
+        ->middleware('can:comunicados.destroy');
+    // ver el formulario de edicion
+    Route::get('comunicados/{comunicado}/edit', 'ComunicadoController@edit')->name('comunicados.edit')
+        ->middleware('can:comunicados.edit');
+
+
+
 
     //USUARIO
 

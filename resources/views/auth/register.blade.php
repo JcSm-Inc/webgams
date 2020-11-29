@@ -1,82 +1,62 @@
 @extends('layouts.sidebar')
 @section('contenido')
-
-<div class="col-md-6 offset-4">
+<div class="container mx-auto  ">
             <!-- general form elements disabled -->
-            <div class="card card-green">
-                <div class="card-header">
-                  <h3 class="card-title">Registro de Nuevo Usuario</h3>
-                  @if ($errors->any())
-                    <p>Hay errores!</p> 
-                    <ul>
-                        @foreach ($errors->all() as $error)
-                            <li>{{ $error }}</li>
-                        @endforeach
-                    </ul>
-                  @endif
+            <div class=" bg-green-800 bg-opacity-50 text-white rounded mt-36">
+                <div class="">
+                  <h3 class=" text-2xl text-center pt-10">Registro de Nuevo Usuario</h3>
                 </div>
                 <!-- /.card-header -->
-                <div class="card-body">
+                <div class="px-5 pb-5">
                   <form method="POST" role="form" action="{{ route('register') }}" enctype="multipart/form-data">
                   @csrf
                     <!-- input states -->
-                    <div class="row">
-                    <div class="col-md-7 col-sm-4 col-12">
-                      <div class="info-box">
-                        <div class="info-box-content">
-                          <div class="form-group">
-                            <label class="col-form-label" for="nick"> Ingrese Nick</label>
-                            <input type="text" class="form-control @error('nick') is-invalid @enderror" id="nick" name="nick" value="{{ old('nick') }}" placeholder="Nick">
-                            @error('nick')
-                                    <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $message }}</strong>
-                                    </span>
-                            @enderror
-                          </div>
+                    <div class="grid md:grid-cols-2 sm:grid-cols-1 ">
+                        <div class="box-border items-center h-64 w-64 p-4 border-1">
 
-                          <div class="form-group">
-                            <label class="col-form-label" for="password"> Ingrese Contraseña</label>
-                            <input type="password" name="password" class="form-control @error('password') is-invalid @enderror" id="password"  placeholder="Contraseña">
-                            @error('password')
-                                    <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $message }}</strong>
-                                    </span>
-                            @enderror
-                          </div>
-                          <div class="form-group">
-                            <label class="col-form-label" for="password-confirm"> Repetir Contraseña</label>
-                            <input type="password" class="form-control" id="password-confirm" name="password_confirmation" placeholder="Contraseña">
-                          </div>
-
+                          <label class="px-4 py-1 text-white font-light tracking-wider bg-green-500 hover:bg-gray-400 rounded">
+                                Subir Fotografia <input type="file" name="FOTO" id="FOTO" style="display: none;">
+                          </label>
+                          <br >
+                          <img id="blah" src="https://via.placeholder.com/150" alt="Tu imagen" height="350" width="500" class="img-thumbnail"/>
+                          @error('FOTO')
+                              <span class="invalid-feedback" role="alert">
+                                  <strong>{{ $message }}</strong>
+                              </span>
+                          @enderror
+                    <!-- /.info-box-content -->
                         </div>
-                        <!-- /.info-box-content -->
-                      </div>
-                    </div>
-                      <div class="col-md-5 col-sm-6 col-12">
-                        <div class="info-box">
-
-                          <div class="info-box-content">
-                              <div class="container">
-                                <label class="btn btn-success btn-file">
-                                      Subir Fotografia <input type="file" name="FOTO" id="FOTO" style="display: none;">
-                                </label>
-                                <br >
-                                <img id="blah" src="https://via.placeholder.com/150" alt="Tu imagen" height="350" width="500" class="img-thumbnail"/>
-                                @error('FOTO')
-                                    <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $message }}</strong>
-                                    </span>
+                        <div class="pt-4">
+                              <div class="form-group">
+                                <label class="col-form-label" for="nick"> Ingrese Nick</label>
+                                <input type="text" class="form-control @error('nick') is-invalid @enderror" id="nick" name="nick" value="{{ old('nick') }}" placeholder="Nick">
+                                @error('nick')
+                                        <span class="invalid-feedback" role="alert">
+                                            <strong>{{ $message }}</strong>
+                                        </span>
                                 @enderror
                               </div>
-                          </div>
-                          <!-- /.info-box-content -->
+
+                              <div class="form-group">
+                                <label class="col-form-label" for="password"> Ingrese Contraseña</label>
+                                <input type="password" name="password" class="form-control @error('password') is-invalid @enderror" id="password"  placeholder="Contraseña">
+                                @error('password')
+                                        <span class="invalid-feedback" role="alert">
+                                            <strong>{{ $message }}</strong>
+                                        </span>
+                                @enderror
+                              </div>
+                              <div class="form-group">
+                                <label class="col-form-label" for="password-confirm"> Repetir Contraseña</label>
+                                <input type="password" class="form-control" id="password-confirm" name="password_confirmation" placeholder="Contraseña">
+                              </div>
+
                         </div>
-                        <!-- /.info-box -->
-                      </div>
+                        
                     </div>
 
                       <!-- /.info-box -->
-
+                    <div class="pt-10">
                         <div class="form-group row">
                             <label class="form-label col-md-3 col-sm-3 col-xs-3" for="CI"> Ingrese C.I.:</label>
                             <div class="col-md-9 col-sm-9 col-xs-9">
@@ -161,7 +141,8 @@
                     
 
                         <!--<button type="submit" class="btn btn-danger m-md-2 float-right" >Cancelar</button>-->
-                        <button type="submit" class="btn btn-success m-md-2 float-right" >Aceptar</button>                   
+                        <button type="submit" class="w-full px-4 py-2 font-bold text-white bg-green-500 rounded-full hover:bg-green-300 focus:outline-none focus:shadow-outline" >Registrar Cuenta</button> 
+                      </div>                  
                   </form>
                 </div>
                 <!-- /.card-body -->
