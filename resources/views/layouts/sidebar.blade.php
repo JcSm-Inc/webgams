@@ -32,208 +32,57 @@
     <link rel="stylesheet" href="{{asset('MDB/css/mdb.min.css')}}" />
 
     <link href="css/styles.css" rel="stylesheet" />
+    <link href="{{asset('csss/app.css')}}" rel="stylesheet" />
     <!-- Your custom styles (optional) 
     <link rel="stylesheet" href="MBD/css/style.css" />-->
 </head>
 
-<body class="hold-transition sidebar-mini layout-fixed">
-    <div class="wrapper">
-
-        <!-- Navbar -->
-        <nav class="main-header navbar navbar-expand navbar-white navbar-light">
-            <!-- Left navbar links-->
-            <!-- boton de barra de navegador--> 
-            <ul class="navbar-nav">
-                <li class="nav-item">
-                    <a class="nav-link" data-widget="pushmenu" href="#" role="button"><i class="fas fa-bars"></i></a>
-                </li>
-                <li class="nav-item d-none d-sm-inline-block">
-                    <a href="#" class="nav-link">Inicio</a>
-                </li>
-                <li class="nav-item d-none d-sm-inline-block">
-                    <a href="#" class="nav-link">Contactos</a>
-                </li>
-            </ul>
-
-            <!-- FORMULARIO BUSCAR -->
-            <form class="form-inline ml-3">
-                <div class="input-group input-group-sm">
-                    <input class="form-control form-control-navbar" type="search" placeholder="Buscar" aria-label="Search">
-                    <div class="input-group-append">
-                        <button class="btn btn-navbar" type="submit">
-            <i class="fas fa-search"></i>
-          </button>
-                    </div>
+<body >
+    <header class=" bg-cover bg-fixed border-t-2 border-blue-600 h-full" style="background-image: url('../extras/page_image/PRINCIPAL.jpeg');">
+        <div class="content px-0 py-1">
+            <nav class="flex items-center fixed w-full bg-gray-800 bg-opacity-80 justify-between">
+                <div class="w-20 order-first">
+                    <img src="{{asset('extras\img\aplicacion\escudosoracachi.png')}}"
+                    style="transform: scale(1) perspective(1040px) rotateY(-11deg) rotateX(2deg) rotate(2deg);" alt="" class="rounded">
+                  </div>
+                <div class="auth flex items-center">
+                <a class="bg-green-700 hover:no-underline bg-opacity-30 text-green-100  p-2 rounded  mr-4 hover:bg-green-100 hover:text-green-700" href="{{route('welcome')}}">INICIO</a>
+                    <a class="bg-green-700 hover:no-underline bg-opacity-30 text-green-100  p-2 rounded  mr-4 hover:bg-green-100 hover:text-green-700" href="#">ENTIDAD</a>
+                <a class="bg-green-700 hover:no-underline bg-opacity-30 text-green-100  p-2 rounded  mr-4 hover:bg-green-100 hover:text-green-700" href="{{route('comunicados.indexweb')}}">NOTICIAS</a>
+                    <a class="bg-green-700 hover:no-underline bg-opacity-30 text-green-100  p-2 rounded  mr-4 hover:bg-green-100 hover:text-green-700" href="#">CONTACTOS</a>
+                    <a class="bg-green-900 hover:no-underline text-green-200  py-2 px-4 mx-2 rounded  hover:bg-green-800 hover:text-green-100" href="{{ route('login') }}">Ingresar</a>
+                    <a class="bg-green-900 hover:no-underline text-green-200  py-2 px-4 mx-2 mr-4 rounded  hover:bg-green-800 hover:text-green-100" href="{{ route('register') }}">Registrar</a>
                 </div>
-            </form>
-        @auth
-        <ul class="navbar-nav ml-auto">
-
-
-
-
-
-            <!-- Messages Dropdown Menu -->
-            <li class="nav-item dropdown">
-                <a class="nav-link" data-toggle="dropdown" href="#">
-                    <img src="{{Auth::user()->FOTO}}" alt="User Avatar" class="img-size-32 mr-0 img-circle mb-1 mt-0">
-                </a>
-
-                <div class="dropdown-menu dropdown-menu-lg dropdown-menu-right">
-                            <div class="media-body mt-2 ml-2 text-center">
-                                <img src="{{Auth::user()->FOTO}}" alt="User Avatar" class="img-size-50 mr-3 img-circle ">
-                                <a href=""><span class="float-none text-sm text-muted"><i class="fas fa-camera"></i></span></a>
-                                <h2 class="dropdown-item-title ">
-                                 <strong>   {{Auth::user()->nick}}</strong>
-                                </h2>
-                                <div class="dropdown-divider mt-1 mb-1"></div>
-                                <p class="text-sm ">CI:{{' '.Auth::user()->CI}}</p>
-                                <p class="text-sm">{{Auth::user()->NOMBRES.' '.Auth::user()->APELLIDOS}}</p>
-                                <p class="text-sm">Email:{{' '.Auth::user()->email}}</p>
-                                <p class="text-sm">Fecha de nac.:{{' '.Auth::user()->FECHANACIMIENTO}}</p>
-                                <p class="text-sm text-muted">{{Auth::user()->TIPO}}</p>
-                                <div class="dropdown-divider mt-1 mb-1"></div>
-                                <a href="#" class="btn btn-light">Gestionar cuenta</a>
-                                <div class="dropdown-divider mt-1 mb-1"></div>
-                                <a class="btn btn-light" href="{{ route('logout') }}"
-                                       onclick="event.preventDefault();
-                                                     document.getElementById('logout-form').submit();">
-                                        {{ __('Salir') }}
-                                    </a>
-                                <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
-                                    @csrf
-                                </form>
-                            </div>
-                </div>
-            </li>  
-            @else
-            <ul class="navbar-nav ml-auto">
-                <div class="top-right links">        
-                        <li class="nav-item d-none d-sm-inline-block">
-                                <a  class="nav-link" href="{{ route('login') }}">
-                                    
-                                    <p>
-                                        <i class="right fas fa-user"></i>
-                                        Ingresar
-                                    </p>
-                                </a>
-
-                        </li>
-            @if (Route::has('register'))
-                        <li class="nav-item d-none d-sm-inline-block">
-                            <a  class="nav-link" href="{{ route('register') }}">
-                                <p>
-                                    <i class="right fas fa-user-plus"></i>
-                                    Registrar
-                                </p>
-                            </a>
-                        </li>
-            @endif
-        @endauth
-                </div>
-                </li>
-            </ul>
-        </nav>
-        <!-- /.navbar -->
-
-        <!-- CONTENEDOR PRINCIPAL DEL MENU LATERAL 
-        <aside class="main-sidebar sidebar-dark-primary elevation-4">-->
-        <aside class="main-sidebar sidebar-dark-primary elevation-4">
-            <!-- Brand Logo -->
-            <a href="index3.html" class="brand-link">
-                <img src="dist/img/logo.png" alt="AdminLTE Logo" class="brand-image img-circle elevation-3" style="opacity: .8">
-                <span class="brand-text font-weight-light">G.A.M. SORACACHI</span>
-            </a>
-
-            <!-- Sidebar -->
-            <div class="sidebar">
-                
-
-                <!-- Sidebar Menu -->
-                <nav class="mt-2 ">
-                    <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
-                        <!-- Add icons to the links using the .nav-icon class
-               with font-awesome or any other icon font library -->
-                        <li class="nav-header">GENERAL</li>
-                        <li class="nav-item has-treeview menu-open">
-                            <a href="#" class="nav-link">
-
-                                <i class="nav-icon fas fa-landmark"></i>
-                                <p>
-                                    Acerca de la Entidad
-                                    <i class="right fas fa-angle-left"></i>
-                                </p>
-                            </a>
-                            <ul class="nav nav-treeview">
-                                <li class="nav-item">
-                                    <a href="./index.html" class="nav-link">
-                                        <i class="fas fa-book-dead nav-icon"></i>
-                                        <p>Historia</p>
-                                    </a>
-                                </li>
-                                <li class="nav-item">
-                                    <a href="./index2.html" class="nav-link">
-                                        <i class="fas fa-street-view nav-icon"></i>
-                                        <p>Mision, Vision y Objetivos</p>
-                                    </a>
-                                </li>
-                                <li class="nav-item">
-                                    <a href="./index3.html" class="nav-link">
-                                        <i class="far fa-paper-plane nav-icon"></i>
-                                        <p>Plan Operativo Anual</p>
-                                    </a>
-                                </li>
-                            </ul>
-                        </li>
-                        <li class="nav-item">
-                            <a href="pages/widgets.html" class="nav-link">
-                                <i class="nav-icon fas fa-newspaper"></i>
-                                <p>
-                                    Comunicados
-                                    <span class="right badge badge-danger">Nuevos</span>
-                                </p>
-                            </a>
-                        </li>
-
-
-                        <li class="nav-header">SISTEMA</li>
-
-                        
-                        <li class="nav-item has-treeview">
-                            <a href="#" class="nav-link">
-                                <i class="nav-icon fas fa-edit"></i>
-                                <p>
-                                    Registrar
-                                </p>
-                            </a>
-                        </li>
-
-                    </ul>
-
-                </nav>
-                <!-- /.sidebar-menu -->
+            </nav>
+            <div class="content">
+                @yield('contenido')
             </div>
-            <!-- /.sidebar -->
-        </aside>
+        </div>
+    </header>
+
+ <div class="bg-gray-100 pt-2 ">
+    <div class="flex pb-5 px-3 m-auto pt-5 border-t text-gray-800 text-sm flex-col
+       md:flex-row max-w-6xl">
+       <div class="mt-2">© Copyright 2020. Todos los derechos reservados.</div>
+       <div class="md:flex-auto md:flex-row-reverse mt-2 flex-row flex">
+ 
+          <a href="/#" class="w-6 mx-1">
+             <svg class="fill-current cursor-pointer text-gray-500 hover:text-gray-400" width="100%" height="100%" viewBox="0 0 24 24" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xml:space="preserve" xmlns:serif="http://www.serif.com/" style="fill-rule: evenodd; clip-rule: evenodd; stroke-linejoin: round; stroke-miterlimit: 2;">
+                <path id="Facebook" d="M24,12c0,6.627 -5.373,12 -12,12c-6.627,0 -12,-5.373 -12,-12c0,-6.627
+                   5.373,-12 12,-12c6.627,0 12,5.373
+                   12,12Zm-11.278,0l1.294,0l0.172,-1.617l-1.466,0l0.002,-0.808c0,-0.422
+                   0.04,-0.648 0.646,-0.648l0.809,0l0,-1.616l-1.295,0c-1.555,0 -2.103,0.784
+                   -2.103,2.102l0,0.97l-0.969,0l0,1.617l0.969,0l0,4.689l1.941,0l0,-4.689Z"></path>
+             </svg>
+          </a>
+
+       </div>
+    </div>
+ </div>
+
 
         <!-- Content Wrapper. Contains page content -->
-        <div class="content-wrapper">
-                @yield('contenido')
-        </div>
-        <!-- /.content-wrapper -->
-        <footer class="main-footer">
-            <strong>Copyright &copy; 2020 <a href="#">Soft-JC-SMM</a>.</strong> Todos los derechos reservados.
-            <div class="float-right d-none d-sm-inline-block">
-                <b>Version</b> 1.0.0
-            </div>
-        </footer>
 
-        <!-- Control Sidebar -->
-        <aside class="control-sidebar control-sidebar-dark">
-            <!-- Control sidebar content goes here -->
-        </aside>
-        <!-- /.control-sidebar -->
-    </div>
     <!-- ./wrapper -->
     <!--@ yield('scripts')-->
     <script type="text/javascript" src="js/app.js"></script>
@@ -296,7 +145,6 @@
     <!-- Your custom scripts (optional) -->
     <script type="text/javascript"></script>
 
-    <script src="js/scripts.js"></script>
 </body>
 
 </html>

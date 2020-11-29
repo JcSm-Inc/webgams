@@ -28,7 +28,7 @@ class ListaCategorias extends Component {
             params: { CATEGORIA: "MATERIAL DE LIMPIEZA" }
         });
         const herr = await axios.get(url + "productos/indexCategorias", {
-            params: { CATEGORIA: "HERRAMIENTA" }
+            params: { CATEGORIA: "ACCESORIO" }
         });
         this.setState({ materialdeescritorio: cat.data.productos });
         this.setState({ materialdelimpieza: lim.data.productos });
@@ -38,13 +38,13 @@ class ListaCategorias extends Component {
         return (
             <div>
                 <BuscarProducto />
-                <h4>Productos mas Consumidos</h4>
+                <h4 className="text-lg font-sans font-bold p-4">Productos mas Consumidos</h4>
                 <Categorias items={this.state.productos} />
-                <h4>Material de Escritorio</h4>
+                <h4 className="text-lg font-sans font-bold p-4">Material de Escritorio</h4>
                 <Categorias items={this.state.materialdeescritorio} />
-                <h4>Material de Limpieza</h4>
+                <h4 className="text-lg font-sans font-bold p-4">Material de Limpieza</h4>
                 <Categorias items={this.state.materialdelimpieza} />
-                <h4>Herramientas</h4>
+                <h4 className="text-lg font-sans font-bold p-4">Accesorio</h4>
                 <Categorias items={this.state.herramienta} />
             </div>
         );

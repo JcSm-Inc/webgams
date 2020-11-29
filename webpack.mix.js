@@ -1,4 +1,5 @@
 const mix = require("laravel-mix");
+//const tailwindcss = require('tailwindcss');
 require("dotenv").config({ path: "../../.env" });
 /*
  |--------------------------------------------------------------------------
@@ -15,3 +16,4 @@ mix.react("resources/js/app.jsx", "public/js").sass(
     "resources/sass/app.scss",
     "public/css"
 );
+//mix.postCss('resources/css/app.css', 'public/csss', [require('tailwindcss')]);

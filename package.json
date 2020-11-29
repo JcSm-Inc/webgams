@@ -26,6 +26,7 @@
     },
     "dependencies": {
         "pubsub-js": "^1.8.0",
-        "react-horizontal-scrolling-menu": "^0.7.7"
+        "react-horizontal-scrolling-menu": "^0.7.7",
+        "tailwindcss": "^2.0.1"
     }
 }

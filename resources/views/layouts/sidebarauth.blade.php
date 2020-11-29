@@ -31,30 +31,31 @@
 
     <link rel="stylesheet" href="{{asset('MDB/css/mdb.min.css')}}" />
 
-    <link href="css/styles.css" rel="stylesheet" />
-    <link rel="stylesheet" href="css/mains.css" />
+    <link href="{{asset('csss/app.css')}}" rel="stylesheet" />
+    
+
     <noscript><link rel="stylesheet" href="css/noscript.css" /></noscript>
 
     <!-- Your custom styles (optional) 
     <link rel="stylesheet" href="MBD/css/style.css" />-->
 </head> 
 
-<body class="hold-transition sidebar-mini layout-fixed layout-navbar-fixed">
+<body class="hold-transition sidebar-mini  layout-fixed layout-navbar-fixed">
     <div class="wrapper">
 
         <!-- Navbar -->
-        <nav class="main-header navbar navbar-expand navbar-white navbar-light">
+        <nav class="main-header navbar navbar-expand navbar-white navbar-light" style="background-image:url('/extras/page_image/yellow.jpg') ">
             <!-- Left navbar links-->
             <!-- boton de barra de navegador--> 
             <ul class="navbar-nav">
-                <li class="nav-item">
-                    <a class="nav-link" data-widget="pushmenu" href="#" role="button"><i class="fas fa-bars"></i></a>
+                <li class="nav-item text-white">
+                    <a class="nav-link text-green-700" data-widget="pushmenu" href="#" role="button"><i class="fas fa-bars"></i></a>
                 </li>
                 <li class="nav-item d-none d-sm-inline-block">
-                <a href="{{route('home')}}" class="nav-link">Inicio</a>
+                <a href="{{route('home')}}" class="nav-link text-bold text-green-300">Inicio</a>
                 </li>
                 <li class="nav-item d-none d-sm-inline-block">
-                    <a href="#" class="nav-link">Contactos</a>
+                    <a href="#" class="nav-link text-bold text-green-300">Contactos</a>
                 </li>
             </ul>
 
@@ -79,7 +80,7 @@
                 <li class="nav-item dropdown">
                     <div class="view overlay zoom">
                     <a href="" class="nav-link" data-toggle="modal" data-target="#modalLoginAvatar">
-                        <img src="{{asset(Auth::user()->FOTO)}}" alt="User Avatar" class="img-size-50 mr-0 img-circle mb-0 mt-0">
+                        <img src="{{asset(Auth::user()->FOTO)}}" alt="User Avatar" class="h-10 w-10 mr-0 img-circle mb-0 -mt-2">
                     </a>
                     </div>
                 </li>   
@@ -118,11 +119,11 @@
 
         <!-- CONTENEDOR PRINCIPAL DEL MENU LATERAL 
         <aside class="main-sidebar sidebar-dark-primary elevation-4">-->
-        <aside class="main-sidebar sidebar-light-blue elevation-4">
+        <aside class="main-sidebar sidebar-light-blue elevation-4 bg-green-700 text-white">
             <!-- Brand Logo -->
-            <a href="index3.html" class="brand-link">
-                <img src="{{asset('dist/img/logo.png')}}" alt="GAMS" class="brand-image img-circle elevation-3" style="opacity: .8">
-                <span class="brand-text font-weight-light">G.A.M. SORACACHI</span>
+            <a href="#" class="brand-link ">
+                <img src="{{asset('extras/img/aplicacion/escudosoracachi.png')}}" alt="GAMS" class="brand-image bg-transparent  ">
+                <span class="text-white">G.A.M. SORACACHI</span>
             </a>
 
             <!-- Sidebar -->
@@ -134,9 +135,9 @@
                     <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
                         <!-- Add icons to the links using the .nav-icon class
                with font-awesome or any other icon font library -->
-                        <li class="nav-header">GENERAL</li>
+                        <li class="nav-header text-white">GENERAL</li>
                         <li class="nav-item has-treeview menu-open">
-                            <a href="#" class="nav-link">
+                            <a href="#" class="nav-link text-white">
 
                                 <i class="nav-icon fas fa-landmark"></i>
                                 <p>
@@ -146,19 +147,19 @@
                             </a>
                             <ul class="nav nav-treeview">
                                 <li class="nav-item">
-                                    <a href="./index.html" class="nav-link">
+                                    <a href="./index.html" class="nav-link text-white">
                                         <i class="fas fa-book-dead nav-icon"></i>
                                         <p>Historia</p>
                                     </a>
                                 </li>
                                 <li class="nav-item">
-                                    <a href="{{route('mision_vision.index')}}" class="nav-link">
+                                    <a href="{{route('mision_vision.index')}}" class="nav-link text-white">
                                         <i class="fas fa-street-view nav-icon"></i>
                                         <p>Mision, Vision y Objetivos</p>
                                     </a>
                                 </li>
                                 <li class="nav-item">
-                                    <a href="./index3.html" class="nav-link">
+                                    <a href="./index3.html" class="nav-link text-white">
                                         <i class="far fa-paper-plane nav-icon"></i>
                                         <p>Plan Operativo Anual</p>
                                     </a>
@@ -166,7 +167,7 @@
                             </ul>
                         </li>
                         <li class="nav-item">
-                            <a href="pages/widgets.html" class="nav-link">
+                            <a href="{{route('comunicados.index')}}" class="nav-link text-white">
                                 <i class="nav-icon fas fa-newspaper"></i>
                                 <p>
                                     Comunicados
@@ -175,54 +176,54 @@
                             </a>
                         </li>
 
-                        <li class="nav-header">SERVICIOS</li>
+                        <li class="nav-header text-white">SERVICIOS</li>
 
                         
                         <li class="nav-item has-treeview">
-                            <a href="#" class="nav-link">
+                            <a href="#" class="nav-link text-white">
                                 <i class="nav-icon fas fa-box-open"></i>
                                 <p>
                                     Activos Fungibles
                                     <i class="right fas fa-angle-left"></i>
                                 </p>
                             </a>
-                            <ul class="nav nav-treeview">
+                            <ul class="nav nav-treeview text-white">
 
                                 @can('productos.index')
-                                <li class="nav-item">
-                                    <a href="{{ route('productos.index')}}" class="nav-link">
-                                        <i class="fas fa-shopping-cart nav-icon"></i>
+                                <li class="nav-item text-white">
+                                    <a href="{{ route('productos.index')}}" class="nav-link text-white">
+                                        <i class="fas fa-box nav-icon"></i>
                                         <p>Administrar Productos</p>
                                     </a>
                                 </li>
                                 @endcan
                                 @can('productos.edit')
-                                <li class="nav-item">
-                                    <a href="{{ route('actualizarstock.index')}}" class="nav-link">
-                                        <i class="fas fa-shopping-cart nav-icon"></i>
+                                <li class="nav-item text-white">
+                                    <a href="{{ route('actualizarstock.index')}}" class="nav-link text-white">
+                                        <i class="fas fa-luggage-cart  nav-icon"></i>
                                         <p>Ingreso de Producto</p>
                                     </a>
                                 </li>
                                 @endcan
                                 
-                                <li class="nav-item">
-                                <a href="{{route('reserva.create')}}" class="nav-link">
+                                <li class="nav-item text-white">
+                                <a href="{{route('reserva.create')}}" class="nav-link text-white">
                                         <i class="fas fa-cart-plus nav-icon"></i>
                                         <p>Reserva de Productos</p>
                                     </a>
                                 </li>
 
 
-                                <li class="nav-item">
-                                    <a href="{{ route('entregas.index')}}" class="nav-link">
-                                        <i class="fas fa-cart-arrow-down nav-icon"></i>
+                                <li class="nav-item text-white">
+                                    <a href="{{ route('entregas.index')}}" class="nav-link text-white">
+                                        <i class="fas fa-people-carry nav-icon"></i>
                                         <p>Entrega de Productos</p>
                                     </a>
                                 </li>
 
 
-                                <li class="nav-item">
-                                    <a href="{{route('reporte_almacen.saldoExistenciasProducto')}}" class="nav-link">
+                                <li class="nav-item text-white">
+                                    <a href="{{route('reporte_almacen.saldoExistenciasProducto')}}" class="nav-link text-white">
                                         <i class="fas fa-book-reader nav-icon"></i>
                                         <p>Reportes</p>
                                     </a>
@@ -230,10 +231,10 @@
                             </ul>
                         </li>
 
-                        <li class="nav-header">SISTEMA</li>
+                        <li class="nav-header text-white">SISTEMA</li>
 
-                        <li class="nav-item has-treeview">
-                            <a href="#" class="nav-link">
+                        <li class="nav-item text-white has-treeview">
+                            <a href="#" class="nav-link text-white">
 
                                 <i class="nav-icon fas fa-cogs"></i>
                                 <p>
@@ -243,8 +244,8 @@
                             </a>
                             <ul class="nav nav-treeview">
                             @can('roles.index')
-                                <li class="nav-item">
-                                    <a href="{{ route('roles.index') }}" class="nav-link">
+                                <li class="nav-item text-white">
+                                    <a href="{{ route('roles.index') }}" class="nav-link text-white">
                                         <i class="fas fa-list nav-icon"></i>
                                         <p>Administrar Roles</p>
                                     </a>
@@ -253,8 +254,8 @@
                             </ul>
                             <ul class="nav nav-treeview">
                             @can('users.index')
-                                <li class="nav-item">
-                                    <a href="{{ route('users.index') }}" class="nav-link">
+                                <li class="nav-item text-white">
+                                    <a href="{{ route('users.index') }}" class="nav-link text-white">
                                         <i class="fas fa-users-cog nav-icon"></i>
                                         <p>Administrar Roles de Usuarios</p>
                                     </a>
@@ -264,8 +265,10 @@
 
                         </li>
 
-                        <li class="nav-item has-treeview">
-                            <a href="{{ route('logout') }}" class="nav-link">
+                        <li class="nav-item text-white has-treeview">
+                            <a href="{{ route('logout') }}" class="nav-link text-white"
+                            onclick="event.preventDefault();
+                                                     document.getElementById('logout-form').submit();">
                                 <i class="nav-icon fas fa-door-open"></i>
                                 <p>
                                     Salir                                    
@@ -378,6 +381,7 @@
         <!-- /.control-sidebar -->
     </div>
     <!-- ./wrapper--> 
+    @yield('scripts')
     <!--  importando la libreria de react-->
     <script type="text/javascript" src="{{asset('js/app.js')}}"></script>
     <!-- jQuery -->

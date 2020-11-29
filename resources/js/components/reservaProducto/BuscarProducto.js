@@ -41,17 +41,17 @@ class BuscarProducto extends Component {
                     </form>
                 </div>
                 {this.state.nombre.length > 0 && (
-                    <div>
+                    <div className="text-lg font-sans font-bold ">
                         {this.state.productos.length > 0 ? (
                             <div>
-                                <h4>Productos relacionados a la busqueda</h4>
+                                <h4 className="p-4">Productos relacionados a la busqueda</h4>
                                 <Categorias items={this.state.productos} />
                             </div>
                         ) : (
-                            <h4 className="h4">
-                                No existe ningun producto relacionado
-                            </h4>
-                        )}
+                                <h4 className="p-4">
+                                    No existe ningun producto relacionado
+                                </h4>
+                            )}
                     </div>
                 )}
             </div>

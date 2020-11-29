@@ -67907,10 +67907,14 @@ var BuscarProducto = /*#__PURE__*/function (_Component) {
         onChange: function onChange(event) {
           _this2.onChange(event.target.value);
         }
-      }))), this.state.nombre.length > 0 && /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("div", null, this.state.productos.length > 0 ? /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("h4", null, "Productos relacionados a la busqueda"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement(_Categorias__WEBPACK_IMPORTED_MODULE_4__["default"], {
+      }))), this.state.nombre.length > 0 && /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("div", {
+        className: "text-lg font-sans font-bold "
+      }, this.state.productos.length > 0 ? /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("h4", {
+        className: "p-4"
+      }, "Productos relacionados a la busqueda"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement(_Categorias__WEBPACK_IMPORTED_MODULE_4__["default"], {
         items: this.state.productos
       })) : /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("h4", {
-        className: "h4"
+        className: "p-4"
       }, "No existe ningun producto relacionado")));
     }
   }]);
@@ -68022,33 +68026,41 @@ var CardProducto = /*#__PURE__*/function (_Component) {
         style: {
           display: "inline-block",
           width: "200px",
-          height: "350px"
+          height: "250px"
         }
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "card mb-4"
+        className: "card  rounded-lg"
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
         style: {
           display: "inline-block",
           width: "200px",
           height: "100px"
         },
-        className: "card-img-top",
+        className: "card-img-top rounded-lg",
         src: url + this.props.imagen,
         alt: "Card image cap"
       }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "card-body text-wrap"
-      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h4", null, this.props.nombre), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, this.props.descripcion), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, "Disponible: \xA0", this.props.cantidad), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
+        className: "card-body text-wrap bg-green-50"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "content-center"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
         type: "button",
         id: this.props.id,
-        className: "btn btn-outline-info btn-sm btn-block",
+        className: "flex items-center p-2.5 h-12 w-12 -mt-10 ml-16 bg-green-400 bg-opacity-40 tex-center text-gray-800 rounded-full shadow-xs cursor-pointer hover:bg-green-500 hover:bg-opacity-80 hover:text-gray-100",
         onClick: function onClick(e) {
           return _this2.onClick(_this2.props, e);
         }
-      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h6", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", {
-        className: "fas fa-cart-plus"
-      }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("font", {
-        size: "1.8"
-      }, "\xA0\xA0Agregar"))))));
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h6", {
+        className: "text-center"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", {
+        className: "fas fa-cart-plus text-lg "
+      })))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h4", {
+        className: "font-bold text-gray-800 text-center text-base"
+      }, this.props.nombre), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", {
+        className: "text-xs text-gray-600 italic font-light"
+      }, this.props.descripcion), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", {
+        className: "text-xs text-green-800 font-bold text-right"
+      }, "Disponible: \xA0", this.props.cantidad))));
     }
   }]);
 
@@ -68411,7 +68423,7 @@ var ListaCategorias = /*#__PURE__*/function (_Component) {
                 _context2.next = 8;
                 return axios.get(url + "productos/indexCategorias", {
                   params: {
-                    CATEGORIA: "HERRAMIENTA"
+                    CATEGORIA: "ACCESORIO"
                   }
                 });
 
@@ -68444,13 +68456,21 @@ var ListaCategorias = /*#__PURE__*/function (_Component) {
   }, {
     key: "render",
     value: function render() {
-      return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement(_BuscarProducto__WEBPACK_IMPORTED_MODULE_4__["default"], null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("h4", null, "Productos mas Consumidos"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement(_Categorias__WEBPACK_IMPORTED_MODULE_3__["default"], {
+      return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement(_BuscarProducto__WEBPACK_IMPORTED_MODULE_4__["default"], null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("h4", {
+        className: "text-lg font-sans font-bold p-4"
+      }, "Productos mas Consumidos"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement(_Categorias__WEBPACK_IMPORTED_MODULE_3__["default"], {
         items: this.state.productos
-      }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("h4", null, "Material de Escritorio"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement(_Categorias__WEBPACK_IMPORTED_MODULE_3__["default"], {
+      }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("h4", {
+        className: "text-lg font-sans font-bold p-4"
+      }, "Material de Escritorio"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement(_Categorias__WEBPACK_IMPORTED_MODULE_3__["default"], {
         items: this.state.materialdeescritorio
-      }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("h4", null, "Material de Limpieza"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement(_Categorias__WEBPACK_IMPORTED_MODULE_3__["default"], {
+      }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("h4", {
+        className: "text-lg font-sans font-bold p-4"
+      }, "Material de Limpieza"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement(_Categorias__WEBPACK_IMPORTED_MODULE_3__["default"], {
         items: this.state.materialdelimpieza
-      }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("h4", null, "Herramientas"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement(_Categorias__WEBPACK_IMPORTED_MODULE_3__["default"], {
+      }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("h4", {
+        className: "text-lg font-sans font-bold p-4"
+      }, "Accesorio"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement(_Categorias__WEBPACK_IMPORTED_MODULE_3__["default"], {
         items: this.state.herramienta
       }));
     }
