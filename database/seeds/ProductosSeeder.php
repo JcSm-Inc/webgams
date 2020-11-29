@@ -296,7 +296,7 @@ class ProductosSeeder extends Seeder
         ]);
         Productos::create([
             'CODPROD' => 'ME32',
-            'NOMBRE' => 'OVERON',
+            'NOMBRE' => 'OVEROL',
             'DESCRIPCION' => 'OBEROL',
             'TIPO' => 'ACCESORIOS',
             'UNIDAD' => 'UNIDAD',
