@@ -27,7 +27,7 @@ class PersonalDePlantaSeeder extends Seeder
             'idUSUARIO' => '3',
         ]);
         Personal_de_Planta::create([
-            'CARGO' => 'SECRETARIO MINICIPAL PLANIFICASION Y OBRAS PUBLICAS',
+            'CARGO' => 'SECRETARIO MUNICIPAL PLANIFICASION Y OBRAS PUBLICAS',
             'idUSUARIO' => '4',
         ]);
         Personal_de_Planta::create([

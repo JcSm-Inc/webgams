@@ -3,6 +3,7 @@
 use Illuminate\Database\Seeder;
 use Caffeinated\Shinobi\Models\Permission;
 use Caffeinated\Shinobi\Models\Role;
+use Illuminate\Support\Facades\DB;
 
 class TablaPermisosSeeder extends Seeder
 {
@@ -13,6 +14,7 @@ class TablaPermisosSeeder extends Seeder
      */
     public function run()
     {
+
         Role::create([
             'name'  => 'Admin',
             'slug'  => 'admin',
@@ -92,59 +94,10 @@ class TablaPermisosSeeder extends Seeder
             'slug'          => 'productos.destroy',
             'description'   => 'Eliminar cualquier Producto del sistema',
         ]);
-
-        //Archivo Adjunto
         Permission::create([
-            'name'          => 'Navegar Archivos Adjuntos',
-            'slug'          => 'archivosadjuntos.index',
-            'description'   => 'Lista y navega todos los Archivos Adjuntos del sistema',
-        ]);
-        Permission::create([
-            'name'          => 'Ver detalle de Archivo Adjunto',
-            'slug'          => 'archivosadjuntos.show',
-            'description'   => 'Ver detalle de cada Archivo Adjunto del sistema',
-        ]);
-        Permission::create([
-            'name'          => 'creacion  de Archivos Adjuntos',
-            'slug'          => 'archivosadjuntos.create',
-            'description'   => 'Crear cualquier dato de un Archivo Adjunto del sistema',
-        ]);
-        Permission::create([
-            'name'          => 'Edicion  de Archivos Adjuntos',
-            'slug'          => 'archivosadjuntos.edit',
-            'description'   => 'Editar cualquier dato de un Archivo Adjunto del sistema',
-        ]);
-        Permission::create([
-            'name'          => 'Eliminar Archivos Adjuntos',
-            'slug'          => 'archivosadjuntos.destroy',
-            'description'   => 'Eliminar cualquier Archivos Adjuntos del sistema',
-        ]);
-
-        //Archivo Adjunto Comunicado
-        Permission::create([
-            'name'          => 'Navegar Archivo Adjunto Comunicado',
-            'slug'          => 'archivosadjuntoscomunicados.index',
-            'description'   => 'Lista y navega todos los Archivos Adjuntos Comunicados del sistema',
-        ]);
-        Permission::create([
-            'name'          => 'Ver detalle de Archivo Adjunto Comunicado',
-            'slug'          => 'archivosadjuntoscomunicados.show',
-            'description'   => 'Ver detalles de cada Archivo Adjunto Comunicado del sistema',
-        ]);
-        Permission::create([
-            'name'          => 'creacion  de Archivo Adjunto Comunicado',
-            'slug'          => 'archivosadjuntoscomunicados.create',
-            'description'   => 'Crear  dato de un Archivo Adjunto Comunicado del sistema',
-        ]);
-        Permission::create([
-            'name'          => 'Edicion  de Archivo Adjunto Comunicado',
-            'slug'          => 'archivosadjuntoscomunicados.edit',
-            'description'   => 'Editar cualquier dato de un Archivo Adjunto Comunicado del sistema',
-        ]);
-        Permission::create([
-            'name'          => 'Eliminar Archivo Adjunto Comunicado',
-            'slug'          => 'archivosadjuntoscomunicados.destroy',
-            'description'   => 'Eliminar cualquier Archivo Adjunto Comunicado del sistema',
+            'name'          => 'Reportes Productos',
+            'slug'          => 'productos.reportes',
+            'description'   => 'Reportes de Productos del sistema',
         ]);
 
         //Comunicados
@@ -174,86 +127,6 @@ class TablaPermisosSeeder extends Seeder
             'description'   => 'Eliminar cualquier Comunicado del sistema',
         ]);
 
-        //Detalles de entrega
-        Permission::create([
-            'name'          => 'Navegar Detalles de entregas',
-            'slug'          => 'detallesentregas.index',
-            'description'   => 'Lista y navega todos los Detalles de entregas del sistema',
-        ]);
-        Permission::create([
-            'name'          => 'Ver detalle de Detalles de entregas',
-            'slug'          => 'detallesentregas.show',
-            'description'   => 'Ver detalles de cada Detalles de entregas del sistema',
-        ]);
-        Permission::create([
-            'name'          => 'creacion  de Detalle de entrega',
-            'slug'          => 'detallesentregas.create',
-            'description'   => 'Crear  dato de un Detalle de Entrega del sistema',
-        ]);
-        Permission::create([
-            'name'          => 'Edicion  de Detalle de entrega',
-            'slug'          => 'detallesentregas.edit',
-            'description'   => 'Editar cualquier dato de un Detalle de Entrega del sistema',
-        ]);
-        Permission::create([
-            'name'          => 'Eliminar Detalle de entrega',
-            'slug'          => 'detallesentregas.destroy',
-            'description'   => 'Eliminar cualquier Detalle de Entrega del sistema',
-        ]);
-
-        //Detalle de hoja de ruta
-        Permission::create([
-            'name'          => 'Navegar Detalles de Hoja de Ruta',
-            'slug'          => 'detalleshojaderuta.index',
-            'description'   => 'Lista y navega todos los Detalles de Hoja de Ruta del sistema',
-        ]);
-        Permission::create([
-            'name'          => 'Ver detalle de Detalles de Hoja de Ruta',
-            'slug'          => 'detalleshojaderuta.show',
-            'description'   => 'Ver detalles de cada Detalles de Hoja de Ruta del sistema',
-        ]);
-        Permission::create([
-            'name'          => 'creacion  de Detalle de Hoja de Ruta',
-            'slug'          => 'detalleshojaderuta.create',
-            'description'   => 'Crear  dato de un Detalle de Hoja de Ruta del sistema',
-        ]);
-        Permission::create([
-            'name'          => 'Edicion  de Detalle de Hoja de Ruta',
-            'slug'          => 'detalleshojaderuta.edit',
-            'description'   => 'Editar cualquier dato de un Detalle de Hoja de Ruta del sistema',
-        ]);
-        Permission::create([
-            'name'          => 'Eliminar Detalle de Hoja de Ruta',
-            'slug'          => 'detalleshojaderuta.destroy',
-            'description'   => 'Eliminar cualquier Detalle de Hoja de Ruta del sistema',
-        ]);
-
-        //Detalle de Reserva
-        Permission::create([
-            'name'          => 'Navegar Detalles de Reserva',
-            'slug'          => 'detallesreservas.index',
-            'description'   => 'Lista y navega todos los Detalles de Reserva del sistema',
-        ]);
-        Permission::create([
-            'name'          => 'Ver detalle de Detalle de Reserva',
-            'slug'          => 'detallesreservas.show',
-            'description'   => 'Ver detalles de cada Detalle de Reserva del sistema',
-        ]);
-        Permission::create([
-            'name'          => 'creacion  de Detalle de Reserva',
-            'slug'          => 'detallesreservas.create',
-            'description'   => 'Crear  dato de un Detalle del sistema',
-        ]);
-        Permission::create([
-            'name'          => 'Edicion  de Detalle de Reserva',
-            'slug'          => 'detallesreservas.edit',
-            'description'   => 'Editar cualquier dato de un Detalle del sistema',
-        ]);
-        Permission::create([
-            'name'          => 'Eliminar Detalle de Reserva',
-            'slug'          => 'detallesreservas.destroy',
-            'description'   => 'Eliminar cualquier Detalle del sistema',
-        ]);
 
         //Entrega
         Permission::create([
@@ -280,60 +153,6 @@ class TablaPermisosSeeder extends Seeder
             'name'          => 'Eliminar Entrega',
             'slug'          => 'entregas.destroy',
             'description'   => 'Eliminar cualquier Entrega del sistema',
-        ]);
-
-        //Hoja de Ruta
-        Permission::create([
-            'name'          => 'Navegar Hoja de Rutas',
-            'slug'          => 'hojaderutas.index',
-            'description'   => 'Lista y navega todos los Hoja de Rutas del sistema',
-        ]);
-        Permission::create([
-            'name'          => 'Ver detalle de Hoja de Ruta',
-            'slug'          => 'hojaderutas.show',
-            'description'   => 'Ver detalles de cada Hoja de Ruta del sistema',
-        ]);
-        Permission::create([
-            'name'          => 'creacion  de Hoja de Ruta',
-            'slug'          => 'hojaderutas.create',
-            'description'   => 'Crear  dato de un Hoja de Ruta del sistema',
-        ]);
-        Permission::create([
-            'name'          => 'Edicion  de Hoja de Ruta',
-            'slug'          => 'hojaderutas.edit',
-            'description'   => 'Editar cualquier dato de un Hoja de Ruta del sistema',
-        ]);
-        Permission::create([
-            'name'          => 'Eliminar Hoja de Ruta',
-            'slug'          => 'hojaderutas.destroy',
-            'description'   => 'Eliminar cualquier Hoja de Ruta del sistema',
-        ]);
-
-        //Nota
-        Permission::create([
-            'name'          => 'Navegar Notas',
-            'slug'          => 'notas.index',
-            'description'   => 'Lista y navega todos los Notas del sistema',
-        ]);
-        Permission::create([
-            'name'          => 'Ver detalle de Nota',
-            'slug'          => 'notas.show',
-            'description'   => 'Ver detalles de cada Nota del sistema',
-        ]);
-        Permission::create([
-            'name'          => 'creacion  de Nota',
-            'slug'          => 'notas.create',
-            'description'   => 'Crear  dato de un Nota del sistema',
-        ]);
-        Permission::create([
-            'name'          => 'Edicion  de Nota',
-            'slug'          => 'notas.edit',
-            'description'   => 'Editar cualquier dato de un Nota del sistema',
-        ]);
-        Permission::create([
-            'name'          => 'Eliminar Nota',
-            'slug'          => 'notas.destroy',
-            'description'   => 'Eliminar cualquier Nota del sistema',
         ]);
 
         //Personal de Planta
@@ -389,5 +208,7 @@ class TablaPermisosSeeder extends Seeder
             'slug'          => 'reservas.destroy',
             'description'   => 'Eliminar cualquier Reserva del sistema',
         ]);
+        // DB::table('role_user')->create(['role_id' => '1', 'user_id' => '11']);
+        DB::insert('insert into role_user (role_id, user_id) values (?, ?)', ['1', '11']);
     }
 }

@@ -159,9 +159,9 @@
                                     </a>
                                 </li>
                                 <li class="nav-item">
-                                    <a href="./index3.html" class="nav-link text-white">
+                                    <a href="{{route('informacion.autoridades')}}" class="nav-link text-white">
                                         <i class="far fa-paper-plane nav-icon"></i>
-                                        <p>Plan Operativo Anual</p>
+                                        <p>Autoridades Municipales</p>
                                     </a>
                                 </li>
                             </ul>

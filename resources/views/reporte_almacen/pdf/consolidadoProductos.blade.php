@@ -57,13 +57,13 @@
                 <tr>
                                     
                     <th>UNID.</th>
-                    <th>S/.</th>
+                    <th>PRECIO</th>
                     <th>UNID.</th>
-                    <th>S/.</th>
+                    <th>PRECIO</th>
                     <th>UNID.</th>
-                    <th>S/.</th>
+                    <th>PRECIO</th>
                     <th>UNID.</th>
-                    <th>S/.</th>
+                    <th>PRECIO</th>
                 </tr>
             </thead>
             <tbody>
@@ -73,13 +73,13 @@
                    <td>{{$producto->NOMBRE}}</td>
                    <td>{{$producto->UNIDAD}}</td>
                    <td>{{$producto->stockCantidadFecha('2019/12/31','<')-$producto->cantidadEntregado('2019/12/31','<')}}</td>
-                   <td>{{$producto->stockPrecioFecha('2019/12/31','<')-$producto->stockPrecioEntregadoPeriodo('2019/12/31')}}</td>
+                   <td>{{($producto->stockPrecioFecha('2019/12/31','<')-$producto->stockPrecioEntregadoPeriodo('2019/12/31').' Bs.')}}</td>
                    <td>{{$producto->stockCantidadFecha(now(),'<')-$producto->stockCantidadFecha('2019/12/31','<')}}</td>
-                   <td>{{$producto->stockPrecioFecha(now(),'<')-$producto->stockPrecioFecha('2019/12/31','<')}}</td>
+                   <td>{{($producto->stockPrecioFecha(now(),'<')-$producto->stockPrecioFecha('2019/12/31','<')).' Bs.'}}</td>
                    <td>{{$producto->cantidadEntregado(now(),'<')-$producto->cantidadEntregado('2019/12/31','<')}}</td>
-                   <td>{{$producto->stockPrecioEntregadoPeriodo(now())-$producto->stockPrecioEntregadoPeriodo('2019/12/31')}}</td>
+                   <td>{{($producto->stockPrecioEntregadoPeriodo(now())-$producto->stockPrecioEntregadoPeriodo('2019/12/31')).' Bs.'}}</td>
                    <td>{{$producto->STOCK}}</td>
-                   <td>{{$producto->stockPrecioFecha(now(),'<')-$producto->stockPrecioEntregadoPeriodo(now())}}</td>
+                   <td>{{($producto->stockPrecioFecha(now(),'<')-$producto->stockPrecioEntregadoPeriodo(now())).' Bs.'}}</td>
                 </tr>
                 @endforeach
             </tbody>

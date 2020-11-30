@@ -13,7 +13,7 @@ class InformacionController extends Controller
      */
     public function __construct()
     {
-       // $this->middleware('auth');
+        // $this->middleware('auth');
     }
 
     /**
@@ -28,5 +28,9 @@ class InformacionController extends Controller
     public function misionvision()
     {
         return view('institucion/mision_vision');
+    }
+    public function autoridadesMunicipales()
+    {
+        return view('institucion/autoridadesMunicipales');
     }
 }
