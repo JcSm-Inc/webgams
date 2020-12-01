@@ -18,13 +18,7 @@ Route::get('/', function () {
 })->name('welcome');
 
 Auth::routes();
-Route::get('entregas/', 'EntregaController@index')->name('entregas.index');
-Route::get('entregas/create', 'EntregaController@create')->name('entregas.create');
-Route::get('entregas/{entrega}/edit', 'EntregaController@edit')->name('entregas.edit');
-Route::post('entregas/store', 'EntregaController@store')->name('entregas.store');
-Route::get('entregas/{entrega}', 'EntregaController@show')->name('entregas.show');
-Route::put('entregas/{entrega}', 'EntregaController@update')->name('entregas.update');
-Route::delete('entregas/{entrega}', 'EntregaController@destroy')->name('entregas.destroy');
+
 
 
 Route::get('productos/indexReact', 'ProductosController@indexReact')->name('productos.indexReact');
@@ -46,13 +40,6 @@ Route::post('reserva/store', 'ReservaController@store')->name('reserva.store');
 Route::put('reserva/{reservas}', 'ReservaController@update')->name('reserva.update');
 Route::delete('reserva/{reservas}', 'ReservaController@destroy')->name('reserva.destroy');
 
-Route::get('actualizarstock/', 'ActualizarStockController@index')->name('actualizarstock.index');
-Route::get('actualizarstock/{producto}', 'ActualizarStockController@show')->name('actualizarstock.show');
-Route::get('actualizarstock/{producto}/create', 'ActualizarStockController@create')->name('actualizarstock.create');
-Route::get('actualizarstock/{actualizarStock}/edit', 'ActualizarStockController@edit')->name('actualizarstock.edit');
-Route::post('actualizarstock/store', 'ActualizarStockController@store')->name('actualizarstock.store');
-Route::put('actualizarstock/{actualizarstocks}', 'ActualizarStockController@update')->name('actualizarstock.update');
-Route::delete('actualizarstock/{actualizarstocks}', 'ActualizarStockController@destroy')->name('actualizarstock.destroy');
 
 Route::delete('detallereserva/{detallereservas}', 'DetalleReservaController@destroy')->name('detallereserva.destroy');
 Route::put('detallereserva/{detallereservas}', 'DetalleReservaController@update')->name('detallereserva.update');
@@ -61,6 +48,9 @@ Route::get('/home', 'HomeController@index')->name('home');
 
 Route::get('mision_vision/', 'InformacionController@misionvision')->name('mision_vision.index');
 Route::get('informacion/autoridades_municipales', 'InformacionController@autoridadesMunicipales')->name('informacion.autoridades');
+Route::get('informacion/historia', 'InformacionController@historiaWeb')->name('informacion.historiaWeb');
+Route::get('informacion/autoridades', 'InformacionController@autoridadesWeb')->name('informacion.autoridadesWeb');
+Route::get('informacion/contactos', 'InformacionController@contactosWeb')->name('informacion.contactosWeb');
 
 //visualizar el sitado
 Route::get('comunicadosweb/', 'ComunicadoController@indexweb')->name('comunicados.indexweb');
@@ -68,6 +58,8 @@ Route::get('comunicadosweb/', 'ComunicadoController@indexweb')->name('comunicado
 Route::get('comunicados/comunicado/{slug}', 'ComunicadoController@comunicado')->name('comunicados.comunicado');
 //ver el categoria
 Route::get('comunicados/categoria/{slug}', 'ComunicadoController@categoria')->name('comunicados.categoria');
+
+
 
 Route::middleware(['auth'])->group(function () {
     //PRODUCTOS
@@ -99,6 +91,23 @@ Route::middleware(['auth'])->group(function () {
     // ver el formulario de edicion
     Route::get('productos/{producto}/edit', 'ProductosController@edit')->name('productos.edit')
         ->middleware('can:productos.edit');
+
+    Route::get('actualizarstock/', 'ActualizarStockController@index')->name('actualizarstock.index')
+        ->middleware('can:productos.edit');
+    Route::get('actualizarstock/{producto}', 'ActualizarStockController@show')->name('actualizarstock.show')
+        ->middleware('can:productos.edit');
+    Route::get('actualizarstock/{producto}/create', 'ActualizarStockController@create')->name('actualizarstock.create')
+        ->middleware('can:productos.edit');
+    Route::get('actualizarstock/{actualizarStock}/edit', 'ActualizarStockController@edit')->name('actualizarstock.edit')
+        ->middleware('can:productos.edit');
+    Route::post('actualizarstock/store', 'ActualizarStockController@store')->name('actualizarstock.store')
+        ->middleware('can:productos.edit');
+    Route::put('actualizarstock/{actualizarStock}', 'ActualizarStockController@update')->name('actualizarstock.update')
+        ->middleware('can:productos.edit');
+    Route::delete('actualizarstock/{actualizarstocks}', 'ActualizarStockController@destroy')->name('actualizarstock.destroy')
+        ->middleware('can:productos.edit');
+
+
 
     //COMUNICADO
 
@@ -172,4 +181,21 @@ Route::middleware(['auth'])->group(function () {
 
     Route::get('roles/{role}/edit', 'RoleController@edit')->name('roles.edit')
         ->middleware('can:roles.edit');
+
+    //Entregas
+
+    Route::get('entregas/', 'EntregaController@index')->name('entregas.index')
+        ->middleware('can:users.index');
+    Route::get('entregas/create', 'EntregaController@create')->name('entregas.create')
+        ->middleware('can:users.create');
+    Route::get('entregas/{entrega}/edit', 'EntregaController@edit')->name('entregas.edit')
+        ->middleware('can:users.edit');
+    Route::post('entregas/store', 'EntregaController@store')->name('entregas.store')
+        ->middleware('can:users.create');
+    Route::get('entregas/{entrega}', 'EntregaController@show')->name('entregas.show')
+        ->middleware('can:users.show');
+    Route::put('entregas/{entrega}', 'EntregaController@update')->name('entregas.update')
+        ->middleware('can:users.edit');
+    Route::delete('entregas/{entrega}', 'EntregaController@destroy')->name('entregas.destroy')
+        ->middleware('can:users.destroy');
 });

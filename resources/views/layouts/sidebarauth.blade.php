@@ -213,14 +213,14 @@
                                     </a>
                                 </li>
 
-
+                                @can('entregas.show')
                                 <li class="nav-item text-white">
                                     <a href="{{ route('entregas.index')}}" class="nav-link text-white">
                                         <i class="fas fa-people-carry nav-icon"></i>
                                         <p>Entrega de Productos</p>
                                     </a>
                                 </li>
-
+                                @endcan
 
                                 <li class="nav-item text-white">
                                     <a href="{{route('reporte_almacen.saldoExistenciasProducto')}}" class="nav-link text-white">
@@ -285,7 +285,7 @@
         </aside>
 
         <!-- Content Wrapper. Contains page content -->
-        <div class="content-wrapper">
+        <div class="content-wrapper bg-cover bg-fixed border-t-2 border-blue-600 h-full" style="background-image: url({{asset('../extras/page_image/PRINCIPAL.jpeg')}});">
             
 
 

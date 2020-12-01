@@ -2,7 +2,7 @@
 
 @section('contenido')
 <!-- component -->
-<div class="container mx-auto max-w-screen-lg mx-auto bg-opacity-50">
+<div class="container mx-auto max-w-screen-lg mx-auto bg-gray-100 bg-opacity-80">
    
 
     <div class="mt-2">

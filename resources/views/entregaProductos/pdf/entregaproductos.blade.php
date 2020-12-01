@@ -46,7 +46,7 @@
     <main>
         <table align="center" border=1 cellspacing=0 cellpadding=2 bordercolor="#666633" style="width:100%">
             <tr>
-                <td rowspan="3" align="center"><strong>NOTA DE ENTREGA</strong> </td>
+                <td rowspan="3" align="center"><strong>ACTA DE ENTREGA Y CONFORMIDAD</strong> </td>
                 <td width="150"><strong>Codigo de Entrega:</strong>{{$entrega->id}}</td>
                 </tr>
             <tr>
@@ -74,23 +74,29 @@
             <td width="150px">CARGO:</td>
             <td colspan="2">{{Auth::user()->personal_de_planta->CARGO}}</p></td>
         </tr>
+        <tr>
+            <td width="150px">OBSERVACIONES:</td>
+            <td colspan="2" align="justify"><P>El presente documento certifica que la unidad de Almacenes del Gobierno Autonomo Municipal de Soracachi ENTREGÓ el siguiente material. </p></td>
+        </tr>
     </table>
 <p align="center"><strong>DETALLE DE ENTREGA</strong></p>
         <table align="center" border=1 cellspacing=0 cellpadding=2 bordercolor="#666633" style="width:100%">
             <thead>
                 <tr>
-                    <th width="10px" scope="col"> CODPROD </th>     
+                    <th width="10px" scope="col"> CODIGO </th>     
                     <th width="10px" scope="col">NOMBRE</th>
-                    <th scope="col">DESCRIPCION</th>
-                    <th width="10px" scope="col">CANTIDAD</th>
+                    <th width="30px" scope="col">DESCRIPCION</th>
+                    <th width="10px" scope="col">UNIDAD</th>
+                    <th width="8px" scope="col">CANTIDAD</th>
                 </tr>
             </thead>
             <tbody>
                 @foreach($detalles as $item)
                     <tr>
                         <td align="center">{{$item->productos->CODPROD}}</td> 
-                        <td>{{$item->productos->NOMBRE}}</td>
-                        <td>{{$item->productos->DESCRIPCION}}</td>
+                        <td><h5>{{$item->productos->NOMBRE}}</h5></td>
+                        <td><h6>{{$item->productos->DESCRIPCION}}</h6></td>
+                        <td align="center">{{$item->productos->UNIDAD}}</td>
                         <td align="center">{{$item->CANTIDAD}}</td>
                     </tr>
                 @endforeach

@@ -1,17 +1,14 @@
-@extends('layouts.sidebarauth')
-
-@section('contenido')
 <section>
     <!-- component -->
 <div id="container" class="w-full mx-auto">
-    <h2 class="text-xl font-medium text-gray-700 p-4">Autoridades Municipales</h2>
+    <h2 class="text-4xl font-medium text-gray-700 p-4">Autoridades Municipales</h2>
     <div class="flex flex-col sm:flex-row">
       <!-- Card 1 -->
-      <div class="sm:w-1/4 p-2">
+      <div class="sm:w-1/3 p-2">
         <div class="bg-white px-6 py-1 rounded-lg shadow-lg text-center">
           <div class="mb-1">
             <img
-              class="w-full h-44 mx-auto rounded-full"
+              class="w-3/5 h-44 mx-auto rounded-full"
                 src="{{asset('extras/page_image/alacalde.jpg')}}"
               alt=""
             />
@@ -35,11 +32,11 @@
         </div>
       </div>
         <!-- Card 1 -->
-        <div class="sm:w-1/4 p-2">
+        <div class="sm:w-1/3 p-2">
             <div class="bg-white px-6 py-1 rounded-lg shadow-lg text-center">
             <div class="mb-1">
                 <img
-                class="w-full h-44 mx-auto rounded-full"
+                class="w-3/5 h-44 mx-auto rounded-full"
                     src="{{asset('extras/page_image/secretario_administrativo.jpg')}}"
                 alt=""
                 />
@@ -64,11 +61,11 @@
         </div>
 
             <!-- Card 1 -->
-        <div class="sm:w-1/4 p-2">
+        <div class="sm:w-1/3 p-2">
             <div class="bg-white px-6 py-1 rounded-lg shadow-lg text-center">
             <div class="mb-1">
                 <img
-                class="w-full h-44 mx-auto rounded-full"
+                class="w-3/5 h-44 mx-auto rounded-full"
                     src="{{asset('extras/page_image/secretario_planificacion.jpg')}}"
                 alt=""
                 />
@@ -93,7 +90,7 @@
       </div>
     </div>
 
-    <h2 class="text-xl font-medium text-gray-700 p-4">Concejo Municipal</h2>
+    <h2 class="text-4xl font-medium text-gray-700 p-4">Concejo Municipal</h2>
     <div class="flex flex-col sm:flex-row">
       <!-- Card 1 -->
       <div class="sm:w-1/4 p-2">
@@ -242,4 +239,3 @@
 
   </div>
 </section>
-@endsection

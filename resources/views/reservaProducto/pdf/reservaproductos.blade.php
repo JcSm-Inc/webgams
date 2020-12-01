@@ -47,13 +47,13 @@
     <p align="right"><br>Soracachi, {{(new Carbon\Carbon($reserva->FECHARESERVA))->isoFormat('LL')}}<br></p>
     <p><br>A:  &nbsp;&nbsp;&nbsp; H.Oscar Flores Adrián <br>
         <strong>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ALCALDE MUNICIPAL  DE  SORACACHI</strong><br><br>
-        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Lic.  Juan José Chacón Bozo<br>	
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Ing. Freddy E. Suarez Camargo<br>	
          <strong>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;STRIO. MUNICIPAL ADMINISTRATIVO<br>
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Y DE DESARROLLO INSTITUCIONAL.</strong><br><br>
            <strong> De:</strong>&nbsp;&nbsp;&nbsp;{{Auth::user()->NOMBRES.' '.Auth::user()->APELLIDOS}}<br>
            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong>{{AUTH::user()->personal_de_planta->CARGO}}</strong>
     </p>
-<p align="right"><strong>ref.<u> SOLICITUD  DE MATERIAL PARA EL AREA {{AUTH::user()->personal_de_planta->CARGO}}</u><br><br></strong></p>
+<p align="right"><strong>Ref.<u> SOLICITUD  DE MATERIAL PARA EL AREA {{AUTH::user()->personal_de_planta->CARGO}}</u><br><br></strong></p>
 <p align="justify">    De mi mayor consideración:<br><br>
     Mediante la presente le hago llegar un saludo respetuoso a su Autoridad, al mismo tiempo quiero desearle éxitos en la delicada labor que desempeña en beneficio del Municipio.<br><br>
     El motivo de la  presente es para solicitar mediante el área correspondiente Material de  Trabajo   para el area de {{AUTH::user()->personal_de_planta->CARGO}} del G.A.M. SORACACHI para lo cual doy el siguiente detalle:

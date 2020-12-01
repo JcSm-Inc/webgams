@@ -3,8 +3,9 @@
 @section('contenido')
 <div class="container-fluid">
     <div class="row justify-content-center">
-        {!! Form::model($actualizarStock,['route' => ['actualizarstock.update',$actualizarStock->id],'Method'=>'PUT']) !!}
+        {!! Form::model($actualizarStock,['route' => ['actualizarstock.update',$actualizarStock->id],'method'=>'PUT']) !!}
         @csrf
+        @method('PUT')
                     <div class="col-12">
                         
                         <div class="card">
@@ -32,4 +33,6 @@
         {!! Form::close() !!}
     </div>
 </div>
+
+
 @endsection

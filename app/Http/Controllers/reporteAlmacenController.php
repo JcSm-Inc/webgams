@@ -42,6 +42,10 @@ class reporteAlmacenController extends Controller
                 $fechaini = $request->get('fechaini');
                 $fechafin = $request->get('fechafin');
             } else $fechafin = $request->get('fechafin');
+        } else {
+            if (isset($request['fechaini']) == true && $request['fechaini'] != '') {
+                $fechaini = $request->get('fechaini');
+            }
         }
         $actualizaciones  = actualizarStock::where('FECHA', '>=', date("Y-m-d", strtotime($fechaini)))->where('FECHA', '<=', date("Y-m-d", strtotime($fechafin)))
             ->where('idPRODUCTO', $producto->id)->GET();

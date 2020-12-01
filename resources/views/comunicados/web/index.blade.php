@@ -1,7 +1,7 @@
 @extends('layouts.sidebar')
 
 @section('contenido')
-<section class="blog text-gray-700 body-font">
+<section class="blog text-gray-700 body-font mt-28">
     <div class="container px-3 py-2 mx-auto">
       <div class="flex flex-wrap w-full mb-4 flex-col items-center text-center">
         <h1 class="sm:text-3xl text-2xl font-medium title-font mb-2 text-gray-900"> NOTICIAS</h1>

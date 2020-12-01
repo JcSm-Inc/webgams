@@ -26,7 +26,7 @@
                           @enderror
                     <!-- /.info-box-content -->
                         </div>
-                        <div class="pt-4">
+                        <div class="p-4 m-4">
                               <div class="form-group">
                                 <label class="col-form-label" for="nick"> Ingrese Nick</label>
                                 <input type="text" class="form-control @error('nick') is-invalid @enderror" id="nick" name="nick" value="{{ old('nick') }}" placeholder="Nick">

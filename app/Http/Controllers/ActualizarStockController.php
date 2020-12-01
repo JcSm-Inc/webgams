@@ -44,6 +44,7 @@ class ActualizarStockController extends Controller
     public function store(ValidarStock $request)
     {
         $producto = $request->session()->get('producto');
+
         $cantidad = $request['CANTIDAD'];
         $actualizarStock = actualizarStock::create(
             [
@@ -62,7 +63,7 @@ class ActualizarStockController extends Controller
         $producto->update([
             'STOCK' => ($producto->STOCK + $cantidad),
         ]);
-        return redirect()->route('actualizarstock.edit', $actualizarStock->id)
+        return redirect()->route('actualizarstock.edit', compact('actualizarStock', 'producto'))
             ->with('info', 'Producto guardado con exito');
     }
 
@@ -98,9 +99,23 @@ class ActualizarStockController extends Controller
      * @param  \App\actualizarStock  $actualizarStock
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, actualizarStock $actualizarStock)
+    public function update(ValidarStock $request, actualizarStock $actualizarStock)
     {
-        //
+        $cantidad = $actualizarStock->CANTIDAD;
+        $actualizarStock->update([
+
+            'idUSER' => Auth::user()->id,
+            'CANTIDAD' => $request->CANTIDAD,
+            'NRO_DOCUMENTO' => $request['NRO_DOCUMENTO'],
+            'PU' => $request['PU'],
+            'PROVEEDOR' => $request['PROVEEDOR']
+        ]);
+        $producto = Productos::find($actualizarStock->idPRODUCTO);
+        $producto->update([
+            'STOCK' => (($producto->STOCK - $cantidad) + $actualizarStock->CANTIDAD),
+        ]);
+        return redirect()->route('actualizarstock.edit', $actualizarStock->id)
+            ->with('info', 'Producto guardado con exito');
     }
 
     /**

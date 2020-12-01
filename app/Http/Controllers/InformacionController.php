@@ -27,10 +27,22 @@ class InformacionController extends Controller
     }
     public function misionvision()
     {
-        return view('institucion/mision_vision');
+        return view('institucion/admin/mision_vision');
     }
     public function autoridadesMunicipales()
     {
-        return view('institucion/autoridadesMunicipales');
+        return view('institucion/admin/autoridadesMunicipales');
+    }
+    public function historiaWeb()
+    {
+        return view('institucion/web/historia');
+    }
+    public function autoridadesWeb()
+    {
+        return view('institucion/web/autoridades');
+    }
+    public function contactosWeb()
+    {
+        return view('institucion/web/contactos');
     }
 }

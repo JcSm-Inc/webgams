@@ -7,8 +7,8 @@
     <div class="row justify-content-center">
         <div class="col-md-12">
             <div class="flex content-between items-center">
-                <h2 class="text-2xl font-semibold pr-5 leading-tight">Mis comunicados</h2>
-                @can('productos.create')
+                <h2 class="text-2xl text-white font-semibold pr-5 leading-tight"  style="text-shadow: 0 20px 50px hsla(0,0%,0%,8);">Mis comunicados</h2>
+                @can('comunicados.create')
                     <a href="{{route('comunicados.create')}}" class="">
                         <div class="flex items-center rounded-full p-2 px-2 h-10  text-green-800 hover:text-green-100  bg-green-100 hover:bg-green-500">
                             
@@ -18,7 +18,7 @@
                     </a>
                 @endcan
             </div>
-            <div class="-mx-4 sm:-mx-8 px-4 sm:px-8 py-4 overflow-x-auto">
+            <div class="-mx-4  px-4 sm:px-8 py-4 overflow-x-auto">
                 <div class="inline-block min-w-full shadow rounded-lg overflow-hidden">
                     <table class="min-w-full leading-normal">
                         <thead>
